@@ -7,6 +7,15 @@ import { Footer } from "@/components/site/footer";
 import { ArrowRight, ArrowLeft, FileText, ImageIcon, LinkIcon } from "lucide-react";
 import Link from "next/link";
 
+type ContentBlock =
+  | { type: "heading"; level: number; text: string }
+  | { type: "paragraph"; text: string }
+  | { type: "list_item"; text: string }
+  | { type: "table_cell"; text: string }
+  | { type: "image"; src: string; alt: string }
+  | { type: "section_start"; section_type: string }
+  | { type: "section_end"; section_type: string };
+
 type IqinPage = {
   slug: string;
   url: string;
@@ -19,6 +28,17 @@ type IqinPage = {
   images: { src: string; alt: string }[];
   links: { href: string; text: string }[];
   bodyLength: number;
+  content_blocks?: ContentBlock[];
+  content_images?: { src: string; alt: string }[];
+  content_links?: { href: string; text: string }[];
+  extraction_meta?: {
+    section_count: number;
+    content_section_count: number;
+    blocks_count: number;
+    images_count: number;
+    links_count: number;
+    source_html: string;
+  };
 };
 
 const DATA_DIR = path.join(process.cwd(), "src", "lib", "iqin-data");
@@ -91,11 +111,20 @@ export default async function Page({
 
   const segments = slugSegments ?? [];
 
-  // Split body into paragraphs by 2+ newlines
-  const paragraphs = (page.body || "")
-    .split(/\n{2,}/)
-    .map((p) => p.trim())
-    .filter(Boolean);
+  // Use content_blocks if available (richer: headings + paragraphs + images inline)
+  // Otherwise fall back to body text split by 2+ newlines.
+  const hasStructuredContent = Array.isArray(page.content_blocks) && page.content_blocks.length > 0;
+  const paragraphs = !hasStructuredContent
+    ? (page.body || "")
+        .split(/\n{2,}/)
+        .map((p) => p.trim())
+        .filter(Boolean)
+    : [];
+
+  // Collect content images (from structured blocks) — may be more than page.images
+  const contentImages = page.content_images && page.content_images.length > 0
+    ? page.content_images
+    : page.images;
 
   const toc = page.headings.filter((h) => h.level >= 1 && h.level <= 3);
 
@@ -188,7 +217,84 @@ export default async function Page({
         <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1fr_220px]">
             <article>
-              {paragraphs.length > 0 ? (
+              {hasStructuredContent && page.content_blocks ? (
+                <div className="space-y-1">
+                  {page.content_blocks.map((block, i) => {
+                    if (block.type === "heading") {
+                      const level = Math.min(Math.max(block.level, 1), 6);
+                      const cls =
+                        level === 1
+                          ? "mt-8 mb-3 font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+                          : level === 2
+                          ? "mt-7 mb-3 font-display text-xl font-bold tracking-tight text-foreground sm:text-2xl"
+                          : level === 3
+                          ? "mt-6 mb-2 font-display text-lg font-bold tracking-tight text-foreground sm:text-xl"
+                          : level === 4
+                          ? "mt-5 mb-2 font-display text-base font-semibold text-foreground"
+                          : "mt-4 mb-1 font-medium text-foreground";
+                      const Tag = `h${level}` as "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+                      return <Tag key={i} className={cls}>{block.text}</Tag>;
+                    }
+                    if (block.type === "paragraph") {
+                      return (
+                        <p
+                          key={i}
+                          className="mb-4 text-[15px] leading-[1.75] text-foreground/90"
+                        >
+                          {block.text}
+                        </p>
+                      );
+                    }
+                    if (block.type === "list_item") {
+                      return (
+                        <div key={i} className="flex gap-2 mb-2 text-[15px] leading-[1.6] text-foreground/90">
+                          <span className="text-neon mt-0.5">•</span>
+                          <span>{block.text}</span>
+                        </div>
+                      );
+                    }
+                    if (block.type === "table_cell") {
+                      return (
+                        <p
+                          key={i}
+                          className="mb-2 px-3 py-1.5 text-[14px] leading-[1.6] text-foreground/80 border-l-2 border-neon/30 bg-card/20"
+                        >
+                          {block.text}
+                        </p>
+                      );
+                    }
+                    if (block.type === "image") {
+                      const isExternal = block.src.startsWith("http://") || block.src.startsWith("https://") || block.src.startsWith("//");
+                      const src = block.src.startsWith("//") ? `https:${block.src}` : block.src;
+                      if (!isExternal && !block.src.startsWith("/")) {
+                        // Relative image — skip for now (would need local copy)
+                        return null;
+                      }
+                      return (
+                        <figure key={i} className="my-6 overflow-hidden rounded-lg border border-navy-line/60 bg-card/40">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={src}
+                            alt={block.alt}
+                            className="max-h-[420px] w-full object-cover"
+                            loading="lazy"
+                          />
+                          {block.alt && block.alt !== "Изображение" && (
+                            <figcaption className="border-t border-navy-line/40 px-3 py-2 font-tech text-[10px] uppercase tracking-wider text-navy-muted">
+                              {block.alt}
+                            </figcaption>
+                          )}
+                        </figure>
+                      );
+                    }
+                    if (block.type === "section_start" || block.type === "section_end") {
+                      // Invisible markers for section structure (could add visual separator)
+                      return null;
+                    }
+                    return null;
+                  })}
+                </div>
+              ) : paragraphs.length > 0 ? (
                 paragraphs.map((p, i) => (
                   <p
                     key={i}
@@ -208,20 +314,21 @@ export default async function Page({
                 </div>
               )}
 
-              {page.images.length > 0 && (
+              {/* Gallery: show ALL images from the page (separate from inline content) */}
+              {contentImages.length > 0 && (
                 <div className="mt-10">
                   <h2 className="font-tech text-[11px] uppercase tracking-[0.2em] text-neon">
                     {"// Изображения на странице"}
                   </h2>
                   <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                    {page.images.slice(0, 12).map((img, i) => (
+                    {contentImages.slice(0, 12).map((img, i) => (
                       <figure
                         key={i}
                         className="overflow-hidden rounded-lg border border-navy-line/60 bg-card/40"
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src={img.src}
+                          src={img.src.startsWith("//") ? `https:${img.src}` : img.src}
                           alt={img.alt}
                           className="h-44 w-full object-cover"
                           loading="lazy"
@@ -234,9 +341,9 @@ export default async function Page({
                       </figure>
                     ))}
                   </div>
-                  {page.images.length > 12 && (
+                  {contentImages.length > 12 && (
                     <p className="mt-3 text-xs text-navy-muted">
-                      …и ещё {page.images.length - 12} изображений
+                      …и ещё {contentImages.length - 12} изображений
                     </p>
                   )}
                 </div>

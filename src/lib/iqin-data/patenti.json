@@ -5,7 +5,7 @@
   "h1": "Патенты Виды патентов Изобретение Промышленный образец Полезная модель",
   "description": "Патенты Виды патентов Изобретение Промышленный образец Полезная модель",
   "keywords": "",
-  "body": "",
+  "body": "\n#### Патент\n\n\nВиды патентов\n\nПатент на изобретение\n\nПодробнее\n\n\n#### Патент на промышленный\n\n\nобразец\n\nПодробнее\n\n\n#### Патент на\n\n\nполезную модель\n\nПодробнее\n\n\n#### Международные\n\n\nпатенты\n\nПодробнее\n\nДля поиска подходящего знака введите номер класса МКТУ (от 1 до 45) в строку поиска ниже. Если у Вы затрудняетесь определить какие классы соответствуют вашим товарам и/или услугам (ОКВЭД), либо есть другие вопросы, пишите в WhatsApp или звоните по телефону +7(995)789-09-00 или пишите нам на почту info@ptn.su для подробных бесплатных консультаций",
   "headings": [
     {
       "level": 3,
@@ -80,5 +80,122 @@
       "text": "Конструктор сайтов от"
     }
   ],
-  "bodyLength": 540
+  "bodyLength": 550,
+  "content_blocks": [
+    {
+      "type": "section_start",
+      "section_type": "product-services"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Патент"
+    },
+    {
+      "type": "paragraph",
+      "text": "Виды патентов"
+    },
+    {
+      "type": "paragraph",
+      "text": "Патент на изобретение"
+    },
+    {
+      "type": "paragraph",
+      "text": "Подробнее"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Патент на промышленный"
+    },
+    {
+      "type": "paragraph",
+      "text": "образец"
+    },
+    {
+      "type": "paragraph",
+      "text": "Подробнее"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Патент на"
+    },
+    {
+      "type": "paragraph",
+      "text": "полезную модель"
+    },
+    {
+      "type": "paragraph",
+      "text": "Подробнее"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Международные"
+    },
+    {
+      "type": "paragraph",
+      "text": "патенты"
+    },
+    {
+      "type": "paragraph",
+      "text": "Подробнее"
+    },
+    {
+      "type": "section_end",
+      "section_type": "product-services"
+    },
+    {
+      "type": "section_start",
+      "section_type": "text"
+    },
+    {
+      "type": "paragraph",
+      "text": "Для поиска подходящего знака введите номер класса МКТУ (от 1 до 45) в строку поиска ниже. Если у Вы затрудняетесь определить какие классы соответствуют вашим товарам и/или услугам (ОКВЭД), либо есть другие вопросы, пишите в WhatsApp или звоните по телефону +7(995)789-09-00 или пишите нам на почту info@ptn.su для подробных бесплатных консультаций"
+    },
+    {
+      "type": "section_end",
+      "section_type": "text"
+    }
+  ],
+  "content_images": [],
+  "content_links": [
+    {
+      "href": "patent.html",
+      "text": "Патент"
+    },
+    {
+      "href": "patent_na_izobretenie.html",
+      "text": "Подробнее"
+    },
+    {
+      "href": "patent_na_disain.html",
+      "text": "Подробнее"
+    },
+    {
+      "href": "patent_na_poleznuyu_model.html",
+      "text": "Подробнее"
+    },
+    {
+      "href": "mezdunarudnie-patenti.html",
+      "text": "Подробнее"
+    },
+    {
+      "href": "tel:+79957890900",
+      "text": "+7(995)789-09-00"
+    },
+    {
+      "href": "mailto:info@ptn.su",
+      "text": "info@ptn.su"
+    }
+  ],
+  "extraction_meta": {
+    "section_count": 7,
+    "content_section_count": 2,
+    "blocks_count": 18,
+    "images_count": 0,
+    "links_count": 7,
+    "source_html": "patenti.html"
+  }
 }

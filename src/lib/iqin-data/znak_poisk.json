@@ -5,7 +5,7 @@
   "h1": "Бесплатный Поиск по Товарным знакам Торговым маркам Названиям компаний",
   "description": "Бесплатный Поиск по Товарным знакам Торговым маркам Названиям компаний",
   "keywords": "",
-  "body": "",
+  "body": "\n#### Поиск по товарным знакам и фирменным наименованиям\n\n\n(!) Перед проведением поиска ознакомьтесь, что такое классы международного классификатора торговых марок МКТУ (см. ссылку)(!) Ознакомьтесь с инструкциями по поиску (проверке) знаков (см. ссылку)\n\nУсловные обозначения:\n\nРФ - российские товарные знакиINT - иностранные торговые марки, в том числе международные знаки, действующие на территории РФ.\n\n\n#### LINKMARK\n\n\n(РФ+INT) рекомендуем\n\nНачать поиск\n\n\n#### РБК\n\n\n(РФ new)\n\nНачать поиск\n\n\n#### WIPO\n\n\n(INT)рекомендуем\n\nНачать поиск\n\n\n#### TMviеw\n\n\n(INT)\n\nрекомендуем\n\nНачать поиск\n\n\n#### Unibrander\n\n\n(INT)\n\nНачать поиск\n\nTMsearch\n\n(INT)\n\nрекомендуем\n\nНачать поиск\n\n\n#### FINDtm\n\n\n(РФ)\n\nНачать поиск\n\n\n#### Brandsearch\n\n\n(РФ new)\n\nНачать поиск\n\n\n#### ГАРДИУМ\n\n\n(РФ+INT)рекомендуем\n\nНачать поиск\n\n\n#### MKTU.INFO\n\n\n(классификатор)рекомендуем\n\nНачать поиск\n\n\n#### MKTU.pro\n\n\n(классификатор)\n\nНачать поиск\n\nВыше представлены бесплатные поисковые системы без регистрации в порядке их релевантности.",
   "headings": [
     {
       "level": 3,
@@ -132,5 +132,257 @@
       "text": "Конструктор сайтов от"
     }
   ],
-  "bodyLength": 925
+  "bodyLength": 1001,
+  "content_blocks": [
+    {
+      "type": "section_start",
+      "section_type": "product-services"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Поиск по товарным знакам и фирменным наименованиям"
+    },
+    {
+      "type": "paragraph",
+      "text": "(!) Перед проведением поиска ознакомьтесь, что такое классы международного классификатора торговых марок МКТУ (см. ссылку)(!) Ознакомьтесь с инструкциями по поиску (проверке) знаков (см. ссылку)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Условные обозначения:"
+    },
+    {
+      "type": "paragraph",
+      "text": "РФ - российские товарные знакиINT - иностранные торговые марки, в том числе международные знаки, действующие на территории РФ."
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "LINKMARK"
+    },
+    {
+      "type": "paragraph",
+      "text": "(РФ+INT) рекомендуем"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "РБК"
+    },
+    {
+      "type": "paragraph",
+      "text": "(РФ new)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "WIPO"
+    },
+    {
+      "type": "paragraph",
+      "text": "(INT)рекомендуем"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "TMviеw"
+    },
+    {
+      "type": "paragraph",
+      "text": "(INT)"
+    },
+    {
+      "type": "paragraph",
+      "text": "рекомендуем"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Unibrander"
+    },
+    {
+      "type": "paragraph",
+      "text": "(INT)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "paragraph",
+      "text": "TMsearch"
+    },
+    {
+      "type": "paragraph",
+      "text": "(INT)"
+    },
+    {
+      "type": "paragraph",
+      "text": "рекомендуем"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "FINDtm"
+    },
+    {
+      "type": "paragraph",
+      "text": "(РФ)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Brandsearch"
+    },
+    {
+      "type": "paragraph",
+      "text": "(РФ new)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "ГАРДИУМ"
+    },
+    {
+      "type": "paragraph",
+      "text": "(РФ+INT)рекомендуем"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "MKTU.INFO"
+    },
+    {
+      "type": "paragraph",
+      "text": "(классификатор)рекомендуем"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "MKTU.pro"
+    },
+    {
+      "type": "paragraph",
+      "text": "(классификатор)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "section_end",
+      "section_type": "product-services"
+    },
+    {
+      "type": "section_start",
+      "section_type": "text"
+    },
+    {
+      "type": "paragraph",
+      "text": "Выше представлены бесплатные поисковые системы без регистрации в порядке их релевантности."
+    },
+    {
+      "type": "section_end",
+      "section_type": "text"
+    }
+  ],
+  "content_images": [],
+  "content_links": [
+    {
+      "href": "https://mktu.pro",
+      "text": "см. ссылку"
+    },
+    {
+      "href": "insrukcia_poisk_znakov.html",
+      "text": "см. ссылку"
+    },
+    {
+      "href": "https://linkmark.ru/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://companies.rbc.ru/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://www3.wipo.int/branddb/en/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://www.tmdn.org/tmview/#/tmview",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://ru.unibrander.com",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://tmsearch.uspto.gov",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://findtm.ru",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://brand-search.ru",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://legal-support.ru/services/trademarks/online-proverka-tovarnogo-znaka/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "http://www.mktu.info/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://mktu.pro/",
+      "text": "Начать поиск"
+    }
+  ],
+  "extraction_meta": {
+    "section_count": 7,
+    "content_section_count": 2,
+    "blocks_count": 44,
+    "images_count": 0,
+    "links_count": 13,
+    "source_html": "znak_poisk.html"
+  }
 }

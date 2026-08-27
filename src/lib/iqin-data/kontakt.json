@@ -5,7 +5,7 @@
   "h1": "Контакты патентного бюро Патентные Технологии",
   "description": "Контакты патентного бюро Патентные Технологии",
   "keywords": "",
-  "body": "",
+  "body": "\n## Контакты\n\n\n+7 (916) 496-49-29 Патентный поверенный по товарным знакам №957, гендиректор Беркутова Наталья Николаевна+7 (985) 938-38-72\n\nПатентный поверенный по патентам №1416Туленинов Николай Николаевич\n\n[карта Т-Банка]\n\n[карта mastercard]\n\n[карта maestro]\n\n[карта visa]\n\n[карта мир]\n\n\n### Купите билет на конференцию\n\n\n21 апреля в 12:00 расскажем, как правильно путешествовать, тратить наименьшее количество денег и быть успешным предпринимателем00Дней00Часов00Минут00Секунд\n\n\n##### Адрес\n\n\nМосква, м. «Бабушкинская»,\n\nАнадырский проезд, д. 31/1, оф. 31\n\n\n##### Время работы\n\n\nПн—Пт: 10:00—20:00\n\nСб—Вс: бесплатные консультации\n\n\n##### Для связи\n\n\n+7 (995) 789-09-00 тел./WhatsApp\n\ninfo@ptn.su",
   "headings": [
     {
       "level": 2,
@@ -96,5 +96,165 @@
       "text": "Конструктор сайтов от"
     }
   ],
-  "bodyLength": 610
+  "bodyLength": 698,
+  "content_blocks": [
+    {
+      "type": "section_start",
+      "section_type": "text"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Контакты"
+    },
+    {
+      "type": "paragraph",
+      "text": "+7 (916) 496-49-29 Патентный поверенный по товарным знакам №957, гендиректор Беркутова Наталья Николаевна+7 (985) 938-38-72"
+    },
+    {
+      "type": "paragraph",
+      "text": "Патентный поверенный по патентам №1416Туленинов Николай Николаевич"
+    },
+    {
+      "type": "section_end",
+      "section_type": "text"
+    },
+    {
+      "type": "section_start",
+      "section_type": "payment"
+    },
+    {
+      "type": "image",
+      "src": "tb/0.1.938/images/logos/T-BANK_logo_black.svg",
+      "alt": "карта Т-Банка"
+    },
+    {
+      "type": "image",
+      "src": "tb/0.1.938/images/icons/card-mc-color.svg",
+      "alt": "карта mastercard"
+    },
+    {
+      "type": "image",
+      "src": "tb/0.1.938/images/icons/card-maestro-color.svg",
+      "alt": "карта maestro"
+    },
+    {
+      "type": "image",
+      "src": "tb/0.1.938/images/icons/card-visa-color.svg",
+      "alt": "карта visa"
+    },
+    {
+      "type": "image",
+      "src": "tb/0.1.938/images/icons/card-mir-color.svg",
+      "alt": "карта мир"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Купите билет на конференцию"
+    },
+    {
+      "type": "paragraph",
+      "text": "21 апреля в 12:00 расскажем, как правильно путешествовать, тратить наименьшее количество денег и быть успешным предпринимателем00Дней00Часов00Минут00Секунд"
+    },
+    {
+      "type": "section_end",
+      "section_type": "payment"
+    },
+    {
+      "type": "section_start",
+      "section_type": "contacts"
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "text": "Адрес"
+    },
+    {
+      "type": "paragraph",
+      "text": "Москва, м. «Бабушкинская»,"
+    },
+    {
+      "type": "paragraph",
+      "text": "Анадырский проезд, д. 31/1, оф. 31"
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "text": "Время работы"
+    },
+    {
+      "type": "paragraph",
+      "text": "Пн—Пт: 10:00—20:00"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сб—Вс: бесплатные консультации"
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "text": "Для связи"
+    },
+    {
+      "type": "paragraph",
+      "text": "+7 (995) 789-09-00 тел./WhatsApp"
+    },
+    {
+      "type": "paragraph",
+      "text": "info@ptn.su"
+    },
+    {
+      "type": "section_end",
+      "section_type": "contacts"
+    }
+  ],
+  "content_images": [
+    {
+      "src": "tb/0.1.938/images/logos/T-BANK_logo_black.svg",
+      "alt": "карта Т-Банка"
+    },
+    {
+      "src": "tb/0.1.938/images/icons/card-mc-color.svg",
+      "alt": "карта mastercard"
+    },
+    {
+      "src": "tb/0.1.938/images/icons/card-maestro-color.svg",
+      "alt": "карта maestro"
+    },
+    {
+      "src": "tb/0.1.938/images/icons/card-visa-color.svg",
+      "alt": "карта visa"
+    },
+    {
+      "src": "tb/0.1.938/images/icons/card-mir-color.svg",
+      "alt": "карта мир"
+    }
+  ],
+  "content_links": [
+    {
+      "href": "tel:+79164964929",
+      "text": "+7 (916) 496-49-29"
+    },
+    {
+      "href": "tel:+79859383872",
+      "text": "+7 (985) 938-38-72"
+    },
+    {
+      "href": "tel:+79957890900",
+      "text": "+7 (995) 789-09-00"
+    },
+    {
+      "href": "mailto:info@ptn.su",
+      "text": "info@ptn.su"
+    }
+  ],
+  "extraction_meta": {
+    "section_count": 9,
+    "content_section_count": 4,
+    "blocks_count": 25,
+    "images_count": 5,
+    "links_count": 4,
+    "source_html": "kontakt.html"
+  }
 }

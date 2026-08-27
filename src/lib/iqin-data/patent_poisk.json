@@ -5,7 +5,7 @@
   "h1": "Патентный поиск Поисковые системы Бесплатные сервисы Поиск на русском",
   "description": "Патентный поиск Поисковые системы Бесплатные сервисы Поиск на русском",
   "keywords": "",
-  "body": "",
+  "body": "\n## Патентные поиски\n\n\nБесплатные патентные поисковые системы и системы поиска по научно-технической литературе\n\n\n#### Патентный поиск от Яндекс\n\n\nНачать поиск\n\n\n#### Патентный поиск от Google\n\n\nНачать поиск\n\n\n#### Патентный поиск Esp@cenet\n\n\nНачать поиск\n\n\n#### Цифровая система Роспатента\n\n\nНачать поиск\n\n\n##### Глобальный поиск PATENTSCOPE (WIPO)\n\n\nНачать поиск\n\n\n##### Евразийский Патентный поиск (РФ+СНГ)\n\n\nЕАПО\n\nНачать поиск\n\n\n##### ФИПС\n\n\nоткрытые реестры\n\nНачать поиск\n\nGoogle Scholar поиск по непатентной литературе\n\nНачать поиск",
   "headings": [
     {
       "level": 2,
@@ -100,5 +100,146 @@
       "text": "Конструктор сайтов от"
     }
   ],
-  "bodyLength": 493
+  "bodyLength": 538,
+  "content_blocks": [
+    {
+      "type": "section_start",
+      "section_type": "product-services"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Патентные поиски"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бесплатные патентные поисковые системы и системы поиска по научно-технической литературе"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Патентный поиск от Яндекс"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Патентный поиск от Google"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Патентный поиск Esp@cenet"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Цифровая система Роспатента"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "text": "Глобальный поиск PATENTSCOPE (WIPO)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "text": "Евразийский Патентный поиск (РФ+СНГ)"
+    },
+    {
+      "type": "paragraph",
+      "text": "ЕАПО"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 5,
+      "text": "ФИПС"
+    },
+    {
+      "type": "paragraph",
+      "text": "открытые реестры"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "paragraph",
+      "text": "Google Scholar поиск по непатентной литературе"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "section_end",
+      "section_type": "product-services"
+    }
+  ],
+  "content_images": [],
+  "content_links": [
+    {
+      "href": "https://yandex.ru/patents",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://patents.google.com/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://ru.espacenet.com/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://searchplatform.rospatent.gov.ru/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://patentscope.wipo.int/search/ru/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "http://www.eapatis.com",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://www1.fips.ru/registers-web/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://scholar.google.com/",
+      "text": "Начать поиск"
+    }
+  ],
+  "extraction_meta": {
+    "section_count": 6,
+    "content_section_count": 1,
+    "blocks_count": 22,
+    "images_count": 0,
+    "links_count": 8,
+    "source_html": "patent_poisk.html"
+  }
 }

@@ -5,7 +5,7 @@
   "h1": "Беркутова Наталья Николаевна Патентный поверенный №957 иннотэк",
   "description": "Беркутова Наталья Николаевна Патентный поверенный №957 Патентные Технологии иннотэк",
   "keywords": "",
-  "body": "",
+  "body": "\n### Беркутова Наталья Николаевна\n\n\nБеркутова Наталья Николаевна\n\nПатентный Поверенный России по\n\nтоварным знакам, регистрационный номер №957\n\nДата регистрации: 09.06.2004\n\nОпыт работы в сфере товарных знаков 25 лет.\n\nГенеральный Директор\n\nООО \"Патентные Технологии\"\n\nРаботала в Патентном Ведомстве (ВНИИГПЭ, ФИПС Роспатента) с 1976-1998 год.С 1998-2021 патентный поверенный в компании Иннотэк\n\nИнформация с официального сайта Роспатента доступна по ссылке https://rospatent.gov.ru/ru/patent-attorneys/957 (на сайте Роспатента старые контакты Иннотэк актуальные контакты ниже)\n\nКонтакты\n\n+7(916)496-49-29\n\nn.berkutova@mail.ru",
   "headings": [
     {
       "level": 3,
@@ -52,5 +52,95 @@
       "text": "Конструктор сайтов от"
     }
   ],
-  "bodyLength": 640
+  "bodyLength": 625,
+  "content_blocks": [
+    {
+      "type": "section_start",
+      "section_type": "text"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Беркутова Наталья Николаевна"
+    },
+    {
+      "type": "paragraph",
+      "text": "Беркутова Наталья Николаевна"
+    },
+    {
+      "type": "paragraph",
+      "text": "Патентный Поверенный России по"
+    },
+    {
+      "type": "paragraph",
+      "text": "товарным знакам, регистрационный номер №957"
+    },
+    {
+      "type": "paragraph",
+      "text": "Дата регистрации: 09.06.2004"
+    },
+    {
+      "type": "paragraph",
+      "text": "Опыт работы в сфере товарных знаков 25 лет."
+    },
+    {
+      "type": "paragraph",
+      "text": "Генеральный Директор"
+    },
+    {
+      "type": "paragraph",
+      "text": "ООО \"Патентные Технологии\""
+    },
+    {
+      "type": "paragraph",
+      "text": "Работала в Патентном Ведомстве (ВНИИГПЭ, ФИПС Роспатента) с 1976-1998 год.С 1998-2021 патентный поверенный в компании Иннотэк"
+    },
+    {
+      "type": "paragraph",
+      "text": "Информация с официального сайта Роспатента доступна по ссылке https://rospatent.gov.ru/ru/patent-attorneys/957 (на сайте Роспатента старые контакты Иннотэк актуальные контакты ниже)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Контакты"
+    },
+    {
+      "type": "paragraph",
+      "text": "+7(916)496-49-29"
+    },
+    {
+      "type": "paragraph",
+      "text": "n.berkutova@mail.ru"
+    },
+    {
+      "type": "section_end",
+      "section_type": "text"
+    }
+  ],
+  "content_images": [],
+  "content_links": [
+    {
+      "href": "rospatent.html",
+      "text": "Роспатента"
+    },
+    {
+      "href": "https://rospatent.gov.ru/ru/patent-attorneys/957",
+      "text": "https://rospatent.gov.ru/ru/patent-attorneys/957"
+    },
+    {
+      "href": "tel:+79164964929",
+      "text": "+7(916)496-49-29"
+    },
+    {
+      "href": "mailto:n.berkutova@mail.ru",
+      "text": "n.berkutova@mail.ru"
+    }
+  ],
+  "extraction_meta": {
+    "section_count": 6,
+    "content_section_count": 1,
+    "blocks_count": 15,
+    "images_count": 0,
+    "links_count": 4,
+    "source_html": "berkutova_957.html"
+  }
 }

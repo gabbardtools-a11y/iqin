@@ -5,7 +5,7 @@
   "h1": "Страница 63",
   "description": "Страница 63",
   "keywords": "",
-  "body": "",
+  "body": "[Купить Международный патент на промышленный образец]\n\nСкидка\n\n\n#### Международный патент на промышленный образец\n\n\nПатент \"под ключ\" от подачи заявки до получения патента\n\n\n#### 100 000 ₽\n\n\n50 000 ₽Узнать подробнее\n\n[Купить Международный патент на изобретение]\n\nСкидка\n\n\n#### Международный патент на изобретение\n\n\nПатент \"под ключ\" от подачи заявки до получения патента\n\n\n#### 100 000 ₽\n\n\n50 000 ₽Узнать подробнее\n\n[Купить Евразийский патент]\n\nСкидка\n\n\n#### Евразийский патент\n\n\nПатент \"под ключ\" от подачи заявки до получения патента\n\n\n#### 80 000 ₽\n\n\n50 000 ₽Узнать подробнее\n\n[Купить Еврозийский патент]\n\nСкидка\n\n\n#### Еврозийский патент\n\n\nПатент \"под ключ\" от подачи заявки до получения патента\n\n\n#### 100 000 ₽\n\n\n50 000 ₽Узнать подробнее",
   "headings": [
     {
       "level": 3,
@@ -96,5 +96,191 @@
       "text": "Конструктор сайтов от"
     }
   ],
-  "bodyLength": 544
+  "bodyLength": 743,
+  "content_blocks": [
+    {
+      "type": "section_start",
+      "section_type": "product-card-single"
+    },
+    {
+      "type": "image",
+      "src": "site732959/8c8f1e69-2831-4aae-8eae-33a4ae8a502b/8c8f1e69-2831-4aae-8eae-33a4ae8a502b-6575564.png",
+      "alt": "Купить Международный патент на промышленный образец"
+    },
+    {
+      "type": "paragraph",
+      "text": "Скидка"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Международный патент на промышленный образец"
+    },
+    {
+      "type": "paragraph",
+      "text": "Патент \"под ключ\" от подачи заявки до получения патента"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "100 000 ₽"
+    },
+    {
+      "type": "paragraph",
+      "text": "50 000 ₽Узнать подробнее"
+    },
+    {
+      "type": "section_end",
+      "section_type": "product-card-single"
+    },
+    {
+      "type": "section_start",
+      "section_type": "product-card-single"
+    },
+    {
+      "type": "image",
+      "src": "site732959/e42f584e-c148-4620-978c-dfaeb1cb4e21/e42f584e-c148-4620-978c-dfaeb1cb4e21-6575847.png",
+      "alt": "Купить Международный патент на изобретение"
+    },
+    {
+      "type": "paragraph",
+      "text": "Скидка"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Международный патент на изобретение"
+    },
+    {
+      "type": "paragraph",
+      "text": "Патент \"под ключ\" от подачи заявки до получения патента"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "100 000 ₽"
+    },
+    {
+      "type": "paragraph",
+      "text": "50 000 ₽Узнать подробнее"
+    },
+    {
+      "type": "section_end",
+      "section_type": "product-card-single"
+    },
+    {
+      "type": "section_start",
+      "section_type": "product-card-single"
+    },
+    {
+      "type": "image",
+      "src": "site732959/236bc02f-3082-48cd-9abe-dc002e672c85/236bc02f-3082-48cd-9abe-dc002e672c85-6575767.png",
+      "alt": "Купить Евразийский патент"
+    },
+    {
+      "type": "paragraph",
+      "text": "Скидка"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Евразийский патент"
+    },
+    {
+      "type": "paragraph",
+      "text": "Патент \"под ключ\" от подачи заявки до получения патента"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "80 000 ₽"
+    },
+    {
+      "type": "paragraph",
+      "text": "50 000 ₽Узнать подробнее"
+    },
+    {
+      "type": "section_end",
+      "section_type": "product-card-single"
+    },
+    {
+      "type": "section_start",
+      "section_type": "product-card-single"
+    },
+    {
+      "type": "image",
+      "src": "site732959/4c1bf5e3-6a6c-465b-9585-fa8f7935ec14/4c1bf5e3-6a6c-465b-9585-fa8f7935ec14-6575852.png",
+      "alt": "Купить Еврозийский патент"
+    },
+    {
+      "type": "paragraph",
+      "text": "Скидка"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Еврозийский патент"
+    },
+    {
+      "type": "paragraph",
+      "text": "Патент \"под ключ\" от подачи заявки до получения патента"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "100 000 ₽"
+    },
+    {
+      "type": "paragraph",
+      "text": "50 000 ₽Узнать подробнее"
+    },
+    {
+      "type": "section_end",
+      "section_type": "product-card-single"
+    }
+  ],
+  "content_images": [
+    {
+      "src": "site732959/8c8f1e69-2831-4aae-8eae-33a4ae8a502b/8c8f1e69-2831-4aae-8eae-33a4ae8a502b-6575564.png",
+      "alt": "Купить Международный патент на промышленный образец"
+    },
+    {
+      "src": "site732959/e42f584e-c148-4620-978c-dfaeb1cb4e21/e42f584e-c148-4620-978c-dfaeb1cb4e21-6575847.png",
+      "alt": "Купить Международный патент на изобретение"
+    },
+    {
+      "src": "site732959/236bc02f-3082-48cd-9abe-dc002e672c85/236bc02f-3082-48cd-9abe-dc002e672c85-6575767.png",
+      "alt": "Купить Евразийский патент"
+    },
+    {
+      "src": "site732959/4c1bf5e3-6a6c-465b-9585-fa8f7935ec14/4c1bf5e3-6a6c-465b-9585-fa8f7935ec14-6575852.png",
+      "alt": "Купить Еврозийский патент"
+    }
+  ],
+  "content_links": [
+    {
+      "href": "https://iqin.ru/Patent_na_promobrazec",
+      "text": "Узнать подробнее"
+    },
+    {
+      "href": "https://iqin.ru/Patent_na_promobrazec",
+      "text": "Узнать подробнее"
+    },
+    {
+      "href": "https://iqin.ru/Patent_na_promobrazec",
+      "text": "Узнать подробнее"
+    },
+    {
+      "href": "https://iqin.ru/Patent_na_promobrazec",
+      "text": "Узнать подробнее"
+    }
+  ],
+  "extraction_meta": {
+    "section_count": 9,
+    "content_section_count": 4,
+    "blocks_count": 32,
+    "images_count": 4,
+    "links_count": 4,
+    "source_html": "mezdunarudnie-patenti.html"
+  }
 }

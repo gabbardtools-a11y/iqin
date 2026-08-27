@@ -5,7 +5,7 @@
   "h1": "Бесплатный поиск по патентам на дизайн промобразцам - системы по промышленным образцам",
   "description": "Бесплатный поиск по патентам на дизайн промобразцам - Поисковые системы по промышленным образцам",
   "keywords": "",
-  "body": "",
+  "body": "\n## Патентный поиск по промышленным образцам\n\n\nБесплатные патентные поисковые системы и системы поиска по промобразцам (патентам на дизайн)\n\n\n#### WIPO Global\n\n\nDesign\n\nНачать поиск\n\n\n#### WIPO Hague Express\n\n\nНачать поиск\n\n\n#### DesignView\n\n\nНачать поиск\n\n\n#### Роспатент\n\n\nбюллетень\n\nНачать поиск",
   "headings": [
     {
       "level": 2,
@@ -68,5 +68,91 @@
       "text": "Конструктор сайтов от"
     }
   ],
-  "bodyLength": 285
+  "bodyLength": 298,
+  "content_blocks": [
+    {
+      "type": "section_start",
+      "section_type": "product-services"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Патентный поиск по промышленным образцам"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бесплатные патентные поисковые системы и системы поиска по промобразцам (патентам на дизайн)"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "WIPO Global"
+    },
+    {
+      "type": "paragraph",
+      "text": "Design"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "WIPO Hague Express"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "DesignView"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Роспатент"
+    },
+    {
+      "type": "paragraph",
+      "text": "бюллетень"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "section_end",
+      "section_type": "product-services"
+    }
+  ],
+  "content_images": [],
+  "content_links": [
+    {
+      "href": "https://www3.wipo.int/designdb/en/index.jsp",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://www.tmdn.org/tmdsview-web/welcome#/dsview",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://www1.fips.ru/iiss/search.xhtml",
+      "text": "Начать поиск"
+    }
+  ],
+  "extraction_meta": {
+    "section_count": 6,
+    "content_section_count": 1,
+    "blocks_count": 14,
+    "images_count": 0,
+    "links_count": 3,
+    "source_html": "patent_poisk_design.html"
+  }
 }

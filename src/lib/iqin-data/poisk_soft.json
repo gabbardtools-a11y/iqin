@@ -5,7 +5,7 @@
   "h1": "Бесплатный поиск по софту - компьютерным программам ЭВМ базам данных топологиям микросхем",
   "description": "Бесплатный поиск по софту - компьютерным программам ЭВМ базам данных топологиям интегральных микросхем",
   "keywords": "",
-  "body": "",
+  "body": "\n## Бесплатный поиск по зарегистрированному софту\n\n\nБесплатные патентные поисковые системы и системы поиска по компьютерным программам (ЭВМ), базам данных, топологиям интегральных микросхем\n\n\n#### Единый госреестр программ\n\n\nНачать поиск\n\n\n#### Реестр\n\n\nМинкомсвязи\n\nНачать поиск\n\n\n#### Поиск\n\n\nРоспатента\n\nНачать поиск",
   "headings": [
     {
       "level": 2,
@@ -60,5 +60,82 @@
       "text": "Конструктор сайтов от"
     }
   ],
-  "bodyLength": 315
+  "bodyLength": 319,
+  "content_blocks": [
+    {
+      "type": "section_start",
+      "section_type": "product-services"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Бесплатный поиск по зарегистрированному софту"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бесплатные патентные поисковые системы и системы поиска по компьютерным программам (ЭВМ), базам данных, топологиям интегральных микросхем"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Единый госреестр программ"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Реестр"
+    },
+    {
+      "type": "paragraph",
+      "text": "Минкомсвязи"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Поиск"
+    },
+    {
+      "type": "paragraph",
+      "text": "Роспатента"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начать поиск"
+    },
+    {
+      "type": "section_end",
+      "section_type": "product-services"
+    }
+  ],
+  "content_images": [],
+  "content_links": [
+    {
+      "href": "https://reestr.digital.gov.ru/reestr/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://reestr-minsvyaz.ru/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://www1.fips.ru/iiss/search.xhtml",
+      "text": "Начать поиск"
+    }
+  ],
+  "extraction_meta": {
+    "section_count": 6,
+    "content_section_count": 1,
+    "blocks_count": 12,
+    "images_count": 0,
+    "links_count": 3,
+    "source_html": "poisk_soft.html"
+  }
 }
