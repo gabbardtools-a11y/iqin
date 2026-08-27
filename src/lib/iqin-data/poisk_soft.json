@@ -1,0 +1,64 @@
+{
+  "slug": "poisk_soft",
+  "url": "https://iqin.ru/poisk_soft",
+  "title": "Бесплатный поиск по софту - компьютерным программам ЭВМ базам данных топологиям микросхем",
+  "h1": "Бесплатный поиск по софту - компьютерным программам ЭВМ базам данных топологиям микросхем",
+  "description": "Бесплатный поиск по софту - компьютерным программам ЭВМ базам данных топологиям интегральных микросхем",
+  "keywords": "",
+  "body": "",
+  "headings": [
+    {
+      "level": 2,
+      "text": "Бесплатный поиск по зарегистрированному софту"
+    },
+    {
+      "level": 3,
+      "text": "Оставьте заявку, заполнив форму ниже и получите полностью бесплатную консультацию и бесплатный экспресс-поиск от наших Патентных Поверенных"
+    },
+    {
+      "level": 4,
+      "text": "Единый госреестр программ"
+    },
+    {
+      "level": 4,
+      "text": "Реестр Минкомсвязи"
+    },
+    {
+      "level": 4,
+      "text": "Поиск Роспатента"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://90f1661d-2ff4-4f29-b07c-0e47453ca691.selstorage.ru/site732959/33a0c127-7d50-4573-a119-baf96b4dc552/33a0c127-7d50-4573-a119-baf96b4dc552-12923491.jpeg",
+      "alt": "Изображение"
+    },
+    {
+      "src": "https://660c827d-ce04-4b4c-80d1-1d6200e5d4c5.selcdn.net/tb/0.1.937/images/logos/T-BANK_logo_white.svg",
+      "alt": "Т-Банк"
+    }
+  ],
+  "links": [
+    {
+      "href": "https://iqin.ru/kontakt",
+      "text": "Контакты"
+    },
+    {
+      "href": "https://reestr.digital.gov.ru/reestr/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://reestr-minsvyaz.ru/",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://www1.fips.ru/iiss/search.xhtml",
+      "text": "Начать поиск"
+    },
+    {
+      "href": "https://www.tbank.ru/business/website-builder?utm_source=sites.footer&utm_medium=ref&utm_campaign=sites.main",
+      "text": "Конструктор сайтов от"
+    }
+  ],
+  "bodyLength": 315
+}

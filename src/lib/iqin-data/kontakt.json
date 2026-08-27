@@ -1,0 +1,100 @@
+{
+  "slug": "kontakt",
+  "url": "https://iqin.ru/kontakt",
+  "title": "Контакты патентного бюро Патентные Технологии",
+  "h1": "Контакты патентного бюро Патентные Технологии",
+  "description": "Контакты патентного бюро Патентные Технологии",
+  "keywords": "",
+  "body": "",
+  "headings": [
+    {
+      "level": 2,
+      "text": "Контакты"
+    },
+    {
+      "level": 3,
+      "text": "Купите билет на конференцию"
+    },
+    {
+      "level": 3,
+      "text": "Оплачивайте в один клик"
+    },
+    {
+      "level": 3,
+      "text": "Оставьте заявку, заполнив форму ниже и получите полностью бесплатную консультацию и бесплатный экспресс-поиск от наших Патентных Поверенных"
+    },
+    {
+      "level": 4,
+      "text": ""
+    },
+    {
+      "level": 5,
+      "text": "Адрес"
+    },
+    {
+      "level": 5,
+      "text": "Время работы"
+    },
+    {
+      "level": 5,
+      "text": "Для связи"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://90f1661d-2ff4-4f29-b07c-0e47453ca691.selstorage.ru/site732959/33a0c127-7d50-4573-a119-baf96b4dc552/33a0c127-7d50-4573-a119-baf96b4dc552-12923491.jpeg",
+      "alt": "Изображение"
+    },
+    {
+      "src": "https://660c827d-ce04-4b4c-80d1-1d6200e5d4c5.selcdn.net/tb/0.1.937/images/logos/T-BANK_logo_black.svg",
+      "alt": "карта Т-Банка"
+    },
+    {
+      "src": "https://660c827d-ce04-4b4c-80d1-1d6200e5d4c5.selcdn.net/tb/0.1.937/images/icons/card-mc-color.svg",
+      "alt": "карта mastercard"
+    },
+    {
+      "src": "https://660c827d-ce04-4b4c-80d1-1d6200e5d4c5.selcdn.net/tb/0.1.937/images/icons/card-maestro-color.svg",
+      "alt": "карта maestro"
+    },
+    {
+      "src": "https://660c827d-ce04-4b4c-80d1-1d6200e5d4c5.selcdn.net/tb/0.1.937/images/icons/card-visa-color.svg",
+      "alt": "карта visa"
+    },
+    {
+      "src": "https://660c827d-ce04-4b4c-80d1-1d6200e5d4c5.selcdn.net/tb/0.1.937/images/icons/card-mir-color.svg",
+      "alt": "карта мир"
+    },
+    {
+      "src": "https://660c827d-ce04-4b4c-80d1-1d6200e5d4c5.selcdn.net/tb/0.1.937/images/logos/T-BANK_logo_white.svg",
+      "alt": "Т-Банк"
+    }
+  ],
+  "links": [
+    {
+      "href": "https://iqin.ru/kontakt",
+      "text": "Контакты"
+    },
+    {
+      "href": "tel:+79164964929",
+      "text": "+7 (916) 496-49-29"
+    },
+    {
+      "href": "tel:+79859383872",
+      "text": "+7 (985) 938-38-72"
+    },
+    {
+      "href": "tel:+79957890900",
+      "text": "+7 (995) 789-09-00"
+    },
+    {
+      "href": "mailto:info@ptn.su",
+      "text": "info@ptn.su"
+    },
+    {
+      "href": "https://www.tbank.ru/business/website-builder?utm_source=sites.footer&utm_medium=ref&utm_campaign=sites.main",
+      "text": "Конструктор сайтов от"
+    }
+  ],
+  "bodyLength": 610
+}

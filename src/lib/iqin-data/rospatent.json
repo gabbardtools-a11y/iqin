@@ -1,0 +1,68 @@
+{
+  "slug": "rospatent",
+  "url": "https://iqin.ru/rospatent",
+  "title": "Патентное Ведомство РФ - Патентная служба России",
+  "h1": "Оповещение для пользователей МКТУ",
+  "description": "Роспатент производит экспертизу заявок на товарные знаки, патенты, программы (софт), рассмотрение и регистрацию лицензионных договоров? концессий (франшизы) и курирует другие вопросы",
+  "keywords": "",
+  "body": "",
+  "headings": [
+    {
+      "level": 1,
+      "text": "Оповещение для пользователей МКТУ"
+    },
+    {
+      "level": 2,
+      "text": "Патентное Ведомство РФ"
+    },
+    {
+      "level": 3,
+      "text": "Русскоязычная версия МКТУ-11 (2022) в формате xlsm."
+    },
+    {
+      "level": 3,
+      "text": "Общая часть, включающая введение, руководство по применению, общие замечания и перечень классов с пояснениями"
+    },
+    {
+      "level": 3,
+      "text": "Оставьте заявку, заполнив форму ниже и получите полностью бесплатную консультацию и бесплатный экспресс-поиск от наших Патентных Поверенных"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://rospatent-cloud.samumeu.ru/content/fileicons/66/66b8a59802302f9c7259b14a694f2c0a-xls.svg",
+      "alt": ""
+    },
+    {
+      "src": "https://iqin.ru/content/fileicons/c8/c8dc650dbf18a239761711b1097e9325-pdf.svg",
+      "alt": ""
+    }
+  ],
+  "links": [
+    {
+      "href": "https://www.wipo.int/classifications/nice/en/",
+      "text": "на официальном сайте ВОИС"
+    },
+    {
+      "href": "https://disk.yandex.ru/d/KotJmrNu2De2fA",
+      "text": "доступна для скачивания по ссылке"
+    },
+    {
+      "href": "https://disk.yandex.ru/i/crUEuAkUbSd-LQ",
+      "text": "доступна для скачивания по ссылке"
+    },
+    {
+      "href": "https://webaccess.wipo.int/mgs/index.jsp?lang=ru",
+      "text": "«Менеджер товаров и услуг»"
+    },
+    {
+      "href": "https://rospatent-cloud.samumeu.ru/content/uploadfiles/mktu-2022.xlsm",
+      "text": "СКАЧАТЬ"
+    },
+    {
+      "href": "https://rospatent-cloud.samumeu.ru/content/uploadfiles/obshchaya-chast-mktu-11-2022.pdf",
+      "text": "СКАЧАТЬ"
+    }
+  ],
+  "bodyLength": 1433
+}

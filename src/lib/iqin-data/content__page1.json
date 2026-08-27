@@ -1,0 +1,68 @@
+{
+  "slug": "content/page1",
+  "url": "https://iqin.ru/content/page1",
+  "title": "Новости Патентных Технологий Патенты Товарные знаки",
+  "h1": "Новости Патентных Технологий Патенты Товарные знаки",
+  "description": "Новости Патентных Технологий Патенты Товарные знаки",
+  "keywords": "",
+  "body": "",
+  "headings": [
+    {
+      "level": 3,
+      "text": "Оставьте заявку, заполнив форму ниже и получите полностью бесплатную консультацию и бесплатный экспресс-поиск от наших Патентных Поверенных"
+    },
+    {
+      "level": 5,
+      "text": "Как самому оформить и получить патент с нуля самостоятельно и бесплатно."
+    },
+    {
+      "level": 5,
+      "text": "Как самостоятельно провести поиск по товарным знакам, торговым маркам, брендам."
+    }
+  ],
+  "images": [
+    {
+      "src": "https://90f1661d-2ff4-4f29-b07c-0e47453ca691.selstorage.ru/site732959/33a0c127-7d50-4573-a119-baf96b4dc552/33a0c127-7d50-4573-a119-baf96b4dc552-12923491.jpeg",
+      "alt": "Изображение"
+    },
+    {
+      "src": "https://90f1661d-2ff4-4f29-b07c-0e47453ca691.selstorage.ru/site732959/7898ce3d-2a02-47ca-9e56-7d21a0ea7077/7898ce3d-2a02-47ca-9e56-7d21a0ea7077-4719989.png",
+      "alt": "Изображение"
+    },
+    {
+      "src": "https://90f1661d-2ff4-4f29-b07c-0e47453ca691.selstorage.ru/site732959/84dcba29-0687-4b62-ac25-7c31aedf6290/84dcba29-0687-4b62-ac25-7c31aedf6290-4719988.png",
+      "alt": "Изображение"
+    },
+    {
+      "src": "https://660c827d-ce04-4b4c-80d1-1d6200e5d4c5.selcdn.net/tb/0.1.937/images/logos/T-BANK_logo_white.svg",
+      "alt": "Т-Банк"
+    }
+  ],
+  "links": [
+    {
+      "href": "https://iqin.ru/kontakt",
+      "text": "Контакты"
+    },
+    {
+      "href": "https://iqin.ru/patent_manual_besplatno",
+      "text": "Подробнее"
+    },
+    {
+      "href": "https://iqin.ru/znak_poisk",
+      "text": "https://iqin.ru/znak_poisk"
+    },
+    {
+      "href": "https://tinkoff.ru",
+      "text": "https://mktu.pro"
+    },
+    {
+      "href": "https://zen.yandex.ru/media/id/606f31489f2ef01a7eefb518/kak-samostoiatelno-provesti-poisk-po-tovarnym-znakam-torgovym-markam-brendam-62372cba60d2e66b91532b84?&",
+      "text": "Подробнее"
+    },
+    {
+      "href": "https://www.tbank.ru/business/website-builder?utm_source=sites.footer&utm_medium=ref&utm_campaign=sites.main",
+      "text": "Конструктор сайтов от"
+    }
+  ],
+  "bodyLength": 2342
+}

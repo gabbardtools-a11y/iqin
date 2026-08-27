@@ -1,0 +1,80 @@
+{
+  "slug": "company",
+  "url": "https://iqin.ru/company",
+  "title": "Компания ООО Патентные Технологии История Портфолио Сервисы Услуги",
+  "h1": "Компания ООО Патентные Технологии История Портфолио Сервисы Услуги",
+  "description": "Компания ООО Патентные Технологии История Портфолио Сервисы Услуги",
+  "keywords": "",
+  "body": "",
+  "headings": [
+    {
+      "level": 2,
+      "text": "О компании"
+    },
+    {
+      "level": 3,
+      "text": "Оставьте заявку, заполнив форму ниже и получите полностью бесплатную консультацию и бесплатный экспресс-поиск от наших Патентных Поверенных"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://90f1661d-2ff4-4f29-b07c-0e47453ca691.selstorage.ru/site732959/33a0c127-7d50-4573-a119-baf96b4dc552/33a0c127-7d50-4573-a119-baf96b4dc552-12923491.jpeg",
+      "alt": "Изображение"
+    },
+    {
+      "src": "https://660c827d-ce04-4b4c-80d1-1d6200e5d4c5.selcdn.net/tb/0.1.937/images/logos/T-BANK_logo_white.svg",
+      "alt": "Т-Банк"
+    }
+  ],
+  "links": [
+    {
+      "href": "https://iqin.ru/kontakt",
+      "text": "Контакты"
+    },
+    {
+      "href": "https://www.rusprofile.ru/id/5685726",
+      "text": "ООО \"Патентные Технологии\""
+    },
+    {
+      "href": "https://iqin.ru/patentnie_poverennie",
+      "text": "патентных поверенных"
+    },
+    {
+      "href": "https://iqin.ru/patentnie_poverennie",
+      "text": "патентный поверенный №957 Беркутова Наталья Николаевна"
+    },
+    {
+      "href": "https://iqin.ru/tovarniy_znak_rossii",
+      "text": "товарными знаками"
+    },
+    {
+      "href": "https://iqin.ru/patent_na_izobretenie",
+      "text": "патентов на изобретения"
+    },
+    {
+      "href": "https://iqin.ru/patent_na_poleznuyu_model",
+      "text": "полезные модели"
+    },
+    {
+      "href": "https://iqin.ru/patent_na_disain",
+      "text": "патентов на промышленные образцы"
+    },
+    {
+      "href": "https://iqin.ru/avtorskie_prava_kopirait",
+      "text": "депонирования авторских произведений"
+    },
+    {
+      "href": "http://grad-info.com",
+      "text": "электронном СМИ \"ГрадИнфо\""
+    },
+    {
+      "href": "https://ptn.su/",
+      "text": "https://ptn.su"
+    },
+    {
+      "href": "https://www.tbank.ru/business/website-builder?utm_source=sites.footer&utm_medium=ref&utm_campaign=sites.main",
+      "text": "Конструктор сайтов от"
+    }
+  ],
+  "bodyLength": 2023
+}

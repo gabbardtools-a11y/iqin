@@ -1,0 +1,1902 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-tech: var(--font-mono-tech);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-neon: var(--neon);
+  --color-neon-dim: var(--neon-dim);
+  --color-amber: var(--amber);
+  --color-magenta: var(--magenta);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* === Light theme — clean editorial light palette === */
+  --background: oklch(0.99 0.003 240);       /* near-white, faint cool tint */
+  --foreground: oklch(0.18 0.03 259);        /* deep navy ink */
+  --card: oklch(1 0 0);                      /* pure white card */
+  --card-foreground: oklch(0.18 0.03 259);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.03 259);
+  --primary: oklch(0.5 0.22 259);            /* blue-700 */
+  --primary-foreground: oklch(0.99 0.003 240);
+  --secondary: oklch(0.96 0.005 240);
+  --secondary-foreground: oklch(0.22 0.03 259);
+  --muted: oklch(0.96 0.005 240);
+  --muted-foreground: oklch(0.48 0.015 240);
+  --accent: oklch(0.93 0.02 259);
+  --accent-foreground: oklch(0.22 0.05 259);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.9 0.008 240);
+  --input: oklch(0.92 0.008 240);
+  --ring: oklch(0.5 0.22 259);
+
+  /* === Neon — darker blue for contrast on light bg === */
+  --neon: oklch(0.5 0.22 259);       /* #1D4ED8 — blue-700 */
+  --neon-dim: oklch(0.45 0.22 259);  /* #1E40AF — blue-800 */
+  --in-blue: oklch(0.55 0.22 259);   /* #2563EB — blue-600, for "in" */
+  --amber: oklch(0.7 0.16 75);       /* slightly deeper gold for contrast */
+  --magenta: oklch(0.55 0.24 350);   /* deeper magenta */
+  --chart-1: oklch(0.5 0.22 259);
+  --chart-2: oklch(0.7 0.16 75);
+  --chart-3: oklch(0.55 0.24 350);
+  --chart-4: oklch(0.6 0.18 180);
+  --chart-5: oklch(0.55 0.2 120);
+
+  /* === Navy palette — repurposed for light theme as "surface" palette ===
+     In light theme, the header is white-on-white with subtle blue tint.
+     These variables drive bg-navy-header / text-navy etc. */
+  --navy-900: oklch(0.99 0.003 240);   /* near-white surface */
+  --navy-800: oklch(0.97 0.005 240);   /* very light gray-blue */
+  --navy-700: oklch(0.94 0.008 240);   /* card-like */
+  --navy-600: oklch(0.91 0.012 240);   /* hover */
+  --navy-500: oklch(0.86 0.015 240);   /* muted surface */
+  --navy-line: oklch(0.85 0.012 240 / 60%);   /* subtle border */
+  --navy-text: oklch(0.18 0.03 259);          /* dark navy text */
+  --navy-muted: oklch(0.5 0.018 240);         /* medium gray */
+  --navy-glow: oklch(0.5 0.22 259);           /* matches --neon */
+
+  /* === Logo mark — deep blues for contrast on light bg === */
+  --logo-glyph-1: #1E3A8A;   /* blue-900 — darkest stop */
+  --logo-glyph-2: #1D4ED8;   /* blue-700 */
+  --logo-glyph-3: #2563EB;   /* blue-600 */
+  --logo-glyph-4: #1E40AF;   /* blue-800 */
+  --logo-glyph-5: #172554;   /* blue-950 — deepest */
+  --logo-grid: color-mix(in oklch, var(--neon) 55%, transparent);   /* strong grid */
+  --logo-scan-hi: #1D4ED8;   /* blue-700 — scan line highlight */
+  --logo-scan-glow: rgba(29, 78, 216, 0.7);
+  --logo-border: color-mix(in oklch, var(--neon) 80%, transparent); /* stronger border */
+  --logo-bg: color-mix(in oklch, var(--neon) 12%, transparent);     /* subtle tint */
+
+  /* === Gold for «IQ» — deep amber for contrast on light bg === */
+  --gold-1: #92400E;   /* amber-800 — darkest */
+  --gold-2: #B45309;   /* amber-700 */
+  --gold-3: #D97706;   /* amber-600 */
+  --gold-4: #F59E0B;   /* amber-500 — brightest */
+
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.18 0.03 259);
+  --sidebar-primary: oklch(0.5 0.22 259);
+  --sidebar-primary-foreground: oklch(0.99 0.003 240);
+  --sidebar-accent: oklch(0.93 0.02 259);
+  --sidebar-accent-foreground: oklch(0.22 0.05 259);
+  --sidebar-border: oklch(0.9 0.008 240);
+  --sidebar-ring: oklch(0.5 0.22 259);
+}
+
+.dark {
+  /* Ultra-modern techno dark theme */
+  --background: oklch(0.07 0.008 200);
+  --foreground: oklch(0.96 0.005 180);
+  --card: oklch(0.11 0.012 200);
+  --card-foreground: oklch(0.96 0.005 180);
+  --popover: oklch(0.11 0.012 200);
+  --popover-foreground: oklch(0.96 0.005 180);
+
+  /* Primary = Royal Blue neon (matches --neon) */
+  --primary: oklch(0.62 0.22 259);
+  --primary-foreground: oklch(0.98 0.01 240);
+  --secondary: oklch(0.16 0.015 240);
+  --secondary-foreground: oklch(0.96 0.005 180);
+  --muted: oklch(0.16 0.015 240);
+  --muted-foreground: oklch(0.62 0.012 240);
+  --accent: oklch(0.18 0.025 259);
+  --accent-foreground: oklch(0.96 0.005 180);
+  --destructive: oklch(0.65 0.22 25);
+  --border: oklch(0.22 0.015 240);
+  --input: oklch(0.18 0.015 240);
+  --ring: oklch(0.62 0.22 259);
+
+  /* === Neon: Royal Blue (#3B82F6 → #2563EB) === */
+  --neon: oklch(0.62 0.22 259);       /* #3B82F6 — Tailwind blue-500 */
+  --neon-dim: oklch(0.55 0.21 259);   /* #2563EB — Tailwind blue-600 */
+  --in-blue: oklch(0.7 0.18 259);     /* #60A5FA — Tailwind blue-400 (for "in") */
+  --amber: oklch(0.82 0.15 70);       /* gold accent — KEPT for Web AI card & gold text */
+  --magenta: oklch(0.72 0.24 350);    /* magenta accent — KEPT */
+
+  /* === Navy palette (for header) — tuned to match Royal Blue === */
+  /* Deep navy → midnight blue gradient surface */
+  --navy-900: oklch(0.14 0.04 259);   /* deepest */
+  --navy-800: oklch(0.18 0.045 259);  /* base */
+  --navy-700: oklch(0.22 0.05 259);   /* #14224A */
+  --navy-600: oklch(0.28 0.06 259);   /* highlight */
+  --navy-500: oklch(0.36 0.07 259);   /* #243670 */
+  --navy-line: oklch(0.45 0.10 259 / 30%); /* subtle border */
+  --navy-text: oklch(0.93 0.015 240); /* #E5EBF5 */
+  --navy-muted: oklch(0.72 0.025 240); /* #8B9DC3 */
+  --navy-glow: oklch(0.62 0.22 259);  /* royal blue glow (matches --neon) */
+
+  /* === Logo mark — bright neon blues, glow on dark bg (original look) === */
+  --logo-glyph-1: #DBEAFE;   /* blue-100 — lightest stop */
+  --logo-glyph-2: #93C5FD;   /* blue-300 */
+  --logo-glyph-3: #3B82F6;   /* blue-500 */
+  --logo-glyph-4: #60A5FA;   /* blue-400 */
+  --logo-glyph-5: #2563EB;   /* blue-600 — deepest stop */
+  --logo-grid: color-mix(in oklch, var(--neon) 35%, transparent);
+  --logo-scan-hi: #93C5FD;   /* blue-300 — scan line highlight */
+  --logo-scan-glow: rgba(59, 130, 246, 0.9);
+  --logo-border: color-mix(in oklch, var(--neon) 70%, transparent);
+  --logo-bg: color-mix(in oklch, var(--neon) 20%, transparent);
+
+  /* === Gold for «IQ» — bright cream/gold, glows on dark bg (original look) === */
+  --gold-1: #FFF7D6;   /* cream — lightest */
+  --gold-2: #F5D98A;
+  --gold-3: #E0B341;
+  --gold-4: #B8862F;   /* deepest */
+
+  --chart-1: oklch(0.62 0.22 259);
+  --chart-2: oklch(0.82 0.15 70);
+  --chart-3: oklch(0.72 0.24 350);
+  --chart-4: oklch(0.75 0.18 180);
+  --chart-5: oklch(0.72 0.2 120);
+  --sidebar: oklch(0.11 0.012 240);
+  --sidebar-foreground: oklch(0.96 0.005 180);
+  --sidebar-primary: oklch(0.62 0.22 259);
+  --sidebar-primary-foreground: oklch(0.98 0.01 240);
+  --sidebar-accent: oklch(0.18 0.025 259);
+  --sidebar-accent-foreground: oklch(0.96 0.005 180);
+  --sidebar-border: oklch(0.22 0.015 240);
+  --sidebar-ring: oklch(0.62 0.22 259);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    /* No overflow rules on html/body — they break position:sticky.
+       Horizontal-overflow protection is applied per-component instead. */
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+    width: 100%;
+  }
+}
+
+/* === Techno-style utilities === */
+
+/* Subtle grid background pattern */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--neon) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--neon) 6%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-grid-fine {
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--neon) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--neon) 4%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Миллиметровка: 2 уровня — крупные клетки 50px + мелкая сетка 10px внутри.
+   Средний уровень 25px убран (он давал лишние линии по центру каждой крупной клетки). */
+.bg-grid-mm {
+  background-image:
+    /* крупные 50px — основные деления */
+    linear-gradient(to right, color-mix(in oklch, var(--neon) 15%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--neon) 15%, transparent) 1px, transparent 1px),
+    /* мелкие 10px — заполняют крупные клетки изнутри */
+    linear-gradient(to right, color-mix(in oklch, var(--neon) 12%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--neon) 12%, transparent) 1px, transparent 1px);
+  background-size:
+    50px 50px,
+    50px 50px,
+    10px 10px,
+    10px 10px;
+  /* Мягкое затухание к краям — сетка читается только в центре, по бокам исчезает */
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 35%, transparent 85%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 35%, transparent 85%);
+}
+
+/* Та же миллиметровка, но без маски — равномерно по всей странице (фон homepage) */
+.bg-grid-mm-page {
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--neon) 15%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--neon) 15%, transparent) 1px, transparent 1px),
+    linear-gradient(to right, color-mix(in oklch, var(--neon) 12%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--neon) 12%, transparent) 1px, transparent 1px);
+  background-size:
+    50px 50px,
+    50px 50px,
+    10px 10px,
+    10px 10px;
+}
+
+/* Radial fade mask for grid */
+.mask-radial {
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+/* Neon glow utilities */
+.glow-neon {
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--neon) 30%, transparent),
+    0 0 20px color-mix(in oklch, var(--neon) 25%, transparent),
+    0 0 60px color-mix(in oklch, var(--neon) 12%, transparent);
+}
+
+.glow-neon-strong {
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--neon) 50%, transparent),
+    0 0 30px color-mix(in oklch, var(--neon) 40%, transparent),
+    0 0 80px color-mix(in oklch, var(--neon) 20%, transparent);
+}
+
+.glow-amber {
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--amber) 30%, transparent),
+    0 0 20px color-mix(in oklch, var(--amber) 25%, transparent),
+    0 0 60px color-mix(in oklch, var(--amber) 12%, transparent);
+}
+
+.text-glow-neon {
+  text-shadow:
+    0 0 12px color-mix(in oklch, var(--neon) 50%, transparent),
+    0 0 30px color-mix(in oklch, var(--neon) 25%, transparent);
+}
+
+/* Однотонный неоновый синий текст с подсветкой */
+.text-neon-solid {
+  color: var(--neon);
+  -webkit-text-fill-color: var(--neon);
+  text-shadow:
+    0 0 12px color-mix(in oklch, var(--neon) 50%, transparent),
+    0 0 30px color-mix(in oklch, var(--neon) 25%, transparent);
+}
+
+.text-glow-amber {
+  text-shadow:
+    0 0 12px color-mix(in oklch, var(--amber) 50%, transparent),
+    0 0 30px color-mix(in oklch, var(--amber) 25%, transparent);
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--card) 80%, transparent),
+    color-mix(in oklch, var(--card) 60%, transparent)
+  );
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid color-mix(in oklch, var(--neon) 12%, var(--border));
+}
+
+/* Gradient text — чистый неоновый синий (без розово-фиолетового перехода) */
+.text-gradient-neon {
+  background: linear-gradient(
+    135deg,
+    #DBEAFE 0%,
+    #93C5FD 30%,
+    var(--neon) 60%,
+    var(--neon-dim) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Золотой текст для «IQ» — theme-aware (deep amber on light, bright cream on dark) */
+.text-iq-gold {
+  background: linear-gradient(
+    135deg,
+    var(--gold-1) 0%,
+    var(--gold-2) 30%,
+    var(--gold-3) 60%,
+    var(--gold-4) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Синий текст для «in» (полужирный, без градиента — чистый неоновый синий) */
+.text-in-blue {
+  color: var(--in-blue);
+  -webkit-text-fill-color: var(--in-blue);
+}
+
+/* Синий текст для «.ru» (обычный нежирный, без градиента) */
+.text-ru-plain {
+  color: var(--neon);
+  -webkit-text-fill-color: var(--neon);
+  font-weight: 400;
+}
+
+/* Animated border gradient */
+.border-flow {
+  position: relative;
+  isolation: isolate;
+}
+.border-flow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    var(--neon) 25%,
+    transparent 50%,
+    var(--amber) 75%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-spin 6s linear infinite;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+@keyframes border-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulse animation for status indicators */
+@keyframes pulse-neon {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 color-mix(in oklch, var(--neon) 60%, transparent);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 8px color-mix(in oklch, var(--neon) 0%, transparent);
+  }
+}
+.animate-pulse-neon {
+  animation: pulse-neon 2s ease-in-out infinite;
+}
+
+/* Neon pulse for the 音 logo — subtle glow breathing */
+@keyframes neon-pulse {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 4px rgba(59, 130, 246, 0.9))
+      drop-shadow(0 0 8px rgba(59, 130, 246, 0.7))
+      drop-shadow(0 0 14px rgba(59, 130, 246, 0.4));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 6px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 12px rgba(59, 130, 246, 0.85))
+      drop-shadow(0 0 22px rgba(59, 130, 246, 0.55));
+  }
+}
+.animate-neon-pulse {
+  animation: neon-pulse 2.6s ease-in-out infinite;
+}
+
+/* === LOGO ANIMATION VARIANTS — showcase === */
+/* Pacing: deep Zen-breathing rhythm — ~8–12s per cycle, slow ease, no flicker. */
+
+/* V1 — Breathing glow: smooth inhale 4s → exhale 4s (8s total), scale 1 → 1.06 */
+@keyframes logo-breathe {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 3px rgba(59, 130, 246, 0.9))
+      drop-shadow(0 0 7px rgba(59, 130, 246, 0.7))
+      drop-shadow(0 0 12px rgba(59, 130, 246, 0.4));
+    transform: scale(1);
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 6px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 14px rgba(59, 130, 246, 0.9))
+      drop-shadow(0 0 26px rgba(59, 130, 246, 0.6));
+    transform: scale(1.06);
+  }
+}
+.logo-v-breathe {
+  animation: logo-breathe 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* Base rule for the 音 glyph element. The gradient fill + background-clip:text
+   is set inline per-component (header/showcase/lab) because the font-size
+   differs. But the `filter` (drop-shadow glow) MUST live here in CSS, NOT
+   inline — otherwise inline style would block all filter-animations
+   (logo-electric-glow, logo-glitch-rgb, logo-mega-glyph) from running,
+   because inline style has higher specificity than animation keyframes.
+   Variant keyframes override this base filter via animation; variants
+   that don't animate filter (V1, V2, V4, V5) inherit this static glow. */
+.logo-glyph {
+  filter:
+    drop-shadow(0 0 3px rgba(147, 197, 253, 1))
+    drop-shadow(0 0 6px rgba(59, 130, 246, 1))
+    drop-shadow(0 0 12px rgba(59, 130, 246, 0.85));
+}
+
+/* V2 — Radar sweep: one slow 360° rotation per 12s (was 1.8s) */
+.logo-v-radar .logo-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 1.5px solid transparent;
+  border-top-color: rgba(59, 130, 246, 0.95);
+  border-right-color: rgba(147, 197, 253, 0.5);
+  animation: logo-radar-spin 12s linear infinite;
+  pointer-events: none;
+}
+@keyframes logo-radar-spin {
+  to { transform: rotate(360deg); }
+}
+.logo-v-radar .logo-ring::after {
+  content: "";
+  position: absolute;
+  top: -3px; left: 50%;
+  width: 6px; height: 6px;
+  border-radius: 9999px;
+  background: #93C5FD;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px rgba(147, 197, 253, 1), 0 0 16px rgba(59, 130, 246, 0.7);
+}
+
+/* V3 — Glitch: rare, slow RGB drifts on a 9s cycle (was 0.6s flicker).
+   Two short glitches per cycle — like brief mental ripples during meditation.
+   NOTE: we use `filter: drop-shadow()` instead of `text-shadow` because the
+   glyph has `background-clip: text` + `color: transparent` — text-shadow
+   renders BEHIND the gradient fill and is therefore invisible. drop-shadow
+   renders ON TOP, so the RGB split is actually visible. We also carry the
+   base glow inside the same keyframes so the inline `filter` on the glyph
+   span doesn't get clobbered by the animation. */
+@keyframes logo-glitch-x {
+  0%, 18%, 24%, 68%, 74%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-1.5px); }
+  22% { transform: translateX(1.5px); }
+  70% { transform: translateX(-1px); }
+  72% { transform: translateX(1px); }
+}
+@keyframes logo-glitch-rgb {
+  0%, 18%, 24%, 68%, 74%, 100% {
+    filter:
+      drop-shadow(0 0 3px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 6px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 12px rgba(59, 130, 246, 0.85));
+  }
+  20% {
+    filter:
+      drop-shadow(-2px 0 0 #F472B6)
+      drop-shadow(2px 0 0 #60A5FA)
+      drop-shadow(0 0 3px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 6px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 12px rgba(59, 130, 246, 0.85));
+  }
+  22% {
+    filter:
+      drop-shadow(2px 0 0 #F472B6)
+      drop-shadow(-2px 0 0 #60A5FA)
+      drop-shadow(0 0 3px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 6px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 12px rgba(59, 130, 246, 0.85));
+  }
+  70% {
+    filter:
+      drop-shadow(-1px 0 0 #F472B6)
+      drop-shadow(1px 0 0 #60A5FA)
+      drop-shadow(0 0 3px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 6px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 12px rgba(59, 130, 246, 0.85));
+  }
+  72% {
+    filter:
+      drop-shadow(1px 0 0 #F472B6)
+      drop-shadow(-1px 0 0 #60A5FA)
+      drop-shadow(0 0 3px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 6px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 12px rgba(59, 130, 246, 0.85));
+  }
+}
+.logo-v-glitch .logo-glyph {
+  animation:
+    logo-glitch-x 9s cubic-bezier(0.4, 0, 0.6, 1) infinite,
+    logo-glitch-rgb 9s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* V4 — Scan sweep: slow downward light bar, 8s cycle (was 1.8s) */
+.logo-v-scan .logo-scan-bar {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 50%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(147, 197, 253, 0.55) 70%,
+    rgba(59, 130, 246, 0.95) 95%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  animation: logo-scan-move 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.8));
+}
+@keyframes logo-scan-move {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+
+/* V15 — Vertical Scan: thin vertical light line sliding left→right across the glyph.
+   Built on top of V14 "Clean Minimal" (same flat blue 音, grid, corner brackets,
+   transparent background). Adds a single 1.5px-wide vertical bar with soft glow
+   that travels across the logo box over 8s (same tempo as V4, fitting the
+   Техно-Зен 8–32s breathing range). The line uses a horizontal gradient so its
+   edges fade smoothly — looks like a laser scanner pass, not a hard rectangle.
+   mix-blend-mode: screen ensures the line brightens the glyph as it crosses. */
+.logo-v-vscan .logo-vscan-line {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: 0;
+  width: 14px;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(147, 197, 253, 0.35) 30%,
+    rgba(59, 130, 246, 0.95) 50%,
+    rgba(147, 197, 253, 0.35) 70%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.85));
+  animation: logo-vscan-move 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+@keyframes logo-vscan-move {
+  0%   { transform: translateX(-14px); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(48px); opacity: 0; }
+}
+
+/* V16 — Cross Scan + Flash Glyph: V4-style sweeping light bars in two
+   directions, in sequence, with the glyph 音 flashing bright white-blue
+   each time a bar crosses through it. Built on top of V14/V15 minimal
+   aesthetic: solid blue glyph (var(--in-blue)), grid, corner brackets,
+   transparent background.
+   Cycle = 64s: 32s vertical sweep (L→R) + 32s horizontal sweep (T→B),
+   with no overlap between phases. Glyph flash peaks:
+     - ~22% (≈14s) — vertical bar crossing glyph center
+     - ~72% (≈46s) — horizontal bar crossing glyph center
+   Timing accounts for cubic-bezier(0.45, 0, 0.55, 1) on the scan bars
+   (slightly later than linear midpoint due to ease-in-out).
+   64s cycle — ultra-slow meditative rhythm (2x slower than V6 Zen 32s). */
+.logo-v-crossscan .logo-vscan-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(147, 197, 253, 0.18) 30%,
+    rgba(96, 165, 250, 0.55) 70%,
+    rgba(59, 130, 246, 0.95) 95%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.85));
+  animation: logo-vscan-cross 64s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: 0s;
+  z-index: 5;
+}
+.logo-v-crossscan .logo-hscan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 50%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(147, 197, 253, 0.18) 30%,
+    rgba(96, 165, 250, 0.55) 70%,
+    rgba(59, 130, 246, 0.95) 95%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.85));
+  animation: logo-hscan-cross 64s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: 0s;
+  opacity: 0;
+  z-index: 5;
+}
+/* vline keyframes (64s cycle): sweeps L→R in first half (0–32s),
+   hidden in second half. translateX -100% → 200% means the 50%-wide
+   bar starts fully off-screen left, sweeps across, exits off-screen right. */
+@keyframes logo-vscan-cross {
+  0%      { transform: translateX(-100%); opacity: 0; }
+  5%      { opacity: 1; }
+  45%     { opacity: 1; }
+  50%     { transform: translateX(200%); opacity: 0; }
+  50.01%  { transform: translateX(-100%); opacity: 0; }
+  100%    { transform: translateX(-100%); opacity: 0; }
+}
+/* hline keyframes (64s cycle): hidden in first half (0–32s),
+   sweeps T→B in second half (32–64s). */
+@keyframes logo-hscan-cross {
+  0%      { transform: translateY(-100%); opacity: 0; }
+  50%     { transform: translateY(-100%); opacity: 0; }
+  55%     { opacity: 1; }
+  95%     { opacity: 1; }
+  100%    { transform: translateY(200%); opacity: 0; }
+}
+
+/* logo-glyph-flash: like logo-glyph-pure (solid color via currentColor +
+   -webkit-text-fill-color) but does NOT kill animation or filter — so the
+   flash keyframes below can drive brightness and drop-shadow on the glyph. */
+.logo-glyph.logo-glyph-flash {
+  -webkit-text-fill-color: currentColor;
+}
+/* V16 glyph flash: bright white-blue pulse synced to scan-bar crossings.
+   Each flash has a brief build-up, sharp peak, and trail. Linear easing
+   so the keyframe percentages are exact (no bezier smoothing of the peak). */
+.logo-v-crossscan .logo-glyph.logo-glyph-flash {
+  animation: logo-glyph-flash-crossscan 64s linear infinite;
+}
+@keyframes logo-glyph-flash-crossscan {
+  /* Baseline: solid blue, no glow */
+  0%, 15%      { filter: brightness(1) drop-shadow(0 0 0 transparent); }
+  /* Build-up: bar approaching glyph */
+  19%          { filter: brightness(1.3) drop-shadow(0 0 6px rgba(147, 197, 253, 0.45)); }
+  /* PEAK 1: vertical bar crossing glyph center (~22%) */
+  22%          { filter: brightness(2.6) drop-shadow(0 0 22px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 38px rgba(96, 165, 250, 0.9)); }
+  /* Trail: bar passing through */
+  25%          { filter: brightness(1.55) drop-shadow(0 0 10px rgba(147, 197, 253, 0.6)); }
+  30%          { filter: brightness(1) drop-shadow(0 0 0 transparent); }
+  /* Quiet period between crossings */
+  65%          { filter: brightness(1) drop-shadow(0 0 0 transparent); }
+  /* Build-up: horizontal bar approaching */
+  69%          { filter: brightness(1.3) drop-shadow(0 0 6px rgba(147, 197, 253, 0.45)); }
+  /* PEAK 2: horizontal bar crossing glyph center (~72%) */
+  72%          { filter: brightness(2.6) drop-shadow(0 0 22px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 38px rgba(96, 165, 250, 0.9)); }
+  /* Trail */
+  75%          { filter: brightness(1.55) drop-shadow(0 0 10px rgba(147, 197, 253, 0.6)); }
+  80%          { filter: brightness(1) drop-shadow(0 0 0 transparent); }
+  100%         { filter: brightness(1) drop-shadow(0 0 0 transparent); }
+}
+
+/* ==========================================================================
+   V17 — Halo Breath (Дыхание гало)
+   V14 base + soft radial halo around 音 that breathes in/out (opacity + scale)
+   on a 32s Zen cycle (same as V6 Electric Pulse). The glyph itself stays
+   flat solid blue (no glow, no animation) — only the halo behind it breathes.
+   Like a meditation lamp: the aura pulses, the flame does not.
+   Halo is a radial-gradient circle (160% diameter, soft falloff) centered
+   behind the glyph. mix-blend-mode: screen brightens the card surface;
+   cubic-bezier(0.4, 0, 0.6, 1) gives the smooth sine-wave ease-in-out
+   characteristic of all Zen-cycle animations.
+   ========================================================================== */
+.logo-v-halo .logo-halo-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160%;
+  height: 160%;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(147, 197, 253, 0.55) 0%,
+    rgba(96, 165, 250, 0.32) 25%,
+    rgba(59, 130, 246, 0.18) 50%,
+    rgba(59, 130, 246, 0.05) 70%,
+    transparent 80%
+  );
+  mix-blend-mode: screen;
+  filter: blur(6px);
+  pointer-events: none;
+  z-index: 1;
+  animation: logo-halo-breath 32s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes logo-halo-breath {
+  /* Inhale: halo grows bright + slightly larger */
+  0%   { opacity: 0.20; transform: translate(-50%, -50%) scale(0.80); }
+  50%  { opacity: 0.85; transform: translate(-50%, -50%) scale(1.05); }
+  /* Exhale: halo fades + contracts */
+  100% { opacity: 0.20; transform: translate(-50%, -50%) scale(0.80); }
+}
+
+/* ==========================================================================
+   V18 — Glow Letter (Светящаяся буква)
+   V14 base + the glyph itself slowly cycles brightness 1.0 → 1.5 → 1.0
+   and drop-shadow intensity on a 32s Zen cycle. NO halo, NO scan —
+   just the letter glowing brighter and dimmer, like a meditation lamp
+   where the flame itself is the only moving element.
+   Uses glyphFlash modifier (keeps animation/filter available on .logo-glyph).
+   The glyph remains solid blue (var(--in-blue)) via -webkit-text-fill-color.
+   ========================================================================== */
+.logo-v-glow .logo-glyph.logo-glyph-flash {
+  animation: logo-glow-letter 32s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes logo-glow-letter {
+  /* Quiet baseline — flat blue, no glow */
+  0%   { filter: brightness(1.0) drop-shadow(0 0 0 transparent); }
+  /* Peak inhale — letter glows bright with soft blue halo */
+  50%  { filter: brightness(1.5) drop-shadow(0 0 14px rgba(147, 197, 253, 0.75)) drop-shadow(0 0 22px rgba(59, 130, 246, 0.45)); }
+  /* Exhale back to flat */
+  100% { filter: brightness(1.0) drop-shadow(0 0 0 transparent); }
+}
+
+/* ==========================================================================
+   V19 — Aurora Wash (Полярное сияние)
+   V14 base + slow conic-gradient aurora behind the glyph that rotates
+   continuously and fades in/out on a 24s cycle. The conic gradient shifts
+   between translucent blue (rgba(59,130,246)) and cyan (rgba(34,211,238))
+   with soft falloff — looks like a soft aurora wash drifting across the
+   HUD square. The glyph itself stays flat solid blue.
+   mix-blend-mode: screen brightens without darkening the card background.
+   ========================================================================== */
+.logo-v-aurora .logo-aurora {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 1;
+  background: conic-gradient(
+    from 0deg,
+    rgba(59, 130, 246, 0.00) 0deg,
+    rgba(59, 130, 246, 0.35) 60deg,
+    rgba(34, 211, 238, 0.45) 120deg,
+    rgba(147, 197, 253, 0.25) 180deg,
+    rgba(96, 165, 250, 0.40) 240deg,
+    rgba(59, 130, 246, 0.20) 300deg,
+    rgba(59, 130, 246, 0.00) 360deg
+  );
+  filter: blur(14px);
+  mix-blend-mode: screen;
+  border-radius: 9999px;
+  animation: logo-aurora-spin 24s linear infinite, logo-aurora-fade 24s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes logo-aurora-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes logo-aurora-fade {
+  0%   { opacity: 0.15; }
+  50%  { opacity: 0.75; }
+  100% { opacity: 0.15; }
+}
+
+/* ==========================================================================
+   V20 — Orbit Satellite (Орбита-спутник)
+   V14 base + a small 4px neon dot orbiting the glyph on an elliptical path
+   with a 12s linear cycle (same tempo as V10 Lighthouse beacon, fitting
+   the Техно-Зен 8–32s breathing range). The dot leaves a faint trail via
+   box-shadow. The orbit is achieved by rotating a child wrapper and
+   counter-rotating the dot itself (so the dot stays circular, not spinning).
+   Glyph itself stays flat — only the satellite moves.
+   ========================================================================== */
+.logo-v-orbit .logo-orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 4;
+  animation: logo-orbit-spin 12s linear infinite;
+}
+.logo-v-orbit .logo-orbit-ring::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 4px;
+  height: 4px;
+  margin-top: -2px;
+  margin-right: -2px;
+  border-radius: 9999px;
+  background: #DBEAFE;
+  box-shadow:
+    0 0 4px rgba(147, 197, 253, 0.95),
+    0 0 10px rgba(96, 165, 250, 0.75),
+    0 0 18px rgba(59, 130, 246, 0.45);
+}
+/* Faint orbit path visible behind the dot — gives spatial reference */
+.logo-v-orbit .logo-orbit-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(147, 197, 253, 0.10);
+  border-radius: 9999px;
+}
+@keyframes logo-orbit-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ==========================================================================
+   V21 — Ripple Pulse (Круги на воде)
+   V14 base + concentric ripple rings emanating outward from the glyph center
+   every 8s (matches V4 Scan Sweep tempo). Each ring expands from 30% to 110%
+   of the logo box diameter while fading from 0.7 → 0.0 opacity. Three rings
+   are staggered by 8/3 ≈ 2.67s each, so a new ripple appears roughly every
+   2.67s — like raindrops hitting water at a steady pace. Glyph stays flat.
+   Uses separate <span> children with --ripple-delay CSS custom property
+   so each ring has its own animation-delay.
+   ========================================================================== */
+.logo-v-ripple .logo-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  height: 30%;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid rgba(147, 197, 253, 0.7);
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 3;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.25);
+  animation: logo-ripple-expand 8s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  animation-delay: var(--ripple-delay, 0s);
+  opacity: 0;
+}
+@keyframes logo-ripple-expand {
+  0%   { transform: translate(-50%, -50%) scale(1);   opacity: 0; }
+  10%  { opacity: 0.7; }
+  60%  { opacity: 0.35; }
+  100% { transform: translate(-50%, -50%) scale(3.6); opacity: 0; }
+}
+
+/* ==========================================================================
+   V22 — Glitch Drift (Цифровой дрейф)
+   V14 base + RARE brief RGB chromatic split on the flat-blue glyph. Unlike
+   V3 (which glitched constantly on a gradient glyph), V22 keeps the V14
+   aesthetic 96% of the time — only twice per 14s cycle (~every 7s) the
+   glyph briefly splits into magenta+cyan offset for ~300ms, then snaps
+   back. Reads as a digital artifact, not a continuous effect.
+   Two glitch peaks per 14s cycle:
+     - ~18% (≈2.5s) — first glitch
+     - ~68% (≈9.5s) — second glitch
+   Uses glyphFlash modifier (keeps animation/filter available on .logo-glyph)
+   so we can drive filter:drop-shadow RGB-split + transform:translateX.
+   ========================================================================== */
+.logo-v-glitch-drift .logo-glyph.logo-glyph-flash {
+  animation: logo-glitch-drift 14s linear infinite;
+}
+@keyframes logo-glitch-drift {
+  /* Baseline: flat blue, no glitch */
+  0%, 15%      { transform: translateX(0); filter: brightness(1) drop-shadow(0 0 0 transparent); }
+  /* Glitch 1 build-up (~16%) */
+  16%          { transform: translateX(-1px); filter: brightness(1.1) drop-shadow(-1px 0 0 #F472B6) drop-shadow(1px 0 0 #60A5FA); }
+  /* Glitch 1 PEAK (~18%) — full magenta+cyan split */
+  18%          { transform: translateX(2px); filter: brightness(1.25) drop-shadow(-2px 0 0 #F472B6) drop-shadow(2px 0 0 #60A5FA) drop-shadow(0 0 4px rgba(96, 165, 250, 0.4)); }
+  /* Glitch 1 trail */
+  19%          { transform: translateX(-1px); filter: brightness(1.1) drop-shadow(-1px 0 0 #F472B6) drop-shadow(1px 0 0 #60A5FA); }
+  20%          { transform: translateX(0); filter: brightness(1) drop-shadow(0 0 0 transparent); }
+  /* Quiet baseline between glitches */
+  21%, 65%     { transform: translateX(0); filter: brightness(1) drop-shadow(0 0 0 transparent); }
+  /* Glitch 2 build-up (~66%) */
+  66%          { transform: translateX(1px); filter: brightness(1.1) drop-shadow(1px 0 0 #F472B6) drop-shadow(-1px 0 0 #60A5FA); }
+  /* Glitch 2 PEAK (~68%) — inverted split direction */
+  68%          { transform: translateX(-2px); filter: brightness(1.25) drop-shadow(2px 0 0 #F472B6) drop-shadow(-2px 0 0 #60A5FA) drop-shadow(0 0 4px rgba(96, 165, 250, 0.4)); }
+  /* Glitch 2 trail */
+  69%          { transform: translateX(1px); filter: brightness(1.1) drop-shadow(1px 0 0 #F472B6) drop-shadow(-1px 0 0 #60A5FA); }
+  70%          { transform: translateX(0); filter: brightness(1) drop-shadow(0 0 0 transparent); }
+  /* Quiet baseline until cycle end */
+  71%, 100%    { transform: translateX(0); filter: brightness(1) drop-shadow(0 0 0 transparent); }
+}
+
+/* ==========================================================================
+   V23 — Pulse Grid (Дышащая сетка)
+   V14 base + the GRID and FOUR CORNER BRACKETS breathe opacity 0.35↔1.0
+   on a 16s sine wave (cubic-bezier(0.4,0,0.6,1)). The glyph itself stays
+   flat solid blue — INVERSION of V18 «Glow Letter», where the glyph glowed
+   and the HUD infrastructure was static. V23 makes the HUD breathe while
+   the glyph stays frozen. Reads as a quiet "powering up" of the frame
+   around an immovable letter.
+   Selector targets all child spans of the logo box EXCEPT the glyph itself
+   (the .logo-glyph span). Those children are: grid pattern + 4 corner brackets.
+   16s cycle fits the Техно-Зен 8–32s breathing range, between V15 (8s scan)
+   and V17 (32s halo). 0.35 minimum so the grid never fully disappears.
+   ========================================================================== */
+.logo-v-pulse-grid > span:not(.logo-glyph) {
+  animation: logo-pulse-grid-breathe 16s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes logo-pulse-grid-breathe {
+  /* Inhale: HUD infrastructure brightens */
+  0%   { opacity: 0.35; }
+  50%  { opacity: 1.0; }
+  /* Exhale: HUD infrastructure dims back */
+  100% { opacity: 0.35; }
+}
+
+/* ==========================================================================
+   V24 — Tilt Parallax (Наклон-параллакс)
+   V14 base + the entire HUD square slowly tilts in 3D: rotateY ±8° + rotateX
+   ±4° on a 20s sine wave (cubic-bezier(0.4,0,0.6,1)). Uses transform:
+   perspective(600px) inline so no parent perspective wrapper is needed —
+   the logo box itself becomes a 3D object. The glyph stays flat inside the
+   box (no rotation inheritance issues because the glyph is a static child).
+   backface-visibility: hidden prevents mirror-flip artifacts at peak rotation.
+   20s cycle — between V19 aurora (24s) and V15 scan (8s), meditative tempo.
+   Subtle ±8° is intentional: anything more would distract from the glyph.
+   ========================================================================== */
+.logo-v-tilt {
+  animation: logo-tilt-parallax 20s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+@keyframes logo-tilt-parallax {
+  /* Peak left tilt: rotateY -8°, rotateX -4° */
+  0%   { transform: perspective(600px) rotateY(-8deg) rotateX(-4deg); }
+  /* Peak right tilt: rotateY +8°, rotateX +4° */
+  50%  { transform: perspective(600px) rotateY(8deg) rotateX(4deg); }
+  /* Back to left tilt */
+  100% { transform: perspective(600px) rotateY(-8deg) rotateX(-4deg); }
+}
+
+/* ==========================================================================
+   V25 — Echo Trace (Эхо-след)
+   V14 base + two faint "echo" copies of 音 positioned behind the main glyph,
+   slowly fading in on a 14s cycle with staggered peaks (left echo peaks at
+   ~35%, right echo peaks at ~70%). Each echo renders 音 via ::before content
+   pseudo-element with transparent fill + 1px text-stroke outline (so the echo
+   reads as a contour, not a duplicate solid letter). mix-blend-mode: screen
+   makes the echoes brighten the area subtly without darkening the card.
+   The glyph itself stays flat solid blue — the echoes are motion-blur ghosts
+   of a letter that never actually moves. Effect feels like memory or
+   afterimage rather than animation.
+   Two echo spans (.logo-echo-trace--left and --right) are passed via
+   variant.extra so they render BEFORE the glyph in DOM (lower z-stack).
+   ========================================================================== */
+.logo-v-echo .logo-echo-trace {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+  font-family: var(--font-cjk), 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 52.8px;
+  font-weight: 500;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px rgba(147, 197, 253, 0.7);
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 6px rgba(147, 197, 253, 0.45));
+  opacity: 0;
+}
+.logo-v-echo .logo-echo-trace::before {
+  content: "音";
+}
+.logo-v-echo .logo-echo-trace--left {
+  animation: logo-echo-left 14s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.logo-v-echo .logo-echo-trace--right {
+  animation: logo-echo-right 14s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes logo-echo-left {
+  /* Quiet baseline */
+  0%, 15%   { opacity: 0; transform: translateX(0); }
+  /* Peak: left echo appears at -2.5px offset */
+  35%       { opacity: 0.6; transform: translateX(-2.5px); }
+  /* Fade back */
+  55%       { opacity: 0; transform: translateX(0); }
+  /* Quiet until cycle end */
+  56%, 100% { opacity: 0; transform: translateX(0); }
+}
+@keyframes logo-echo-right {
+  /* Quiet baseline (left echo is active during this phase) */
+  0%, 50%   { opacity: 0; transform: translateX(0); }
+  /* Peak: right echo appears at +1.5px offset (smaller, like a fading twin) */
+  70%       { opacity: 0.6; transform: translateX(1.5px); }
+  /* Fade back */
+  90%       { opacity: 0; transform: translateX(0); }
+  91%, 100% { opacity: 0; transform: translateX(0); }
+}
+/* Ensure glyph stays above echoes in z-stack */
+.logo-v-echo .logo-glyph {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   V26 — Frame Strobe (Импульс рамки)
+   V14 base + the HUD square's border emits DISCRETE box-shadow pulses at
+   three moments per 14s cycle (~14% / ~50% / ~86%), like a heartbeat
+   monitor. Unlike V6 (continuous sine wave glow) and V17 (continuous halo
+   breathing), V26 emits sharp pulses with quick rise + slower fall. Each
+   pulse ≈400ms rise + ≈600ms fall ≈ 1s total. Between pulses, the box is
+   quiet (no box-shadow). This makes the HUD feel "alive" in a different
+   way — not breathing, but transmitting: a beacon that fires three times
+   per cycle rather than continuously glowing.
+   Pulse structure per peak (using keyframe-exact %s, so linear easing):
+     -1% build-up → 1% PEAK → 1% hold → 3% trail → baseline
+   Three peaks × ~5% pulse width each = 15% on, 85% off per cycle.
+   ========================================================================== */
+.logo-v-strobe {
+  animation: logo-frame-strobe 14s linear infinite;
+}
+@keyframes logo-frame-strobe {
+  /* Baseline: no box-shadow */
+  0%, 12% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  /* Pulse 1 build-up (~13%) */
+  13% {
+    box-shadow: 0 0 0 1px rgba(147, 197, 253, 0.55), 0 0 8px rgba(59, 130, 246, 0.3);
+  }
+  /* Pulse 1 PEAK (~14%) */
+  14% {
+    box-shadow:
+      0 0 0 2px rgba(147, 197, 253, 0.95),
+      0 0 18px rgba(59, 130, 246, 0.7),
+      0 0 36px rgba(59, 130, 246, 0.4);
+  }
+  /* Pulse 1 hold */
+  15% {
+    box-shadow:
+      0 0 0 2px rgba(147, 197, 253, 0.95),
+      0 0 18px rgba(59, 130, 246, 0.7),
+      0 0 36px rgba(59, 130, 246, 0.4);
+  }
+  /* Pulse 1 trail */
+  17% {
+    box-shadow: 0 0 0 1px rgba(147, 197, 253, 0.55), 0 0 8px rgba(59, 130, 246, 0.3);
+  }
+  /* Baseline between pulses 1 and 2 */
+  18%, 48% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  /* Pulse 2 build-up (~49%) */
+  49% {
+    box-shadow: 0 0 0 1px rgba(147, 197, 253, 0.55), 0 0 8px rgba(59, 130, 246, 0.3);
+  }
+  /* Pulse 2 PEAK (~50%) */
+  50% {
+    box-shadow:
+      0 0 0 2px rgba(147, 197, 253, 0.95),
+      0 0 18px rgba(59, 130, 246, 0.7),
+      0 0 36px rgba(59, 130, 246, 0.4);
+  }
+  /* Pulse 2 hold */
+  51% {
+    box-shadow:
+      0 0 0 2px rgba(147, 197, 253, 0.95),
+      0 0 18px rgba(59, 130, 246, 0.7),
+      0 0 36px rgba(59, 130, 246, 0.4);
+  }
+  /* Pulse 2 trail */
+  53% {
+    box-shadow: 0 0 0 1px rgba(147, 197, 253, 0.55), 0 0 8px rgba(59, 130, 246, 0.3);
+  }
+  /* Baseline between pulses 2 and 3 */
+  54%, 84% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  /* Pulse 3 build-up (~85%) */
+  85% {
+    box-shadow: 0 0 0 1px rgba(147, 197, 253, 0.55), 0 0 8px rgba(59, 130, 246, 0.3);
+  }
+  /* Pulse 3 PEAK (~86%) */
+  86% {
+    box-shadow:
+      0 0 0 2px rgba(147, 197, 253, 0.95),
+      0 0 18px rgba(59, 130, 246, 0.7),
+      0 0 36px rgba(59, 130, 246, 0.4);
+  }
+  /* Pulse 3 hold */
+  87% {
+    box-shadow:
+      0 0 0 2px rgba(147, 197, 253, 0.95),
+      0 0 18px rgba(59, 130, 246, 0.7),
+      0 0 36px rgba(59, 130, 246, 0.4);
+  }
+  /* Pulse 3 trail */
+  89% {
+    box-shadow: 0 0 0 1px rgba(147, 197, 253, 0.55), 0 0 8px rgba(59, 130, 246, 0.3);
+  }
+  /* Baseline until cycle end */
+  90%, 100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+/* V5 — Particle burst: ULTRA-SLOW radial expansion, 20s cycle (was 10s). */
+.logo-v-particles .logo-particle {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 3px; height: 3px;
+  border-radius: 9999px;
+  background: #93C5FD;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.9), 0 0 12px rgba(59, 130, 246, 0.5);
+  pointer-events: none;
+  animation: logo-particle-burst 20s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}
+@keyframes logo-particle-burst {
+  0%   { transform: translate(-50%, -50%) translate(0, 0) scale(0.4); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translate(-50%, -50%) translate(var(--px, 24px), var(--py, 0)) scale(0.2); opacity: 0; }
+}
+
+/* V6 — Electric pulse: ULTRA-SLOW Zen swell, 32s cycle (2x slower).
+   Pure sine wave 0% → 50% → 100% — 16s inhale + 16s exhale.
+   No plateaus, no jumps, just a long gentle swelling of brightness.
+   Contrast is intentionally dramatic: min = almost invisible (so the
+   viewer can SEE the 32s cycle), max = full neon halo. */
+@keyframes logo-electric-glow {
+  0% {
+    filter:
+      drop-shadow(0 0 1px rgba(59, 130, 246, 0.25));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 8px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 16px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 28px rgba(59, 130, 246, 0.7));
+  }
+  100% {
+    filter:
+      drop-shadow(0 0 1px rgba(59, 130, 246, 0.25));
+  }
+}
+@keyframes logo-electric-border {
+  0% {
+    box-shadow:
+      0 0 0 1px rgba(59, 130, 246, 0.15),
+      inset 0 0 1px rgba(59, 130, 246, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px rgba(147, 197, 253, 1),
+      0 0 18px rgba(59, 130, 246, 1),
+      0 0 36px rgba(59, 130, 246, 0.6),
+      inset 0 0 10px rgba(147, 197, 253, 0.4);
+  }
+  100% {
+    box-shadow:
+      0 0 0 1px rgba(59, 130, 246, 0.15),
+      inset 0 0 1px rgba(59, 130, 246, 0.05);
+  }
+}
+.logo-v-electric .logo-glyph {
+  animation: logo-electric-glow 32s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.logo-v-electric {
+  animation: logo-electric-border 32s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* V8 — Combo: Glitch + Scan. Rare digital ripples (V3) crossed by a slow
+   scanning light bar (V4). Same 9s cycle, drift at 20%/70%, scan at 0–100%.
+   Inherits the fixed logo-glitch-rgb keyframes (filter: drop-shadow instead
+   of text-shadow) so the RGB split is actually visible against the gradient
+   glyph. See V3 above for the rationale. */
+.logo-v-glitchscan .logo-scan-bar {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 50%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(147, 197, 253, 0.55) 70%,
+    rgba(59, 130, 246, 0.95) 95%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  animation: logo-scan-move 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.8));
+}
+.logo-v-glitchscan .logo-glyph {
+  animation:
+    logo-glitch-x 9s cubic-bezier(0.4, 0, 0.6, 1) infinite,
+    logo-glitch-rgb 9s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* V9 — Mega Combo: V7 + V8 = V3 ⊕ V4 ⊕ V5 ⊕ V6.
+   All four base effects in one synchronized 32s cycle.
+   TECHNICAL HURDLE: V3 (logo-glitch-rgb) and V6 (logo-electric-glow) BOTH
+   animate `filter` on `.logo-glyph`. CSS does not compose two animations
+   on the same property — the last-declared wins, the other is silently
+   discarded. To get both effects at once, we MERGE them into a single
+   keyframe `logo-mega-glyph`: the smooth 32s electric sine wave runs
+   continuously, and 4 brief RGB chromatic-split spikes are injected
+   per cycle (~every 8s). The scan-bar (V4) and particles (V5) animate
+   their own child elements, so they stay as separate rules and reuse
+   the existing keyframes. */
+@keyframes logo-mega-glyph {
+  /* 0% — baseline low glow */
+  0% {
+    transform: translateX(0);
+    filter:
+      drop-shadow(0 0 2px rgba(59, 130, 246, 0.5))
+      drop-shadow(0 0 4px rgba(59, 130, 246, 0.35));
+  }
+
+  /* Glitch 1 — ~5% (1.6s into 32s) */
+  5% {
+    transform: translateX(-1.5px);
+    filter:
+      drop-shadow(-2px 0 0 #F472B6)
+      drop-shadow(2px 0 0 #60A5FA)
+      drop-shadow(0 0 2px rgba(59, 130, 246, 0.5))
+      drop-shadow(0 0 4px rgba(59, 130, 246, 0.35));
+  }
+  6% {
+    transform: translateX(1.5px);
+    filter:
+      drop-shadow(2px 0 0 #F472B6)
+      drop-shadow(-2px 0 0 #60A5FA)
+      drop-shadow(0 0 2px rgba(59, 130, 246, 0.5))
+      drop-shadow(0 0 4px rgba(59, 130, 246, 0.35));
+  }
+  7% {
+    transform: translateX(0);
+    filter:
+      drop-shadow(0 0 3px rgba(147, 197, 253, 0.7))
+      drop-shadow(0 0 6px rgba(59, 130, 246, 0.55));
+  }
+
+  /* 25% — rising */
+  25% {
+    transform: translateX(0);
+    filter:
+      drop-shadow(0 0 4px rgba(147, 197, 253, 0.85))
+      drop-shadow(0 0 8px rgba(59, 130, 246, 0.7))
+      drop-shadow(0 0 14px rgba(59, 130, 246, 0.45));
+  }
+
+  /* Glitch 2 — ~30% (9.6s) */
+  30% {
+    transform: translateX(-1.5px);
+    filter:
+      drop-shadow(-2px 0 0 #F472B6)
+      drop-shadow(2px 0 0 #60A5FA)
+      drop-shadow(0 0 4px rgba(147, 197, 253, 0.85))
+      drop-shadow(0 0 8px rgba(59, 130, 246, 0.7));
+  }
+  31% {
+    transform: translateX(1.5px);
+    filter:
+      drop-shadow(2px 0 0 #F472B6)
+      drop-shadow(-2px 0 0 #60A5FA)
+      drop-shadow(0 0 4px rgba(147, 197, 253, 0.85))
+      drop-shadow(0 0 8px rgba(59, 130, 246, 0.7));
+  }
+  32% {
+    transform: translateX(0);
+    filter:
+      drop-shadow(0 0 5px rgba(147, 197, 253, 0.9))
+      drop-shadow(0 0 10px rgba(59, 130, 246, 0.75))
+      drop-shadow(0 0 18px rgba(59, 130, 246, 0.5));
+  }
+
+  /* 50% — peak glow (16s inhale complete) */
+  50% {
+    transform: translateX(0);
+    filter:
+      drop-shadow(0 0 6px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 13px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 24px rgba(59, 130, 246, 0.65));
+  }
+
+  /* Glitch 3 — ~55% (17.6s) */
+  55% {
+    transform: translateX(-1.5px);
+    filter:
+      drop-shadow(-2px 0 0 #F472B6)
+      drop-shadow(2px 0 0 #60A5FA)
+      drop-shadow(0 0 6px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 13px rgba(59, 130, 246, 1));
+  }
+  56% {
+    transform: translateX(1.5px);
+    filter:
+      drop-shadow(2px 0 0 #F472B6)
+      drop-shadow(-2px 0 0 #60A5FA)
+      drop-shadow(0 0 6px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 13px rgba(59, 130, 246, 1));
+  }
+  57% {
+    transform: translateX(0);
+    filter:
+      drop-shadow(0 0 5px rgba(147, 197, 253, 0.9))
+      drop-shadow(0 0 10px rgba(59, 130, 246, 0.75))
+      drop-shadow(0 0 18px rgba(59, 130, 246, 0.5));
+  }
+
+  /* 75% — falling */
+  75% {
+    transform: translateX(0);
+    filter:
+      drop-shadow(0 0 4px rgba(147, 197, 253, 0.85))
+      drop-shadow(0 0 8px rgba(59, 130, 246, 0.7))
+      drop-shadow(0 0 14px rgba(59, 130, 246, 0.45));
+  }
+
+  /* Glitch 4 — ~80% (25.6s) */
+  80% {
+    transform: translateX(-1.5px);
+    filter:
+      drop-shadow(-2px 0 0 #F472B6)
+      drop-shadow(2px 0 0 #60A5FA)
+      drop-shadow(0 0 4px rgba(147, 197, 253, 0.85))
+      drop-shadow(0 0 8px rgba(59, 130, 246, 0.7));
+  }
+  81% {
+    transform: translateX(1.5px);
+    filter:
+      drop-shadow(2px 0 0 #F472B6)
+      drop-shadow(-2px 0 0 #60A5FA)
+      drop-shadow(0 0 4px rgba(147, 197, 253, 0.85))
+      drop-shadow(0 0 8px rgba(59, 130, 246, 0.7));
+  }
+  82% {
+    transform: translateX(0);
+    filter:
+      drop-shadow(0 0 3px rgba(147, 197, 253, 0.7))
+      drop-shadow(0 0 6px rgba(59, 130, 246, 0.55));
+  }
+
+  /* 100% — back to baseline (16s exhale complete) */
+  100% {
+    transform: translateX(0);
+    filter:
+      drop-shadow(0 0 2px rgba(59, 130, 246, 0.5))
+      drop-shadow(0 0 4px rgba(59, 130, 246, 0.35));
+  }
+}
+.logo-v-mega {
+  animation: logo-electric-border 32s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.logo-v-mega .logo-glyph {
+  animation: logo-mega-glyph 32s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.logo-v-mega .logo-scan-bar {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 50%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(147, 197, 253, 0.55) 70%,
+    rgba(59, 130, 246, 0.95) 95%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  animation: logo-scan-move 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.8));
+}
+.logo-v-mega .logo-particle {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 3px; height: 3px;
+  border-radius: 9999px;
+  background: #93C5FD;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.9), 0 0 12px rgba(59, 130, 246, 0.5);
+  pointer-events: none;
+  animation: logo-particle-burst 20s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}
+
+/* V10 — Lighthouse: rotating beacon of light around the glyph.
+   The 音 character resembles a lighthouse silhouette — vertical tower
+   with horizontal platforms and a base. We lean into that visual: a
+   slow rotating conic-gradient beam sweeps around the logo every 12s
+   (like a real lighthouse), plus a soft 8s breathing glow on the glyph
+   itself — like a lighthouse in fog, pulsing to guide ships home.
+   The beacon is a child element `.logo-beacon` (span) sized larger
+   than the parent (inset: -40%) so the beam extends beyond the logo box. */
+.logo-v-lighthouse .logo-beacon {
+  position: absolute;
+  inset: -40%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(147, 197, 253, 0.12) 6deg,
+    rgba(147, 197, 253, 0.45) 18deg,
+    rgba(59, 130, 246, 0.85) 30deg,
+    rgba(147, 197, 253, 0.45) 42deg,
+    rgba(147, 197, 253, 0.12) 54deg,
+    transparent 60deg,
+    transparent 360deg
+  );
+  mix-blend-mode: screen;
+  filter: blur(2px);
+  animation: logo-beacon-rotate 12s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes logo-beacon-rotate {
+  to { transform: rotate(360deg); }
+}
+.logo-v-lighthouse .logo-glyph {
+  animation: logo-lighthouse-glow 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+@keyframes logo-lighthouse-glow {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 1px rgba(59, 130, 246, 0.3));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 5px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 10px rgba(59, 130, 246, 0.9))
+      drop-shadow(0 0 18px rgba(59, 130, 246, 0.55));
+  }
+}
+
+/* Static glyph modifier — used by V13 "Lighthouse Minimal":
+   kills ALL animations and filters on .logo-glyph so the 音 character
+   is a pure solid color with no glow / breathing / drop-shadow.
+   !important is required because parent variant classes
+   (e.g. .logo-v-lighthouse .logo-glyph) set `animation` and the
+   base .logo-glyph rule sets `filter`. */
+.logo-glyph.logo-glyph-pure {
+  animation: none !important;
+  filter: none !important;
+  -webkit-text-fill-color: currentColor;
+}
+
+/* V11 — Axial Lighthouse: the beam rotates around the VERTICAL AXIS
+   of the 音 hieroglyph (Y-axis in 3D), not in a flat 2D circle like V10.
+   The beam is a wide horizontal light-plane that spins around the
+   glyph's vertical center line. As it rotates:
+     0°   — beam faces viewer, fully visible (bright horizontal stripe)
+     90°  — beam edge-on, foreshortens to a thin vertical line
+     180° — beam faces away, hidden via backface-visibility:hidden
+     270° — beam edge-on from the other side, thin vertical line again
+     360° — back to facing viewer
+   Half the cycle the beam is invisible (when it's facing away). This
+   matches a real lighthouse: the beam is only seen when pointing
+   toward the viewer. The glyph glow is synced — brightest when the
+   beam faces us (0% / 100%), dimmest when it faces away (50%).
+   Technical notes:
+   - perspective(500px) inside transform gives 3D foreshortening
+   - backface-visibility:hidden hides the beam during the back-facing
+     half of the cycle (clean disappearance, no mirror-image artifact)
+   - linear easing on rotation = mechanical lighthouse mechanism
+   - cubic-bezier ease-in-out on glow = breathing sine wave
+   - mix-blend-mode:screen + blur(3px) = soft light, not hard edge */
+.logo-v-axial .logo-axial-beam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 160%;
+  transform: translate(-50%, -50%) perspective(500px) rotateY(0deg);
+  transform-origin: 50% 50%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 32%,
+    rgba(147, 197, 253, 0.08) 38%,
+    rgba(147, 197, 253, 0.30) 44%,
+    rgba(219, 234, 254, 0.95) 50%,
+    rgba(147, 197, 253, 0.30) 56%,
+    rgba(147, 197, 253, 0.08) 62%,
+    transparent 68%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  filter: blur(3px);
+  pointer-events: none;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  animation: logo-axial-rotate 16s linear infinite;
+  z-index: 0;
+}
+@keyframes logo-axial-rotate {
+  0%   { transform: translate(-50%, -50%) perspective(500px) rotateY(0deg); }
+  100% { transform: translate(-50%, -50%) perspective(500px) rotateY(360deg); }
+}
+.logo-v-axial .logo-glyph {
+  animation: logo-axial-glow 16s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+@keyframes logo-axial-glow {
+  0%, 100% {
+    /* Beam facing viewer — full glow (synced with rotateY(0)/360) */
+    filter:
+      drop-shadow(0 0 5px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 11px rgba(59, 130, 246, 0.9))
+      drop-shadow(0 0 20px rgba(59, 130, 246, 0.55));
+  }
+  50% {
+    /* Beam facing away — minimal glow (synced with rotateY(180)) */
+    filter:
+      drop-shadow(0 0 1px rgba(59, 130, 246, 0.3));
+  }
+}
+
+/* V12 — "Tri-Beam Lighthouse" / «Три луча»
+   Third interpretation of the lighthouse metaphor. Instead of
+   continuous rotation (V10 = 2D Z-axis, V11 = 3D Y-axis with hidden
+   backface), V12 holds the beam at THREE discrete positions along the
+   horizontal axis with explicit pauses between them:
+     1. LEFT  — translateX(-22%) + rotateY(+60°). Beam shifts left of
+                the glyph; rotateY(+60°) brings the LEFT edge FORWARD
+                (larger) so the wedge is wide on the left, narrow at
+                the glyph — visually "rays diverging to the LEFT".
+     2. FRONT — translateX(0) + rotateY(0°). Beam centered, full width
+                facing viewer (peak brightness).
+     3. RIGHT — translateX(+22%) + rotateY(-60°). Beam shifts right of
+                the glyph; rotateY(-60°) brings the RIGHT edge FORWARD
+                (larger) so the wedge is wide on the right, narrow at
+                the glyph — visually "rays diverging to the RIGHT".
+   The beam is ALWAYS visible (no backface-visibility:hidden) so the
+   viewer can clearly see the wedge taper and shift toward one side at
+   each held position. The glyph glow is synced — peak at FRONT, softer
+   at LEFT/RIGHT.
+   Cycle: 18s pendulum (LEFT → FRONT → RIGHT → FRONT → LEFT).
+   Each transition uses cubic-bezier ease-in-out for breathing motion;
+   hard keyframe holds (e.g. 0% AND 10% both at LEFT) produce the
+   discrete step pauses the user requested.
+   Technical notes:
+   - rotateY range capped at ±60° (not ±90°). At 90° the beam would
+     foreshorten to zero (edge-on, invisible). At 60° it retains ~50%
+     width and the perspective taper makes one end appear larger than
+     the other, creating the "rays diverging to one side" visual.
+   - translateX(±22%) is applied in SCREEN SPACE (after perspective,
+     before the centering translate). This visibly displaces the beam
+     to one side of the glyph, making the left/right divergence
+     unambiguous — the beam center actually moves, not just tapers.
+   - The rotateY SIGN is INTENTIONALLY INVERTED relative to the
+     translateX direction. For LEFT position we use rotateY(+60°)
+     (not -60°) because positive Y-rotation brings the LEFT edge of
+     the beam toward the viewer (larger, brighter), creating a wedge
+     that is narrow at the glyph and wide extending leftward. The
+     naive combination (translateX(-22%) + rotateY(-60°)) would put
+     the brightest part on the RIGHT, contradicting the "diverging
+     left" visual.
+   - perspective(500px) gives 3D foreshortening: at ±60° the near
+     edge of the beam appears larger/closer, the far edge smaller.
+   - mix-blend-mode:screen + blur(3px) = soft luminous beam, no hard
+     edges (matches Techno-Zen aesthetic).
+   - cubic-bezier(0.45, 0, 0.55, 1) on transitions = same breathing
+     ease used by V11's glow, for visual continuity across variants.
+   - Hard percentage holds (0%,10% / 20%,35% / 45%,60% / 70%,85%)
+     create the discrete "step" rhythm — viewer sees each position
+     clearly before the pendulum swings to the next. */
+.logo-v-tribeam .logo-tribeam-beam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 360%;
+  height: 140%;
+  transform: translate(-50%, -50%) perspective(500px) rotateY(0deg);
+  transform-origin: 50% 50%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 28%,
+    rgba(147, 197, 253, 0.08) 34%,
+    rgba(147, 197, 253, 0.30) 42%,
+    rgba(219, 234, 254, 0.95) 50%,
+    rgba(147, 197, 253, 0.30) 58%,
+    rgba(147, 197, 253, 0.08) 66%,
+    transparent 72%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  filter: blur(3px);
+  pointer-events: none;
+  /* No backface-visibility:hidden — beam must stay visible at all 3 positions */
+  animation: logo-tribeam-sweep 18s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  z-index: 0;
+}
+@keyframes logo-tribeam-sweep {
+  /* LEFT pause — beam shifted LEFT and rotateY(+60°).
+     The +60° rotation makes the LEFT edge of the beam come FORWARD
+     (larger/brighter with perspective), while the RIGHT edge goes
+     BACKWARD (smaller/dimmer). Combined with translateX(-22%) which
+     shifts the beam's geometric center to the LEFT of the glyph,
+     the result is a wedge that is NARROW at the glyph (right side of
+     the shifted beam, farther from viewer) and WIDE extending to the
+     LEFT (left side of the shifted beam, closer to viewer). This
+     visually reads as "rays diverging to the LEFT of the glyph". */
+  0%, 10% {
+    transform: translate(-50%, -50%) translateX(-22%) perspective(500px) rotateY(60deg);
+  }
+  /* transition LEFT → FRONT (10% → 20%) */
+  20%, 35% {
+    /* FRONT pause — centered (no translateX) and rotateY(0deg),
+       full width facing viewer, brightest moment */
+    transform: translate(-50%, -50%) translateX(0%) perspective(500px) rotateY(0deg);
+  }
+  /* transition FRONT → RIGHT (35% → 45%) */
+  45%, 60% {
+    /* RIGHT pause — beam shifted RIGHT and rotateY(-60°).
+       The -60° rotation makes the RIGHT edge of the beam come
+       FORWARD (larger/brighter), while the LEFT edge goes BACKWARD
+       (smaller/dimmer). Combined with translateX(+22%) which shifts
+       the beam's geometric center to the RIGHT of the glyph, the
+       result is a wedge that is NARROW at the glyph (left side of
+       the shifted beam) and WIDE extending to the RIGHT. This
+       visually reads as "rays diverging to the RIGHT of the glyph". */
+    transform: translate(-50%, -50%) translateX(22%) perspective(500px) rotateY(-60deg);
+  }
+  /* transition RIGHT → FRONT (60% → 70%) */
+  70%, 85% {
+    /* FRONT pause again — second peak of the pendulum */
+    transform: translate(-50%, -50%) translateX(0%) perspective(500px) rotateY(0deg);
+  }
+  /* transition FRONT → LEFT (85% → 100%), closes the pendulum loop */
+  100% {
+    transform: translate(-50%, -50%) translateX(-22%) perspective(500px) rotateY(60deg);
+  }
+}
+.logo-v-tribeam .logo-glyph {
+  animation: logo-tribeam-glow 18s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+@keyframes logo-tribeam-glow {
+  /* Synced with beam position:
+     - LEFT/RIGHT (sides, ±60deg): softer glow (beam foreshortened)
+     - FRONT (center, 0deg): peak glow (beam faces viewer) */
+  0%, 10% {
+    /* LEFT pause — softer side glow */
+    filter:
+      drop-shadow(0 0 3px rgba(147, 197, 253, 0.7))
+      drop-shadow(0 0 7px rgba(59, 130, 246, 0.5));
+  }
+  20%, 35% {
+    /* FRONT pause — peak glow */
+    filter:
+      drop-shadow(0 0 5px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 11px rgba(59, 130, 246, 0.9))
+      drop-shadow(0 0 20px rgba(59, 130, 246, 0.55));
+  }
+  45%, 60% {
+    /* RIGHT pause — softer side glow */
+    filter:
+      drop-shadow(0 0 3px rgba(147, 197, 253, 0.7))
+      drop-shadow(0 0 7px rgba(59, 130, 246, 0.5));
+  }
+  70%, 85% {
+    /* FRONT pause again — peak glow */
+    filter:
+      drop-shadow(0 0 5px rgba(147, 197, 253, 1))
+      drop-shadow(0 0 11px rgba(59, 130, 246, 0.9))
+      drop-shadow(0 0 20px rgba(59, 130, 246, 0.55));
+  }
+  100% {
+    /* transition back to LEFT — softer side glow */
+    filter:
+      drop-shadow(0 0 3px rgba(147, 197, 253, 0.7))
+      drop-shadow(0 0 7px rgba(59, 130, 246, 0.5));
+  }
+}
+
+/* Scan line animation */
+@keyframes scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(2000%); opacity: 0; }
+}
+.animate-scan {
+  animation: scan 4s linear infinite;
+}
+
+/* Floating animation */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+/* Marquee animation for ticker */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Glitch effect */
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
+}
+.hover\:animate-glitch:hover {
+  animation: glitch 0.3s linear;
+}
+
+/* Custom scrollbar */
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+  background: color-mix(in oklch, var(--background) 80%, transparent);
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in oklch, var(--neon) 40%, transparent);
+  border-radius: 3px;
+}
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklch, var(--neon) 70%, transparent);
+}
+
+/* Clip-path for techno-style corners */
+.clip-corner {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 16px) 0,
+    100% 16px,
+    100% 100%,
+    16px 100%,
+    0 calc(100% - 16px)
+  );
+}
+
+.clip-corner-sm {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
+}
+
+/* Noise overlay */
+.noise-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* === Navy header utilities === */
+
+/* Deep navy gradient surface for the header */
+.bg-navy-header {
+  background:
+    linear-gradient(180deg,
+      var(--navy-800) 0%,
+      var(--navy-900) 100%
+    ),
+    radial-gradient(ellipse at top,
+      color-mix(in oklch, var(--navy-600) 50%, transparent),
+      transparent 70%
+    );
+}
+
+/* Navy with stronger transparency when scrolled (lets content bleed through subtly) */
+.bg-navy-header-scrolled {
+  background:
+    linear-gradient(180deg,
+      color-mix(in oklch, var(--navy-800) 88%, transparent) 0%,
+      color-mix(in oklch, var(--navy-900) 92%, transparent) 100%
+    );
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+}
+
+/* Subtle grid pattern over navy */
+.bg-navy-grid {
+  background-image:
+    linear-gradient(to right,
+      color-mix(in oklch, var(--navy-glow) 8%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom,
+      color-mix(in oklch, var(--navy-glow) 8%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 32px 32px;
+}
+
+/* Top accent line — cyan-blue glow on navy */
+.navy-accent-line {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    color-mix(in oklch, var(--navy-glow) 50%, transparent) 20%,
+    var(--neon) 50%,
+    color-mix(in oklch, var(--navy-glow) 50%, transparent) 80%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 12px color-mix(in oklch, var(--navy-glow) 60%, transparent),
+    0 0 24px color-mix(in oklch, var(--navy-glow) 30%, transparent);
+}
+
+/* Navy text colors */
+.text-navy { color: var(--navy-text); }
+.text-navy-muted { color: var(--navy-muted); }
+
+/* Hover on navy background — items glow cyan */
+.hover-navy-item {
+  transition: all 0.2s ease;
+}
+.hover-navy-item:hover {
+  background: color-mix(in oklch, var(--navy-glow) 12%, transparent);
+  color: var(--navy-text);
+  box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--navy-glow) 30%, transparent);
+}
+
+/* Navy glow (for CTA on navy header) */
+.glow-navy {
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--neon) 40%, transparent),
+    0 0 20px color-mix(in oklch, var(--neon) 30%, transparent),
+    0 0 40px color-mix(in oklch, var(--navy-glow) 25%, transparent);
+}

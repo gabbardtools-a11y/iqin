@@ -1,0 +1,40 @@
+{
+  "slug": "page43",
+  "url": "https://iqin.ru/page43",
+  "title": "Страница 43",
+  "h1": "Страница 43",
+  "description": "Страница 43",
+  "keywords": "",
+  "body": "",
+  "headings": [
+    {
+      "level": 3,
+      "text": "Оставьте заявку, заполнив форму ниже и получите полностью бесплатную консультацию и бесплатный экспресс-поиск от наших Патентных Поверенных"
+    },
+    {
+      "level": 4,
+      "text": "Граф Дракула воскрес: Ученые пролили новый свет на легендарную фигуру, стоящую за королем вампиров"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://90f1661d-2ff4-4f29-b07c-0e47453ca691.selstorage.ru/site732959/33a0c127-7d50-4573-a119-baf96b4dc552/33a0c127-7d50-4573-a119-baf96b4dc552-12923491.jpeg",
+      "alt": "Изображение"
+    },
+    {
+      "src": "https://660c827d-ce04-4b4c-80d1-1d6200e5d4c5.selcdn.net/tb/0.1.937/images/logos/T-BANK_logo_white.svg",
+      "alt": "Т-Банк"
+    }
+  ],
+  "links": [
+    {
+      "href": "https://iqin.ru/kontakt",
+      "text": "Контакты"
+    },
+    {
+      "href": "https://www.tbank.ru/business/website-builder?utm_source=sites.footer&utm_medium=ref&utm_campaign=sites.main",
+      "text": "Конструктор сайтов от"
+    }
+  ],
+  "bodyLength": 1734
+}
