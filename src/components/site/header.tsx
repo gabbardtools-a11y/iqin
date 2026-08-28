@@ -41,7 +41,8 @@ export function Header() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-navy-grid opacity-40" />
 
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8">
-        {/* Logo */}
+        {/* Logo — overflow:hidden prevents scan-line glow / drop-shadow
+            from inflating the header height on desktop (lg:h-20 = 80px). */}
         <Link href="/" className="group flex items-center gap-2.5" aria-label="IQin — на главную">
           <LogoMark />
           <div className="flex flex-col leading-none">
@@ -56,9 +57,21 @@ export function Header() {
           </div>
         </Link>
 
-        {/* Desktop navigation */}
+        {/* Desktop navigation — only a few high-priority items.
+            Items: Патентные поверенные, Цены, Акции, О компании — moved to
+            mobile-only (burger) menu to avoid overflow on smaller laptops. */}
         <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Основная навигация">
-          {mainNav.map((item) => (
+          {mainNav
+            .filter(
+              (item) =>
+                ![
+                  "/patentnie_poverennie",
+                  "/price",
+                  "/akcii_i_skidki",
+                  "/company",
+                ].includes(item.href)
+            )
+            .map((item) => (
             <div
               key={item.href}
               className="relative"
@@ -248,7 +261,7 @@ export function Header() {
 function LogoMark() {
   return (
     <span
-      className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl logo-v-crossscan"
+      className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-xl logo-v-crossscan"
       aria-hidden="true"
       style={{
         background: "transparent",
