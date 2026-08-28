@@ -261,7 +261,7 @@ export function Header() {
 function LogoMark() {
   return (
     <span
-      className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-xl logo-v-crossscan"
+      className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-sm logo-v-crossscan"
       aria-hidden="true"
       style={{
         background: "transparent",
