@@ -1,6 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <text x="16" y="23" text-anchor="middle"
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+  </defs>
+  <!-- Glow halo: light blue 音 blurred behind main glyph -->
+  <text x="16" y="25" text-anchor="middle"
         font-family="'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'WenQuanYi Zen Hei', sans-serif"
-        font-size="22" font-weight="500"
-        fill="#60A5FA">音</text>
+        font-size="28" font-weight="700"
+        fill="#60A5FA" filter="url(#glow)" opacity="0.85">音</text>
+  <!-- Main glyph: dark blue 音 on top of glow -->
+  <text x="16" y="25" text-anchor="middle"
+        font-family="'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'WenQuanYi Zen Hei', sans-serif"
+        font-size="28" font-weight="700"
+        fill="#1E40AF">音</text>
 </svg>

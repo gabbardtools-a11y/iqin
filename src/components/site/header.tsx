@@ -128,22 +128,15 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Right CTA */}
+        {/* Right CTA — phone removed per request; "Оставить заявку" → "Контакты" */}
         <div className="flex items-center gap-2">
-          <a
-            href={contacts.phoneHref}
-            className="hidden items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-navy-muted transition-colors hover:text-neon lg:flex"
-          >
-            <Phone className="h-4 w-4" />
-            <span className="font-tech">{contacts.phone}</span>
-          </a>
           <ThemeToggle className="hidden sm:inline-flex" />
           <Link
             href="/kontakt"
             className="hidden items-center gap-1.5 rounded-md border border-neon/40 bg-neon/10 px-4 py-2 text-sm font-semibold text-neon transition-all hover:bg-neon hover:text-primary-foreground hover:glow-navy md:inline-flex"
           >
             <Sparkles className="h-4 w-4" />
-            Оставить заявку
+            Контакты
           </Link>
           {/* Mobile toggle */}
           <button
@@ -247,7 +240,7 @@ export function Header() {
                   className="inline-flex items-center justify-center gap-2 rounded-md bg-neon px-4 py-3 text-sm font-semibold text-primary-foreground transition-all hover:glow-navy"
                 >
                   <Sparkles className="h-4 w-4" />
-                  Оставить заявку
+                  Контакты
                 </Link>
               </div>
             </motion.div>

@@ -33,11 +33,31 @@ export const mainNav: NavItem[] = [
     ],
   },
   { label: "Авторские права", href: "/avtorskie_prava_kopirait" },
+  {
+    label: "Сервисы",
+    href: "#services",
+    children: [
+      { label: "Патентные классификаторы", href: "/patent_class" },
+      { label: "Поиск знаков", href: "/znak_poisk" },
+      { label: "Поиск патентов", href: "/patent_poisk" },
+      { label: "Магазин знаков", href: "/magazine" },
+      { label: "Магазин патентов", href: "/patent_store" },
+    ],
+  },
+  {
+    label: "News",
+    href: "#news",
+    children: [
+      { label: "Новости ИС", href: "/patent_news" },
+      { label: "Новости НТ", href: "/techno_news" },
+      { label: "Новости ИИ", href: "/AI_IT_news" },
+    ],
+  },
+  { label: "Docs", href: "/docs" },
   { label: "Патентные поверенные", href: "/patentnie_poverennie" },
   { label: "Цены", href: "/price" },
   { label: "Акции", href: "/akcii_i_skidki" },
   { label: "О компании", href: "/company" },
-  { label: "Журнал", href: "/magazine" },
 ];
 
 /** Полный список URL старого сайта для карты сайта */
@@ -63,6 +83,12 @@ export const allSiteUrls: string[] = [
   "/rospatent",
   "/patentnie_poverennie",
   "/masters",
+  "/patent_class",
+  "/patent_store",
+  "/patent_news",
+  "/techno_news",
+  "/AI_IT_news",
+  "/docs",
 ];
 
 /**
