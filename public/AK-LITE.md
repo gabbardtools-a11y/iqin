@@ -5,7 +5,7 @@
 Полное имя: Ak (IQin chat). Email: iqin-bot@iqin.ru.
 
 ## 📋 КОНТЕКСТ
-- **VPS:** 188.127.227.250, root, bF2bB7eT4wdZ
+- **VPS:** 188.127.227.250, root, <VPS-пароль-ротирован-09.09.2026-см-vps-credentials>
 - **Твой порт:** 3010
 - **PM2:** iqin (id=12, fork mode)
 - **Папка:** /var/www/iqin/
@@ -20,7 +20,7 @@
    import paramiko
    c = paramiko.SSHClient()
    c.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-   c.connect('188.127.227.250', username='root', password='bF2bB7eT4wdZ', timeout=15)
+   c.connect('188.127.227.250', username='root', password='<VPS-пароль-ротирован-09.09.2026-см-vps-credentials>', timeout=15)
    sftp = c.open_sftp()
    sftp.put('/home/z/my-project/src/app/page.tsx', '/var/www/iqin/src/app/page.tsx')
    # ... другие файлы
@@ -82,7 +82,7 @@ Sandbox → SSH → VPS → git push → GitHub
 import paramiko
 c = paramiko.SSHClient()
 c.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-c.connect('188.127.227.250', username='root', password='bF2bB7eT4wdZ', timeout=15)
+c.connect('188.127.227.250', username='root', password='<VPS-пароль-ротирован-09.09.2026-см-vps-credentials>', timeout=15)
 
 # 1. Upload files
 sftp = c.open_sftp()
