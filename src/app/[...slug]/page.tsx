@@ -236,20 +236,64 @@ export default async function Page({
                       return <Tag key={i} className={cls}>{block.text}</Tag>;
                     }
                     if (block.type === "paragraph") {
+                      // Parse URLs in text and make them clickable links.
+                      const urlRegex = /(https?:\/\/[^\s<>"']+)/g;
+                      const parts = block.text.split(urlRegex);
                       return (
                         <p
                           key={i}
                           className="mb-4 text-[15px] leading-[1.75] text-foreground/90"
                         >
-                          {block.text}
+                          {parts.map((part, idx) => {
+                            if (idx % 2 === 1) {
+                              const url = part.replace(/[.,;:!?)\]]+$/, "");
+                              return (
+                                <a
+                                  key={idx}
+                                  href={url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-neon hover:underline break-all"
+                                >
+                                  {url}
+                                </a>
+                              );
+                            }
+                            return <span key={idx}>{part}</span>;
+                          })}
                         </p>
                       );
                     }
                     if (block.type === "list_item") {
+                      // Parse URLs in text and make them clickable links.
+                      // Pattern matches http(s)://... up to whitespace or end of string,
+                      // also handles trailing punctuation gracefully.
+                      const urlRegex = /(https?:\/\/[^\s<>"']+)/g;
+                      const parts = block.text.split(urlRegex);
                       return (
                         <div key={i} className="flex gap-2 mb-2 text-[15px] leading-[1.6] text-foreground/90">
                           <span className="text-neon mt-0.5">•</span>
-                          <span>{block.text}</span>
+                          <span>
+                            {parts.map((part, idx) => {
+                              if (idx % 2 === 1) {
+                                // Odd indices are URL matches (from capture group)
+                                // Strip trailing punctuation that's not part of URL
+                                const url = part.replace(/[.,;:!?)\]]+$/, "");
+                                return (
+                                  <a
+                                    key={idx}
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-neon hover:underline break-all"
+                                  >
+                                    {url}
+                                  </a>
+                                );
+                              }
+                              return <span key={idx}>{part}</span>;
+                            })}
+                          </span>
                         </div>
                       );
                     }
