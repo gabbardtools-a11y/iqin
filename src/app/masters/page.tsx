@@ -3,9 +3,8 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  BadgeCheck,
   Lightbulb,
-  Palette,
+  Frame,
   Globe,
   Code2,
   ArrowRight,
@@ -14,6 +13,35 @@ import {
 } from "lucide-react";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
+
+/** Custom "Registered" icon — R inside a circle (like ® trademark symbol).
+ *  lucide-react doesn't have this built-in, so we draw it ourselves.
+ *  Stroke-based, matches lucide visual style (24x24 viewBox, 2px stroke).
+ */
+function Registered({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      {/* Outer circle */}
+      <circle cx="12" cy="12" r="10" />
+      {/* Letter "R" — drawn as path: vertical stroke + bowl + diagonal leg */}
+      <path d="M9 7v10" />
+      <path d="M9 7h4a2.5 2.5 0 0 1 0 5H9" />
+      <path d="M12 12l3 5" />
+    </svg>
+  );
+}
 
 type CardItem = {
   href: string;
@@ -31,7 +59,7 @@ const CARDS: CardItem[] = [
     title: "Поиск по товарным знакам",
     description:
       "Проверьте оригинальность вашего логотипа, названия или бренда перед регистрацией. Узнайте, не занят ли знак в России и за рубежом.",
-    icon: <BadgeCheck className="h-7 w-7" />,
+    icon: <Registered className="h-7 w-7" />,
     accent: "#60A5FA",
     bullets: [
       "Российские и международные базы",
@@ -57,7 +85,7 @@ const CARDS: CardItem[] = [
     title: "Поиск по промышленным образцам",
     description:
       "Проверьте оригинальность дизайна изделия. Поиск по российским и международным базам промышленных образцов.",
-    icon: <Palette className="h-7 w-7" />,
+    icon: <Frame className="h-7 w-7" />,
     accent: "#F472B6",
     bullets: [
       "WIPO Hague Express (международная база)",
@@ -148,7 +176,7 @@ export default function MastersPage() {
                 {CARDS.length} категорий поиска
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <BadgeCheck className="h-3.5 w-3.5" />
+                <Registered className="h-3.5 w-3.5" />
                 25+ поисковых баз
               </span>
               <span className="inline-flex items-center gap-1.5">
