@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Lightbulb,
-  Frame,
+  Palette,
   Globe,
   Code2,
   ArrowRight,
@@ -85,7 +85,7 @@ const CARDS: CardItem[] = [
     title: "Поиск по промышленным образцам",
     description:
       "Проверьте оригинальность дизайна изделия. Поиск по российским и международным базам промышленных образцов.",
-    icon: <Frame className="h-7 w-7" />,
+    icon: <Palette className="h-7 w-7" />,
     accent: "#F472B6",
     bullets: [
       "WIPO Hague Express (международная база)",
