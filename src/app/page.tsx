@@ -6,17 +6,13 @@ import { Stats } from "@/components/site/stats";
 import { Process } from "@/components/site/process";
 import { Cta } from "@/components/site/cta";
 import { Footer } from "@/components/site/footer";
+import { SkipLink } from "@/components/site/skip-link";
 
 export default function Home() {
   return (
     <div className="relative flex min-h-screen flex-col bg-background bg-grid-mm-page">
       {/* Skip to content (a11y) */}
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-neon focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
-      >
-        Перейти к содержимому
-      </a>
+      <SkipLink />
 
       <Header />
 

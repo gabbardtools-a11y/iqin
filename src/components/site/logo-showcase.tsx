@@ -3,11 +3,14 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/useLanguage";
+import { type TranslationKey } from "@/lib/i18n/translations";
 
 type Variant = {
   id: string;
   label: string;
-  hint: string;
+  labelKey?: TranslationKey;
+  hintKey: TranslationKey;
   className: string;
   /** extra elements rendered inside the logo box (ring, scan-bar, particles, …) */
   extra?: React.ReactNode;
@@ -62,60 +65,69 @@ const VARIANTS: Variant[] = [
   {
     id: "v1-breathe",
     label: "Breathing",
-    hint: "плавное дыхание glow + zoom",
+    hint: "",
+    hintKey: "show.v1Hint",
     className: "logo-v-breathe",
   },
   {
     id: "v2-radar",
     label: "Radar Sweep",
-    hint: "вращающееся кольцо с точкой",
+    hint: "",
+    hintKey: "show.v2Hint",
     className: "logo-v-radar",
     extra: <span className="logo-ring" />,
   },
   {
     id: "v3-glitch",
     label: "Glitch RGB",
-    hint: "RGB-сдвиг + микро-дрожание",
+    hint: "",
+    hintKey: "show.v3Hint",
     className: "logo-v-glitch",
   },
   {
     id: "v4-scan",
     label: "Scan Sweep",
-    hint: "световая полоса сверху вниз",
+    hint: "",
+    hintKey: "show.v4Hint",
     className: "logo-v-scan",
     extra: <span className="logo-scan-bar" />,
   },
   {
     id: "v5-particles",
     label: "Particle Burst",
-    hint: "8 частиц разлетаются наружу",
+    hint: "",
+    hintKey: "show.v5Hint",
     className: "logo-v-particles",
     extra: <ParticleField />,
   },
   {
     id: "v6-electric",
     label: "Electric Pulse",
-    hint: "высокочастотное мерцание + молнии",
+    hint: "",
+    hintKey: "show.v6Hint",
     className: "logo-v-electric",
   },
   {
     id: "v7-combo",
     label: "Combo: Burst + Electric",
-    hint: "v5 + v6 — частицы и электрические разряды",
+    hint: "",
+    hintKey: "show.v7Hint",
     className: "logo-v-electric logo-v-particles",
     extra: <ParticleField />,
   },
   {
     id: "v8-glitchscan",
     label: "Combo: Glitch + Scan",
-    hint: "v3 + v4 — RGB-дрейф и сканирующий луч",
+    hint: "",
+    hintKey: "show.v8Hint",
     className: "logo-v-glitchscan",
     extra: <span className="logo-scan-bar" />,
   },
   {
     id: "v9-mega",
     label: "Mega Combo (V7+V8)",
-    hint: "v3+v4+v5+v6 — все четыре эффекта в одной 32с синхронизации",
+    hint: "",
+    hintKey: "show.v9Hint",
     className: "logo-v-mega",
     extra: (
       <>
@@ -126,29 +138,34 @@ const VARIANTS: Variant[] = [
   },
   {
     id: "v10-lighthouse",
-    label: "Lighthouse (Маяк)",
-    hint: "вращающийся луч света — иероглиф 音 как маяк в тумане",
+    label: "Lighthouse",
+    labelKey: "show.v10Label",
+    hint: "",
+    hintKey: "show.v10Hint",
     className: "logo-v-lighthouse",
     extra: <span className="logo-beacon" />,
   },
   {
     id: "v11-axial",
     label: "Axial Lighthouse",
-    hint: "луч вращается вокруг оси иероглифа — 3D-маяк, а не круговой обход",
+    hint: "",
+    hintKey: "show.v11Hint",
     className: "logo-v-axial",
     extra: <span className="logo-axial-beam" />,
   },
   {
     id: "v12-tribeam",
     label: "Tri-Beam Lighthouse",
-    hint: "три дискретных положения луча: слева вбок → на зрителя → справа вбок (маяк-маятник)",
+    hint: "",
+    hintKey: "show.v12Hint",
     className: "logo-v-tribeam",
     extra: <span className="logo-tribeam-beam" />,
   },
   {
     id: "v13-lighthouse-minimal",
     label: "Lighthouse Minimal",
-    hint: "маяк V10 без внешней рамки — сетка и уголки сохранены, 音 чисто синий",
+    hint: "",
+    hintKey: "show.v13Hint",
     className: "logo-v-lighthouse",
     extra: <span className="logo-beacon" />,
     minimal: true,
@@ -157,7 +174,8 @@ const VARIANTS: Variant[] = [
   {
     id: "v14-clean",
     label: "Clean Minimal",
-    hint: "чистый синий 音 на прозрачном фоне — только сетка и уголки, без эффектов",
+    hint: "",
+    hintKey: "show.v14Hint",
     className: "",
     minimal: true,
     glyphMinimal: true,
@@ -169,7 +187,8 @@ const VARIANTS: Variant[] = [
   {
     id: "v15-vscan",
     label: "Vertical Scan",
-    hint: "минимал V14 + тонкая вертикальная линия скользит слева направо по иероглифу",
+    hint: "",
+    hintKey: "show.v15Hint",
     className: "logo-v-vscan",
     minimal: true,
     glyphMinimal: true,
@@ -182,6 +201,7 @@ const VARIANTS: Variant[] = [
 ];
 
 function LogoVariantCard({ variant, index }: { variant: Variant; index: number }) {
+  const { t } = useLanguage();
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -267,10 +287,10 @@ function LogoVariantCard({ variant, index }: { variant: Variant; index: number }
       {/* Label + hint */}
       <div className="flex flex-col items-center gap-0.5 text-center">
         <span className="font-display text-xs font-semibold text-foreground">
-          {variant.label}
+          {variant.labelKey ? t(variant.labelKey) : variant.label}
         </span>
         <span className="font-tech text-[10px] uppercase tracking-wider text-muted-foreground">
-          {variant.hint}
+          {t(variant.hintKey)}
         </span>
       </div>
 
@@ -283,6 +303,7 @@ function LogoVariantCard({ variant, index }: { variant: Variant; index: number }
 }
 
 export function LogoShowcase() {
+  const { t } = useLanguage();
   return (
     <section className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
       {/* Section heading */}
@@ -291,7 +312,7 @@ export function LogoShowcase() {
           Logo Motion Lab
         </span>
         <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-          Пятнадцать вариантов анимации логотипа{" "}
+          {t("show.heading")}{" "}
           <span>
             <span className="text-iq-gold">IQ</span>
             <span className="text-in-blue">in</span>
@@ -301,20 +322,7 @@ export function LogoShowcase() {
           </span>
         </h2>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          Пятнадцать динамических вариантов в стиле <span className="text-neon">Техно-Зен: Zentex</span> —
-          темп глубокого дыхания, циклы 8–32 секунды, плавные переходы, без резких вспышек.
-          На чистом CSS, без JS-нагрузки. V10 «Маяк» — вращающийся луч света вокруг глифа.
-          V11 «Осевой маяк» — луч вращается вокруг самой вертикальной оси иероглифа
-          (3D-оборот с backface-visibility:hidden, как настоящий маяк, видимый только
-          когда свет направлен на зрителя). V12 «Три луча» — луч задерживается в трёх
-          положениях по горизонтали: слева вбок, на зрителя, справа вбок, с явными
-          паузами и мягким возвратом-маятником. V13 «Маяк минимал» — тот же вращающийся
-          луч, но без внешней рамки: чистый квадрат с закруглёнными краями, сетка
-          и уголки сохранены, а сам иероглиф 音 — чисто синий, без градиента и свечения.
-          V14 «Чистый минимал» — окончательная дистилляция: только синий 音, сетка и
-          четыре уголка на прозрачном фоне, без какого-либо движения, glow или scan-line.
-          V15 «Вертикальное сканирование» — V14 + тонкая вертикальная световая линия,
-          которая медленно скользит слева направо по иероглифу, как лазерный сканер.
+          {t("show.lead")}
         </p>
       </div>
 

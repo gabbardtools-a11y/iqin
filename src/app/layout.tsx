@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Space_Grotesk, JetBrains_Mono, Noto_Sans_SC } from "
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
+import { getLang } from "@/lib/i18n/server";
+import { t } from "@/lib/i18n/translations";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,10 +35,12 @@ const notoSansSC = Noto_Sans_SC({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "IQin — Патентные технологии нового поколения | ИИ в патентовании и разработке сайтов",
-  description:
-    "IQin.ru — ультрасовременная платформа интеллектуальной собственности. Создание патентов с ИИ, разработка сайтов с ИИ, регистрация товарных знаков, патентование изобретений, защита авторских прав.",
+/** Metadata ×3 по Закону №3 — язык берётся из cookie/заголовка (SSR) */
+export async function generateMetadata(): Promise<Metadata> {
+  const lang = await getLang();
+  return {
+  title: t('meta.title', lang),
+  description: t('meta.description', lang),
   keywords: [
     "патент",
     "товарный знак",
@@ -66,29 +70,30 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.webmanifest",
   openGraph: {
-    title: "IQin — Патентные технологии нового поколения",
-    description:
-      "Создание патентов с ИИ и разработка сайтов с ИИ. Полный спектр услуг по защите интеллектуальной собственности.",
+    title: t('meta.ogTitle', lang),
+    description: t('meta.ogDesc', lang),
     url: "https://iqin.ru",
     siteName: "IQin",
     type: "website",
-    locale: "ru_RU",
+    locale: lang === 'ru' ? 'ru_RU' : lang === 'en' ? 'en_US' : 'zh_CN',
   },
   twitter: {
     card: "summary_large_image",
-    title: "IQin — Патентные технологии нового поколения",
-    description:
-      "Создание патентов с ИИ и разработка сайтов с ИИ. Полный спектр услуг по защите интеллектуальной собственности.",
+    title: t('meta.ogTitle', lang),
+    description: t('meta.ogDesc', lang),
   },
-};
+  };
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const lang = await getLang();
+
   return (
-    <html lang="ru" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${notoSansSC.variable} antialiased bg-background text-foreground min-h-screen`}
       >

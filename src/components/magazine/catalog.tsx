@@ -15,21 +15,27 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Search, Phone, Mail, ArrowRight } from 'lucide-react';
+import { useLanguage } from '@/lib/i18n/useLanguage';
+import { tFoundMarks, tShowMore, type Lang } from '@/lib/i18n/translations';
 
 // Popular МКТУ classes for filtering
 const POPULAR_CLASSES = [
   3, 5, 9, 16, 25, 28, 29, 30, 32, 33, 35, 41, 42, 43, 44, 45,
 ];
 
-function formatPrice(price: number | null, priceType: string): string {
-  if (price === null) return 'Договорная';
-  if (priceType === 'contract') return 'Договорная';
-  if (price >= 1_000_000) return `${(price / 1_000_000).toFixed(price % 1_000_000 === 0 ? 0 : 1)} млн ₽`;
-  if (price >= 1000) return `${Math.round(price / 1000)}K ₽`;
+type TFn = (key: 'mag.negotiable' | 'mag.mlnRub' | 'mag.kRub') => string;
+
+function formatPrice(price: number | null, priceType: string, t: TFn): string {
+  if (price === null) return t('mag.negotiable');
+  if (priceType === 'contract') return t('mag.negotiable');
+  if (price >= 1_000_000)
+    return `${(price / 1_000_000).toFixed(price % 1_000_000 === 0 ? 0 : 1)} ${t('mag.mlnRub')}`;
+  if (price >= 1000) return `${Math.round(price / 1000)} ${t('mag.kRub')}`;
   return `${price} ₽`;
 }
 
 function TrademarkCard({ tm }: { tm: Trademark }) {
+  const { t, lang } = useLanguage();
   const imageUrl = tm.imageUrl;
 
   return (
@@ -55,7 +61,7 @@ function TrademarkCard({ tm }: { tm: Trademark }) {
         <div className="flex flex-wrap gap-1 mt-1">
           {tm.classes.slice(0, 3).map((cls) => (
             <Badge key={cls} variant="secondary" className="text-xs">
-              МКТУ {cls}
+              {t('mag.niceBadge')} {cls}
             </Badge>
           ))}
           {tm.classes.length > 3 && (
@@ -71,7 +77,7 @@ function TrademarkCard({ tm }: { tm: Trademark }) {
         </p>
         <div className="flex items-center justify-between gap-2">
           <span className="text-lg font-bold text-primary">
-            {formatPrice(tm.price, tm.priceType)}
+            {formatPrice(tm.price, tm.priceType, t)}
           </span>
           <Badge variant="outline" className="text-xs">
             №{tm.registrationNumber}
@@ -100,6 +106,7 @@ function TrademarkCard({ tm }: { tm: Trademark }) {
 }
 
 export function MagazineCatalog() {
+  const { t, lang } = useLanguage();
   const [search, setSearch] = useState('');
   const [selectedClass, setSelectedClass] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('default');
@@ -160,7 +167,7 @@ export function MagazineCatalog() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             type="text"
-            placeholder="Поиск по названию, номеру, продавцу..."
+            placeholder={t('mag.searchPlaceholder')}
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
@@ -177,26 +184,26 @@ export function MagazineCatalog() {
           }}
         >
           <SelectTrigger className="w-full sm:w-48">
-            <SelectValue placeholder="Класс МКТУ" />
+            <SelectValue placeholder={t('mag.classFilter')} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">Все классы</SelectItem>
+            <SelectItem value="all">{t('mag.allClasses')}</SelectItem>
             {POPULAR_CLASSES.map((cls) => (
               <SelectItem key={cls} value={cls.toString()}>
-                МКТУ {cls}
+                {t('mag.niceBadge')} {cls}
               </SelectItem>
             ))}
           </SelectContent>
         </Select>
         <Select value={sortBy} onValueChange={setSortBy}>
           <SelectTrigger className="w-full sm:w-48">
-            <SelectValue placeholder="Сортировка" />
+            <SelectValue placeholder={t('mag.sortBy')} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="default">По умолчанию</SelectItem>
-            <SelectItem value="price-asc">Цена: по возрастанию</SelectItem>
-            <SelectItem value="price-desc">Цена: по убыванию</SelectItem>
-            <SelectItem value="name">По названию (А-Я)</SelectItem>
+            <SelectItem value="default">{t('mag.sortDefault')}</SelectItem>
+            <SelectItem value="price-asc">{t('mag.sortPriceAsc')}</SelectItem>
+            <SelectItem value="price-desc">{t('mag.sortPriceDesc')}</SelectItem>
+            <SelectItem value="name">{t('mag.sortName')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -204,11 +211,15 @@ export function MagazineCatalog() {
       {/* Result count */}
       <div className="flex items-center justify-between">
         <p className="text-sm text-muted-foreground">
-          Найдено: <span className="font-semibold text-foreground">{filtered.length}</span> знаков
+          {tFoundMarks(filtered.length, lang as Lang)}
         </p>
         {filtered.length > visibleCount && (
           <p className="text-xs text-muted-foreground">
-            Показано {visibleCount} из {filtered.length}
+            {lang === 'en'
+              ? `Showing ${visibleCount} of ${filtered.length}`
+              : lang === 'zh'
+                ? `显示 ${visibleCount} / 共 ${filtered.length}`
+                : `Показано ${visibleCount} из ${filtered.length}`}
           </p>
         )}
       </div>
@@ -222,7 +233,7 @@ export function MagazineCatalog() {
         </div>
       ) : (
         <div className="py-16 text-center">
-          <p className="text-muted-foreground">Не найдено знаков по вашим фильтрам</p>
+          <p className="text-muted-foreground">{t('mag.noResults')}</p>
           <Button
             variant="outline"
             className="mt-4"
@@ -232,7 +243,7 @@ export function MagazineCatalog() {
               setSortBy('default');
             }}
           >
-            Сбросить фильтры
+            {t('mag.resetFilters')}
           </Button>
         </div>
       )}
@@ -245,7 +256,7 @@ export function MagazineCatalog() {
             size="lg"
             onClick={() => setVisibleCount((c) => c + 24)}
           >
-            Показать ещё {Math.min(24, filtered.length - visibleCount)} знаков
+            {tShowMore(Math.min(24, filtered.length - visibleCount), lang as Lang)}
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>

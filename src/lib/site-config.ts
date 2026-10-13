@@ -3,6 +3,37 @@
  * Все URL-адреса сохранены от старого сайта iqin.ru
  * для сохранения SEO и обратной совместимости
  */
+import type { TranslationKey } from "@/lib/i18n/translations";
+
+/** Ключи словаря для подписей навигации по href (Закон №3 — RU/EN/ZH) */
+export const navKeyMap: Record<string, TranslationKey> = {
+  "/patenti": "nav.patents",
+  "/patent_na_izobretenie": "nav.patentInvention",
+  "/patent_na_poleznuyu_model": "nav.patentUtilityModel",
+  "/patent_na_disain": "nav.patentDesign",
+  "/mezdunarudnie-patenti": "nav.patentsInternational",
+  "/brendi": "nav.brands",
+  "/tovarniy_znak_rossii": "nav.tmRussia",
+  "/mezdunarodnie_znaki": "nav.marksInternational",
+  "/china_trade_mark": "nav.tmChina",
+  "/naming": "nav.naming",
+  "/avtorskie_prava_kopirait": "nav.copyright",
+  "#services": "nav.services",
+  "/patent_class": "nav.classifiers",
+  "/znak_poisk": "nav.markSearch",
+  "/patent_poisk": "nav.patentSearch",
+  "/magazine": "nav.markStore",
+  "/patent_store": "nav.patentStore",
+  "#news": "nav.news",
+  "/patent_news": "nav.ipNews",
+  "/techno_news": "nav.techNews",
+  "/AI_IT_news": "nav.aiNews",
+  "/docs": "nav.docs",
+  "/patentnie_poverennie": "nav.attorneys",
+  "/price": "nav.pricing",
+  "/akcii_i_skidki": "nav.promos",
+  "/company": "nav.company",
+};
 
 export type NavItem = {
   label: string;
@@ -125,7 +156,9 @@ export const patentAttorneys = [
   {
     name: "Беркутова Наталья Николаевна",
     role: "Гендиректор",
+    roleKey: "attorney.roleDirector" as TranslationKey,
     specialization: "Патентный поверенный по товарным знакам",
+    specKey: "attorney.specTrademarks" as TranslationKey,
     registrationNumber: "№ 957",
     phone: "+7 (916) 496-49-29",
     phoneHref: "tel:+79164964929",
@@ -133,7 +166,9 @@ export const patentAttorneys = [
   {
     name: "Туленинов Николай Николаевич",
     role: "Патентный поверенный",
+    roleKey: "attorney.roleAttorney" as TranslationKey,
     specialization: "Патентный поверенный по патентам",
+    specKey: "attorney.specPatents" as TranslationKey,
     registrationNumber: "№ 1416",
     phone: "+7 (985) 938-38-72",
     phoneHref: "tel:+79859383872",

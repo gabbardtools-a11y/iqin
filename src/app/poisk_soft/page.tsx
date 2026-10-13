@@ -1,62 +1,86 @@
 import SearchDatabasesPage from "@/components/site/search-databases-page";
 import type { Metadata } from "next";
+import { getLang } from "@/lib/i18n/server";
+import { t, type TranslationKey } from "@/lib/i18n/translations";
 
-export const metadata: Metadata = {
-  title: "Поиск программ и баз данных — 3 базы | IQin.ru",
-  description:
-    "Бесплатные сервисы для проверки программ ЭВМ и баз данных: Реестр российского ПО Минцифры, реестр Минсвязи, ФИПС — реестр программ ЭВМ и баз данных РФ.",
-  keywords: [
-    "поиск программ",
-    "реестр российского ПО",
-    "Минцифры",
-    "Минсвязи",
-    "ФИПС",
-    "программы ЭВМ",
-    "базы данных",
-    "регистрация ПО",
-  ],
-  openGraph: {
-    title: "Поиск программ и баз данных — 3 бесплатные базы",
-    description:
-      "Российские реестры программ для ЭВМ и баз данных: Минцифры, Минсвязи, ФИПС.",
-    url: "https://iqin.ru/poisk_soft",
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const lang = await getLang();
+  return {
+    title:
+      lang === "en"
+        ? "Software and Database Search — 3 Registries | IQin.ru"
+        : lang === "zh"
+          ? "软件与数据库检索 —— 3 个登记簿 | IQin.ru"
+          : "Поиск программ и баз данных — 3 базы | IQin.ru",
+    description: t("ps.desc", lang),
+    keywords: [
+      "поиск программ",
+      "реестр российского ПО",
+      "Минцифры",
+      "Минсвязи",
+      "ФИПС",
+      "программы ЭВМ",
+      "базы данных",
+      "регистрация ПО",
+    ],
+    openGraph: {
+      title:
+        lang === "en"
+          ? "Software and Database Search — 3 Free Registries"
+          : lang === "zh"
+            ? "软件与数据库检索 —— 3 个免费登记簿"
+            : "Поиск программ и баз данных — 3 бесплатные базы",
+      description: t("ps.desc", lang),
+      url: "https://iqin.ru/poisk_soft",
+    },
+  };
+}
+
+type Db = {
+  name: string;
+  url: string;
+  category: string;
+  descKey: TranslationKey;
+  recommended?: boolean;
 };
 
-const DATABASES = [
+const DATABASES: Db[] = [
   {
     name: "Реестр российского ПО (Минцифры)",
     url: "https://reestr.digital.gov.ru/reestr/",
     category: "(РФ)",
-    description: "Актуальный реестр российского ПО Минцифры. Нужен для импортозамещения и госзакупок.",
+    descKey: "ps.dbMincifry",
     recommended: true,
   },
   {
     name: "Реестр российского ПО (Минсвязи)",
     url: "https://reestr-minsvyaz.ru/",
     category: "(РФ)",
-    description: "Старый реестр Минсвязи. Часто дублирует данные Минцифры, но бывает полезен для исторических сведений.",
+    descKey: "ps.dbMinsvyaz",
   },
   {
     name: "ФИПС — Реестр программ ЭВМ и баз данных",
     url: "https://www1.fips.ru/iiss/search.xhtml",
     category: "(РФ)",
-    description: "Официальная база Роспатента по зарегистрированным программам и БД в РФ.",
+    descKey: "ps.dbFips",
     recommended: true,
   },
 ];
 
-export default function PoiskSoftPage() {
+export default async function PoiskSoftPage() {
+  const lang = await getLang();
+  const databases = DATABASES.map(({ descKey, ...rest }) => ({
+    ...rest,
+    description: t(descKey, lang),
+  }));
+
   return (
     <SearchDatabasesPage
       slug="poisk_soft"
-      title="Поиск по программам и базам данных"
-      description="Бесплатные сервисы для поиска зарегистрированных программ ЭВМ и баз данных. 3 российских реестра — Минцифры, Минсвязи и ФИПС. Проверьте, не зарегистрированы ли аналоги вашего ПО."
-      intro={[
-        "Регистрация программы для ЭВМ или базы данных в Роспатенте — это самый быстрый и недорогой способ защитить авторские права на софт (1-3 рабочих дня, от 15 000 ₽). Перед регистрацией полезно проверить, не зарегистрированы ли уже аналогичные программы.",
-        "Ниже — 3 российских реестра. Реестр Минцифры нужен, если вы планируете участвовать в госзакупках или хотите подтвердить российское происхождение ПО. Реестр ФИПС — это база всех зарегистрированных в РФ программ и баз данных.",
-      ]}
-      databases={DATABASES}
+      title={t("ps.title", lang)}
+      description={t("ps.desc", lang)}
+      intro={[t("ps.intro1", lang), t("ps.intro2", lang)]}
+      databases={databases}
       accent="#FBBF24"
     />
   );

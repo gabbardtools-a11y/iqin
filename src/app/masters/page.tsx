@@ -13,6 +13,9 @@ import {
 } from "lucide-react";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
+import { SkipLink } from "@/components/site/skip-link";
+import { useLanguage } from "@/lib/i18n/useLanguage";
+import { type TranslationKey } from "@/lib/i18n/translations";
 
 /** Custom "Registered" icon — R inside a circle (like ® trademark symbol).
  *  lucide-react doesn't have this built-in, so we draw it ourselves.
@@ -45,105 +48,71 @@ function Registered({ className }: { className?: string }) {
 
 type CardItem = {
   href: string;
-  title: string;
-  description: string;
+  titleKey: TranslationKey;
+  descKey: TranslationKey;
   icon: React.ReactNode;
   accent: string; // CSS color for the icon glow
-  bullets: string[];
+  bullets: TranslationKey[];
   external?: boolean;
 };
 
 const CARDS: CardItem[] = [
   {
     href: "/znak_poisk",
-    title: "Поиск по товарным знакам",
-    description:
-      "Проверьте оригинальность вашего логотипа, названия или бренда перед регистрацией. Узнайте, не занят ли знак в России и за рубежом.",
+    titleKey: "mst.c1Title",
+    descKey: "mst.c1Desc",
     icon: <Registered className="h-7 w-7" />,
     accent: "#60A5FA",
-    bullets: [
-      "Российские и международные базы",
-      "Проверка по 11 сервисам (LINKMARK, WIPO, USPTO, ФИПС и др.)",
-      "Сверка с реестром Роспатента",
-    ],
+    bullets: ["mst.c1b1", "mst.c1b2", "mst.c1b3"],
   },
   {
     href: "/patent_poisk",
-    title: "Поиск по патентам на изобретения",
-    description:
-      "Проверьте новизну вашей идеи перед подачей заявки. Найдите аналоги в российских и международных патентных базах.",
+    titleKey: "mst.c2Title",
+    descKey: "mst.c2Desc",
     icon: <Lightbulb className="h-7 w-7" />,
     accent: "#A78BFA",
-    bullets: [
-      "Яндекс.Патенты, Google Patents, Espacenet",
-      "Цифровая платформа Роспатента",
-      "WIPO Patentscope, ЕАПТ, ФИПС",
-    ],
+    bullets: ["mst.c2b1", "mst.c2b2", "mst.c2b3"],
   },
   {
     href: "/patent_poisk_design",
-    title: "Поиск по промышленным образцам",
-    description:
-      "Проверьте оригинальность дизайна изделия. Поиск по российским и международным базам промышленных образцов.",
+    titleKey: "mst.c3Title",
+    descKey: "mst.c3Desc",
     icon: <Palette className="h-7 w-7" />,
     accent: "#F472B6",
-    bullets: [
-      "WIPO Hague Express (международная база)",
-      "TMview Design (европейская база)",
-      "ФИПС — реестр промобразцов РФ",
-    ],
+    bullets: ["mst.c3b1", "mst.c3b2", "mst.c3b3"],
   },
   {
     href: "https://sprinthost.ru/tariffs/domains.html",
-    title: "Поиск по доменным именам",
-    description:
-      "Проверьте свободность доменного имени в зонах .ru, .рф, .com и других. Подберите подходящее имя для вашего проекта.",
+    titleKey: "mst.c4Title",
+    descKey: "mst.c4Desc",
     icon: <Globe className="h-7 w-7" />,
     accent: "#34D399",
-    bullets: [
-      "Официальные регистраторы доменов",
-      "Проверка в зонах .ru, .рф, .com, .net, .org",
-      "Стоимость от 49 ₽ до 200 ₽ за домен",
-    ],
+    bullets: ["mst.c4b1", "mst.c4b2", "mst.c4b3"],
     external: true,
   },
   {
     href: "/poisk_soft",
-    title: "Поиск по программам и базам данных",
-    description:
-      "Узнайте, как внести свой софт в реестр российского ПО. Проверьте, зарегистрированы ли аналогичные программы в Роспатенте.",
+    titleKey: "mst.c5Title",
+    descKey: "mst.c5Desc",
     icon: <Code2 className="h-7 w-7" />,
     accent: "#FBBF24",
-    bullets: [
-      "Реестр российского ПО (Минцифры)",
-      "ФИПС — реестр программ ЭВМ и баз данных",
-      "Регистрация программ для ЭВМ под ключ",
-    ],
+    bullets: ["mst.c5b1", "mst.c5b2", "mst.c5b3"],
   },
   {
     href: "/patent_class",
-    title: "Патентные классификаторы",
-    description:
-      "Определите правильные классы МКТУ, МПК, МКПО для вашего объекта интеллектуальной собственности. Гибридный подход: ИИ + патентный поверенный.",
+    titleKey: "mst.c6Title",
+    descKey: "mst.c6Desc",
     icon: <Search className="h-7 w-7" />,
     accent: "#22D3EE",
-    bullets: [
-      "МКТУ — 45 классов для товарных знаков",
-      "МПК — 70 000+ подклассов для изобретений",
-      "МКПО — 32 класса для промышленных образцов",
-    ],
+    bullets: ["mst.c6b1", "mst.c6b2", "mst.c6b3"],
   },
 ];
 
 export default function MastersPage() {
+  const { t } = useLanguage();
   return (
     <div className="relative flex min-h-screen flex-col bg-background bg-grid-mm-page">
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-neon focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
-      >
-        Перейти к содержимому
-      </a>
+      <SkipLink />
       <Header />
 
       <main id="main" className="flex-1">
@@ -162,26 +131,23 @@ export default function MastersPage() {
               <span className="opacity-60"> · masters</span>
             </div>
             <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-navy sm:text-4xl lg:text-5xl">
-              Сервисы и поисковые базы
+              {t("mst.title")}
             </h1>
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy-muted sm:text-lg">
-              Бесплатные инструменты для проверки товарных знаков, патентов на
-              изобретения, промышленных образцов, доменных имён и программ для
-              ЭВМ. Выберите категорию поиска ниже — мы собрали проверенные
-              сервисы с описанием каждого.
+              {t("mst.lead")}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-tech text-[11px] uppercase tracking-wider text-navy-muted">
               <span className="inline-flex items-center gap-1.5">
                 <Sparkles className="h-3.5 w-3.5" />
-                {CARDS.length} категорий поиска
+                {CARDS.length} {t("mst.nCategories")}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Registered className="h-3.5 w-3.5" />
-                25+ поисковых баз
+                25+ {t("mst.nDatabases")}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Search className="h-3.5 w-3.5" />
-                Бесплатная проверка
+                {t("mst.freeCheck")}
               </span>
             </div>
           </div>
@@ -214,11 +180,10 @@ export default function MastersPage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 className="font-display text-xl font-bold tracking-tight text-navy sm:text-2xl">
-                  Не нашли нужный сервис?
+                  {t("mst.ctaTitle")}
                 </h2>
                 <p className="mt-1 text-sm text-navy-muted sm:text-base">
-                  Свяжитесь с нашими патентными поверенными — поможем подобрать
-                  правильный инструмент или проведём поиск за вас.
+                  {t("mst.ctaDesc")}
                 </p>
               </div>
               <Link
@@ -226,7 +191,7 @@ export default function MastersPage() {
                 className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-neon/40 bg-neon/10 px-4 py-2.5 text-sm font-semibold text-neon transition-all hover:bg-neon hover:text-primary-foreground hover:glow-navy"
               >
                 <Sparkles className="h-4 w-4" />
-                Оставить заявку
+                {t("mst.ctaBtn")}
               </Link>
             </div>
           </motion.div>
@@ -239,6 +204,7 @@ export default function MastersPage() {
 }
 
 function Card({ item }: { item: CardItem }) {
+  const { t } = useLanguage();
   const isExternal = item.external || item.href.startsWith("http");
   const linkProps = isExternal
     ? { target: "_blank" as const, rel: "noopener noreferrer" as const }
@@ -286,17 +252,17 @@ function Card({ item }: { item: CardItem }) {
 
         {/* Title */}
         <h3 className="font-display text-lg font-bold tracking-tight text-navy sm:text-xl">
-          {item.title}
+          {t(item.titleKey)}
         </h3>
 
         {/* Description */}
         <p className="mt-2 text-sm leading-relaxed text-navy-muted">
-          {item.description}
+          {t(item.descKey)}
         </p>
 
         {/* Bullet list */}
         <ul className="mt-4 space-y-1.5">
-          {item.bullets.map((bullet, j) => (
+          {item.bullets.map((bulletKey, j) => (
             <li
               key={j}
               className="flex items-start gap-2 text-[13px] leading-relaxed text-navy-muted/80"
@@ -305,7 +271,7 @@ function Card({ item }: { item: CardItem }) {
                 className="mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full"
                 style={{ backgroundColor: item.accent }}
               />
-              <span>{bullet}</span>
+              <span>{t(bulletKey)}</span>
             </li>
           ))}
         </ul>
@@ -313,7 +279,7 @@ function Card({ item }: { item: CardItem }) {
         {/* Footer link */}
         <div className="mt-5 flex items-center gap-1.5 text-xs font-medium text-neon/70 transition-colors group-hover:text-neon">
           <span className="font-tech uppercase tracking-wider">
-            {isExternal ? "Открыть сервис" : "Перейти к поиску"}
+            {isExternal ? t("mst.openService") : t("mst.goSearch")}
           </span>
           <ArrowRight className="h-3 w-3" />
         </div>

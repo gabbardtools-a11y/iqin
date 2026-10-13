@@ -4,11 +4,27 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Cpu, ShieldCheck } from "lucide-react";
 import { LogoShowcase } from "./logo-showcase";
+import { useLanguage } from "@/lib/i18n/useLanguage";
+import { type TranslationKey } from "@/lib/i18n/translations";
 
 /** The six AI models that power IQin — shown as a chip cloud in the hero. */
 const AI_MODELS = ["GPT", "Claude", "GLM", "Z.ai", "Kimi", "Qwen"] as const;
 
+const TICKER_KEYS: TranslationKey[] = [
+  "ticker.inventionPatents",
+  "ticker.utilityModels",
+  "ticker.designs",
+  "ticker.tmRu",
+  "ticker.marksIntl",
+  "ticker.tmChina",
+  "ticker.copyright",
+  "ticker.naming",
+  "ticker.software",
+  "ticker.intlPatenting",
+];
+
 export function Hero() {
+  const { t } = useLanguage();
   return (
     <section className="relative isolate overflow-hidden pt-12 pb-16 sm:pt-16 lg:pt-24 lg:pb-24">
       {/* Floating ambient orbs */}
@@ -56,9 +72,10 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.08 }}
               className="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.25rem]"
             >
-              Патентные технологии{" "}
-              <span className="text-neon-solid">нового поколения</span> на базе{" "}
-              <span className="text-neon-solid">ИИ</span>
+              {t("hero.h1a")}{" "}
+              <span className="text-neon-solid">{t("hero.h1b")}</span>{" "}
+              {t("hero.h1c")}{" "}
+              <span className="text-neon-solid">{t("hero.ai")}</span>
             </motion.h1>
 
             <motion.p
@@ -76,10 +93,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.16 }}
               className="max-w-xl text-base text-muted-foreground sm:text-lg"
             >
-              Мы создаём патенты, товарные знаки, дизайн, лендинги и веб-платформы с ИИ — быстрее,
-              точнее и прозрачнее, чем традиционные агентства. Используйте наши свободные сервисы
-              уже сейчас бесплатно и без регистрации. На платных тарифах Вы можете объединить все
-              свои кейсы и наши сервисы с ИИ (AI) агентами в одном личном кабинете.
+              {t("hero.lead")}
             </motion.p>
 
             <motion.div
@@ -92,7 +106,7 @@ export function Hero() {
                 href="/kontakt"
                 className="group inline-flex items-center justify-center gap-2 rounded-md border border-neon/50 bg-[var(--navy-700)] px-6 py-3.5 text-sm font-semibold text-neon transition-all hover:bg-[var(--navy-600)] hover:glow-neon-strong"
               >
-                Запустить проект
+                {t("hero.ctaProject")}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
@@ -100,7 +114,7 @@ export function Hero() {
                 className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card/40 px-6 py-3.5 text-sm font-semibold backdrop-blur-sm transition-all hover:border-neon/40 hover:text-neon"
               >
                 <Sparkles className="h-4 w-4" />
-                ИИ-сервисы IQin
+                {t("hero.ctaServices")}
               </Link>
             </motion.div>
 
@@ -112,15 +126,15 @@ export function Hero() {
             >
               <span className="inline-flex items-center gap-1.5">
                 <ShieldCheck className="h-3.5 w-3.5 text-neon" />
-                Лицензированные поверенные
+                {t("hero.licensedAttorneys")}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Cpu className="h-3.5 w-3.5 text-amber" />
-                6 LLM в работе
+                {t("hero.sixLlm")}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-neon animate-pulse-neon" />
-                Онлайн 24/7
+                {t("hero.online247")}
               </span>
             </motion.div>
 
@@ -170,6 +184,7 @@ export function Hero() {
 }
 
 function HeroVisual() {
+  const { t } = useLanguage();
   return (
     <div className="relative">
       {/* Main panel */}
@@ -192,25 +207,25 @@ function HeroVisual() {
             {"// prompt"}
           </div>
           <div className="font-mono text-xs leading-relaxed text-foreground/90 sm:text-sm">
-            <span className="text-muted-foreground">&gt;</span> Сгенерируй формулу изобретения для
-            <span className="text-amber"> нейросетевого метода анализа изображений</span> ...
+            <span className="text-muted-foreground">&gt;</span> {t("hero.prompt")}{" "}
+            <span className="text-amber">{t("hero.promptTopic")}</span> ...
             <span className="ml-0.5 inline-block h-4 w-1.5 animate-pulse bg-neon align-middle" />
           </div>
         </div>
 
         {/* Output stream */}
         <div className="space-y-2.5">
-          <StreamLine label="Анализ уровня техники" status="done" delay={0.4} />
-          <StreamLine label="Подбор МПК-классов" status="done" delay={0.55} />
-          <StreamLine label="Формула изобретения" status="active" delay={0.7} />
-          <StreamLine label="Регламент поиска" status="queue" delay={0.85} />
+          <StreamLine label={t("hero.streamPriorArt")} status="done" delay={0.4} />
+          <StreamLine label={t("hero.streamIpc")} status="done" delay={0.55} />
+          <StreamLine label={t("hero.streamClaims")} status="active" delay={0.7} />
+          <StreamLine label={t("hero.streamProtocol")} status="queue" delay={0.85} />
         </div>
 
         {/* Bottom stats */}
         <div className="mt-5 grid grid-cols-3 gap-2 border-t border-border/60 pt-4">
-          <Stat label="Точность" value="98.4%" />
-          <Stat label="Экономия времени" value="–73%" />
-          <Stat label="Статус" value="Live" dot />
+          <Stat label={t("hero.statAccuracy")} value="98.4%" />
+          <Stat label={t("hero.statTimeSaved")} value="–73%" />
+          <Stat label={t("hero.statStatus")} value="Live" dot />
         </div>
       </div>
 
@@ -226,7 +241,7 @@ function HeroVisual() {
           </span>
           <div className="flex flex-col leading-tight">
             <span className="font-tech text-[9px] uppercase tracking-wider text-muted-foreground">
-              Защита
+              {t("hero.chipProtection")}
             </span>
             <span className="text-xs font-semibold">Роспатент</span>
           </div>
@@ -245,7 +260,7 @@ function HeroVisual() {
           </span>
           <div className="flex flex-col leading-tight">
             <span className="font-tech text-[9px] uppercase tracking-wider text-muted-foreground">
-              ИИ-модель
+              {t("hero.chipAiModel")}
             </span>
             <span className="text-xs font-semibold">IQin-Patent v3</span>
           </div>
@@ -313,33 +328,16 @@ function Stat({ label, value, dot }: { label: string; value: string; dot?: boole
 }
 
 function Ticker() {
-  const items = [
-    "Патенты на изобретения",
-    "Полезные модели",
-    "Промышленные образцы",
-    "Товарные знаки РФ",
-    "Международные знаки",
-    "Товарные знаки в Китае",
-    "Авторские права",
-    "Нейминг брендов",
-    "Программы для ЭВМ",
-    "Международное патентование",
-    "GPT",
-    "Claude",
-    "GLM",
-    "Z.ai",
-    "Kimi",
-    "Qwen",
-  ];
+  const { t } = useLanguage();
   return (
     <div className="relative mt-14 border-y border-neon/15 bg-card/30 py-3 backdrop-blur-sm sm:mt-20">
       <div className="flex overflow-hidden">
         <div className="flex shrink-0 animate-marquee items-center gap-8 pr-8">
-          {[...items, ...items].map((item, i) => (
+          {[...TICKER_KEYS, ...TICKER_KEYS].map((key, i) => (
             <div key={i} className="flex items-center gap-3">
               <span className="h-1.5 w-1.5 rounded-full bg-neon/60" />
               <span className="font-tech text-xs uppercase tracking-wider text-muted-foreground">
-                {item}
+                {t(key)}
               </span>
             </div>
           ))}

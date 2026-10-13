@@ -20,92 +20,91 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "./section-heading";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/lib/i18n/useLanguage";
+import { type TranslationKey } from "@/lib/i18n/translations";
 
-const patentFeatures = [
+type FeatureDef = { icon: React.ComponentType<{ className?: string }>; titleKey: TranslationKey; descKey: TranslationKey };
+
+const patentFeatures: FeatureDef[] = [
   {
     icon: Search,
-    title: "Умный патентный поиск",
-    description:
-      "ИИ анализирует миллионы патентов в реальном времени — находит аналоги, оценивает оригинальность и подбирает МПК-классы с точностью 98.4%.",
+    titleKey: "ai.pf1Title",
+    descKey: "ai.pf1Desc",
   },
   {
     icon: FileText,
-    title: "Генерация формулы и реферата",
-    description:
-      "Модель IQin-Patent v3 формирует независимые и зависимые пункты формулы, реферат и описание на основе технического задания.",
+    titleKey: "ai.pf2Title",
+    descKey: "ai.pf2Desc",
   },
   {
     icon: ShieldCheck,
-    title: "Анти-рисковый аудит",
-    description:
-      "Предиктивная оценка вероятности отказа Роспатента. ИИ находит слабые места заявки до подачи и предлагает доработки.",
+    titleKey: "ai.pf3Title",
+    descKey: "ai.pf3Desc",
   },
 ];
 
-const siteFeatures = [
+const siteFeatures: FeatureDef[] = [
   {
     icon: Layout,
-    title: "Архитектура и UX под бизнес",
-    description:
-      "ИИ-агент анализирует нишу, целевую аудиторию и конкурентов — предлагает структуру страниц и прототип за минуты, а не недели.",
+    titleKey: "ai.sf1Title",
+    descKey: "ai.sf1Desc",
   },
   {
     icon: Palette,
-    title: "Дизайн в техно-стиле",
-    description:
-      "Генеративные дизайн-системы создают уникальные визуальные концепции: от типографики и палитры до анимаций и микро-взаимодействий.",
+    titleKey: "ai.sf2Title",
+    descKey: "ai.sf2Desc",
   },
   {
     icon: Cpu,
-    title: "Код на Next.js + TypeScript",
-    description:
-      "Готовый production-код на современном стеке: React 19, Next.js 16, Tailwind CSS 4, shadcn/ui. SEO, адаптивность, производительность 90+.",
+    titleKey: "ai.sf3Title",
+    descKey: "ai.sf3Desc",
   },
 ];
 
 export function AiServices() {
+  const { t } = useLanguage();
   return (
     <section id="ai-services" className="relative scroll-mt-20 py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="IQin AI Suite"
+          eyebrow={t("ai.eyebrow")}
           title={
             <>
-              <span className="text-neon-solid">ИИ-</span>сервисы, которые{" "}
-              <span className="text-neon-solid">меняют правила игры</span>
+              <span className="text-neon-solid">{t("ai.titleA")}</span>{" "}
+              {t("ai.titleB")}
             </>
           }
-          description="Мы встроили большие языковые модели в патентный и веб-процессы. Получите результат, на который у традиционных агентств уходят недели — за один рабочий день."
+          description={t("ai.desc")}
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-2 lg:gap-8">
           <AiServiceCard
             variant="patent"
             badge="Patent AI"
-            title="Создание патентов с ИИ"
-            tagline="От идеи до заявки в Роспатент — за 24 часа"
-            description="Полный цикл патентования с искусственным интеллектом: поиск, формула, описание, аудит рисков и сопровождение поверенным."
+            title={t("ai.patentTitle")}
+            tagline={t("ai.patentTagline")}
+            description={t("ai.patentDesc")}
             features={patentFeatures}
             stats={[
-              { value: "98.4%", label: "Точность МПК" },
-              { value: "−73%", label: "Время подготовки" },
-              { value: "24ч", label: "До подачи заявки" },
+              { value: "98.4%", label: t("ai.statIpcAccuracy") },
+              { value: "−73%", label: t("ai.statPrepTime") },
+              { value: t("ai.statFilingValue"), label: t("ai.statFiling") },
             ]}
-            cta={{ label: "Подать заявку на патент", href: "/patenti" }}
+            cta={{ label: t("ai.patentCta"), href: "/patenti" }}
           />
           <AiServiceCard
             variant="site"
             badge="Web AI"
-            title="Создание сайтов с ИИ"
-            tagline="Production-готовый сайт на Next.js за один день"
-            description="Генеративная разработка: от анализа ниши и прототипа до чистого кода на Next.js + TypeScript. Адаптивный, быстрый, SEO-оптимизированный."
+            title={t("ai.webTitle")}
+            tagline={t("ai.webTagline")}
+            description={t("ai.webDesc")}
             features={siteFeatures}
             stats={[
               { value: "90+", label: "PageSpeed" },
-              { value: "1 день", label: "До запуска MVP" },
-              { value: "100%", label: "Кастомный дизайн" },
+              { value: t("ai.statMvpValue"), label: t("ai.statMvp") },
+              { value: "100%", label: t("ai.statCustomDesign") },
             ]}
-            cta={{ label: "Заказать сайт с ИИ", href: "/kontakt" }}
+            cta={{ label: t("ai.webCta"), href: "/kontakt" }}
           />
         </div>
 
@@ -124,11 +123,10 @@ export function AiServices() {
               </span>
               <div>
                 <h3 className="font-display text-xl font-semibold">
-                  Комбо: патент + сайт для стартапа
+                  {t("ai.comboTitle")}
                 </h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Запатентуйте технологию и запустите сайт для её продвижения — единым контрактом
-                  со скидкой до 25%.
+                  {t("ai.comboDesc")}
                 </p>
               </div>
             </div>
@@ -137,14 +135,14 @@ export function AiServices() {
                 href="/kontakt"
                 className="inline-flex items-center gap-2 rounded-md bg-neon px-5 py-3 text-sm font-semibold text-primary-foreground transition-all hover:glow-neon-strong"
               >
-                Получить КП
+                {t("ai.comboCta")}
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/price"
                 className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm font-semibold transition-colors hover:border-neon/40 hover:text-neon"
               >
-                Прайс-лист
+                {t("ai.priceList")}
               </Link>
             </div>
           </div>
@@ -154,19 +152,13 @@ export function AiServices() {
   );
 }
 
-type Feature = {
-  icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  description: string;
-};
-
 type AiServiceCardProps = {
   variant: "patent" | "site";
   badge: string;
   title: string;
   tagline: string;
   description: string;
-  features: Feature[];
+  features: { icon: React.ComponentType<{ className?: string }>; titleKey: TranslationKey; descKey: TranslationKey }[];
   stats: { value: string; label: string }[];
   cta: { label: string; href: string };
 };
@@ -181,6 +173,7 @@ function AiServiceCard({
   stats,
   cta,
 }: AiServiceCardProps) {
+  const { t } = useLanguage();
   const isPatent = variant === "patent";
   const accentColor = isPatent ? "var(--neon)" : "var(--amber)";
   const Icon = isPatent ? Brain : Code2;
@@ -259,7 +252,7 @@ function AiServiceCard({
         {/* Features */}
         <ul className="mt-6 flex flex-col gap-3">
           {features.map((feature) => (
-            <li key={feature.title} className="flex gap-3">
+            <li key={feature.titleKey} className="flex gap-3">
               <span
                 className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border"
                 style={{
@@ -272,11 +265,11 @@ function AiServiceCard({
               </span>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-semibold text-foreground">{feature.title}</span>
+                  <span className="text-sm font-semibold text-foreground">{t(feature.titleKey)}</span>
                   <Check className="h-3.5 w-3.5" style={{ color: accentColor }} />
                 </div>
                 <p className="mt-0.5 text-xs text-muted-foreground sm:text-sm">
-                  {feature.description}
+                  {t(feature.descKey)}
                 </p>
               </div>
             </li>
@@ -319,7 +312,7 @@ function AiServiceCard({
               className="h-1.5 w-1.5 rounded-full animate-pulse-neon"
               style={{ background: accentColor }}
             />
-            Демо-доступ открыто
+            {t("ai.demoOpen")}
           </div>
         </div>
       </div>

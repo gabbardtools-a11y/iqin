@@ -4,9 +4,11 @@ import * as React from "react";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/lib/i18n/useLanguage";
 
 export function ThemeToggle({ className }: { className?: string }) {
   const { resolvedTheme, setTheme } = useTheme();
+  const { t } = useLanguage();
   const [mounted, setMounted] = React.useState(false);
 
   // Avoid hydration mismatch — render a stable placeholder until mounted
@@ -17,8 +19,8 @@ export function ThemeToggle({ className }: { className?: string }) {
   return (
     <button
       type="button"
-      aria-label={isDark ? "Включить светлую тему" : "Включить тёмную тему"}
-      title={isDark ? "Светлая тема" : "Тёмная тема"}
+      aria-label={isDark ? t("tt.lightOn") : t("tt.darkOn")}
+      title={isDark ? t("tt.light") : t("tt.dark")}
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className={cn(
         "inline-flex h-10 w-10 items-center justify-center rounded-md border transition-all",

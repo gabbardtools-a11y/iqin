@@ -6,6 +6,7 @@ import { ArrowLeft, Code2, Clock, Sparkles, Quote, Wind, Zap } from "lucide-reac
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
 import { GridBackground } from "@/components/site/grid-background";
+import { useLanguage } from "@/lib/i18n/useLanguage";
 
 type Variant = {
   id: string;
@@ -587,6 +588,7 @@ function LargeLogoCard({ variant, index }: { variant: Variant; index: number }) 
 }
 
 export default function LogoLabPage() {
+  const { t } = useLanguage();
   return (
     <div className="relative flex min-h-screen flex-col bg-background">
       <Header />
@@ -626,7 +628,7 @@ export default function LogoLabPage() {
                 className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/40 px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-neon/40 hover:text-neon"
               >
                 <ArrowLeft className="h-3.5 w-3.5" />
-                На главную
+                {t("lab.backHome")}
               </Link>
             </motion.div>
 
@@ -649,8 +651,8 @@ export default function LogoLabPage() {
               transition={{ duration: 0.6, delay: 0.08 }}
               className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
             >
-              Пятнадцать вариантов анимации{" "}
-              <span className="text-gradient-neon text-glow-neon">логотипа 音</span>
+              {t("lab.h1a")}{" "}
+              <span className="text-gradient-neon text-glow-neon">{t("lab.h1b")}</span>
             </motion.h1>
 
             <motion.p
@@ -659,11 +661,7 @@ export default function LogoLabPage() {
               transition={{ duration: 0.55, delay: 0.14 }}
               className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg"
             >
-              Полная галерея динамических вариантов в стиле{" "}
-              <span className="font-tech text-neon">Техно-Зен: Zentex</span> — от плавного
-              дыхания до комбо-эффектов с частицами, электрическими разрядами и
-              сканирующими лучами. Все анимации в темпе глубокого дзен-дыхания
-              (8–32 секунды на цикл), на чистом CSS, без JS-нагрузки.
+              {t("lab.lead")}
             </motion.p>
 
             <motion.p

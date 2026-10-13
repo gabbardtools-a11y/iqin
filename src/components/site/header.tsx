@@ -4,11 +4,14 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, Sparkles } from "lucide-react";
-import { mainNav, contacts } from "@/lib/site-config";
+import { mainNav, contacts, navKeyMap as NAV_KEYS } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { LangSwitch } from "@/components/site/lang-switch";
+import { useLanguage } from "@/lib/i18n/useLanguage";
 
 export function Header() {
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -43,7 +46,7 @@ export function Header() {
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8">
         {/* Logo — overflow:hidden prevents scan-line glow / drop-shadow
             from inflating the header height on desktop (lg:h-20 = 80px). */}
-        <Link href="/" className="group flex items-center gap-2.5" aria-label="IQin — на главную">
+        <Link href="/" className="group flex items-center gap-2.5" aria-label={t("header.logoAria")}>
           <LogoMark />
           <div className="flex flex-col leading-none">
             <span className="font-display text-xl font-bold tracking-tight text-navy">
@@ -60,7 +63,7 @@ export function Header() {
         {/* Desktop navigation — only a few high-priority items.
             Items: Патентные поверенные, Цены, Акции, О компании — moved to
             mobile-only (burger) menu to avoid overflow on smaller laptops. */}
-        <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Основная навигация">
+        <nav className="hidden items-center gap-0.5 xl:flex" aria-label={t("header.navAria")}>
           {mainNav
             .filter(
               (item) =>
@@ -85,7 +88,7 @@ export function Header() {
                   "text-navy-muted hover-navy-item"
                 )}
               >
-                {item.label}
+                {NAV_KEYS[item.href] ? t(NAV_KEYS[item.href]) : item.label}
                 {item.children && <ChevronDown className="h-3.5 w-3.5 opacity-60" />}
               </Link>
               {item.children && (
@@ -116,7 +119,7 @@ export function Header() {
                             href={child.href}
                             className="block rounded-md px-3 py-2 text-sm text-navy-muted transition-all hover:bg-neon/10 hover:text-neon"
                           >
-                            {child.label}
+                            {NAV_KEYS[child.href] ? t(NAV_KEYS[child.href]) : child.label}
                           </Link>
                         ))}
                       </div>
@@ -130,20 +133,21 @@ export function Header() {
 
         {/* Right CTA — phone removed per request; "Оставить заявку" → "Контакты" */}
         <div className="flex items-center gap-2">
+          <LangSwitch className="hidden sm:inline-flex" />
           <ThemeToggle className="hidden sm:inline-flex" />
           <Link
             href="/kontakt"
             className="hidden items-center gap-1.5 rounded-md border border-neon/40 bg-neon/10 px-4 py-2 text-sm font-semibold text-neon transition-all hover:bg-neon hover:text-primary-foreground hover:glow-navy md:inline-flex"
           >
             <Sparkles className="h-4 w-4" />
-            Контакты
+            {t("header.contacts")}
           </Link>
           {/* Mobile toggle */}
           <button
             type="button"
             className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-navy-line text-navy transition-colors hover:bg-neon/10 hover:text-neon xl:hidden"
             onClick={() => setMobileOpen(true)}
-            aria-label="Открыть меню"
+            aria-label={t("header.openMenu")}
           >
             <Menu className="h-5 w-5" />
           </button>
@@ -193,13 +197,13 @@ export function Header() {
                 <button
                   type="button"
                   onClick={() => setMobileOpen(false)}
-                  aria-label="Закрыть меню"
+                  aria-label={t("header.closeMenu")}
                   className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-navy-line text-navy transition-colors hover:bg-neon/10 hover:text-neon"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
-              <nav className="flex flex-col gap-1" aria-label="Мобильная навигация">
+              <nav className="flex flex-col gap-1" aria-label={t("header.mobileNavAria")}>
                 {mainNav.map((item) => (
                   <div key={item.href} className="border-b border-navy-line py-1">
                     <Link
@@ -207,7 +211,7 @@ export function Header() {
                       className="block rounded-md px-3 py-2.5 text-base font-medium text-navy transition-colors hover:bg-neon/10 hover:text-neon"
                       onClick={() => setMobileOpen(false)}
                     >
-                      {item.label}
+                      {NAV_KEYS[item.href] ? t(NAV_KEYS[item.href]) : item.label}
                     </Link>
                     {item.children && (
                       <div className="ml-3 flex flex-col gap-0.5 border-l border-neon/15 pl-3">
@@ -218,7 +222,7 @@ export function Header() {
                             className="rounded-md px-3 py-2 text-sm text-navy-muted transition-colors hover:text-neon"
                             onClick={() => setMobileOpen(false)}
                           >
-                            {child.label}
+                            {NAV_KEYS[child.href] ? t(NAV_KEYS[child.href]) : child.label}
                           </Link>
                         ))}
                       </div>
@@ -227,6 +231,7 @@ export function Header() {
                 ))}
               </nav>
               <div className="mt-6 flex flex-col gap-3">
+                <LangSwitch className="w-fit" />
                 <a
                   href={contacts.phoneHref}
                   className="inline-flex items-center justify-center gap-2 rounded-md border border-navy-line px-4 py-3 text-sm font-medium text-navy transition-colors hover:bg-neon/10 hover:text-neon"
@@ -240,7 +245,7 @@ export function Header() {
                   className="inline-flex items-center justify-center gap-2 rounded-md bg-neon px-4 py-3 text-sm font-semibold text-primary-foreground transition-all hover:glow-navy"
                 >
                   <Sparkles className="h-4 w-4" />
-                  Контакты
+                  {t("header.contacts")}
                 </Link>
               </div>
             </motion.div>

@@ -12,6 +12,9 @@ import {
 } from "lucide-react";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
+import { SkipLink } from "@/components/site/skip-link";
+import { useLanguage } from "@/lib/i18n/useLanguage";
+import { tDatabases, tRecommended, type Lang } from "@/lib/i18n/translations";
 
 /** A single search database entry — corresponds to one card on the page.
  *  Each card links to an external search service (target=_blank).
@@ -40,8 +43,6 @@ type Props = {
   accent?: string;
   /** "Назад к /masters" link */
   backHref?: string;
-  /** Back link label */
-  backLabel?: string;
 };
 
 export default function SearchDatabasesPage({
@@ -52,16 +53,11 @@ export default function SearchDatabasesPage({
   databases,
   accent = "#60A5FA",
   backHref = "/masters",
-  backLabel = "Все сервисы",
 }: Props) {
+  const { t, lang } = useLanguage();
   return (
     <div className="relative flex min-h-screen flex-col bg-background bg-grid-mm-page">
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-neon focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
-      >
-        Перейти к содержимому
-      </a>
+      <SkipLink />
       <Header />
 
       <main id="main" className="flex-1">
@@ -79,7 +75,7 @@ export default function SearchDatabasesPage({
                 className="inline-flex items-center gap-1 transition-colors hover:text-neon"
               >
                 <ChevronLeft className="h-3 w-3" />
-                {backLabel}
+                {t("sdb.backToAll")}
               </Link>
               <span className="opacity-40">/</span>
               <span className="text-neon">{slug}</span>
@@ -100,15 +96,15 @@ export default function SearchDatabasesPage({
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-tech text-[11px] uppercase tracking-wider text-navy-muted">
               <span className="inline-flex items-center gap-1.5">
                 <Search className="h-3.5 w-3.5" />
-                {databases.length} поисковых баз
+                {tDatabases(databases.length, lang as Lang)}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Star className="h-3.5 w-3.5" style={{ color: accent }} />
-                {databases.filter((d) => d.recommended).length} рекомендуемых
+                {tRecommended(databases.filter((d) => d.recommended).length, lang as Lang)}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <ExternalLink className="h-3.5 w-3.5" />
-                Все открываются в новой вкладке
+                {t("sdb.newTab")}
               </span>
             </div>
           </div>
@@ -152,11 +148,10 @@ export default function SearchDatabasesPage({
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 className="font-display text-xl font-bold tracking-tight text-navy sm:text-2xl">
-                  Нужна помощь с поиском?
+                  {t("sdb.helpTitle")}
                 </h2>
                 <p className="mt-1 text-sm text-navy-muted sm:text-base">
-                  Патентные поверенные проведут профессиональный поиск и
-                  составят отчёт. Экономия времени и гарантия результата.
+                  {t("sdb.helpDesc")}
                 </p>
               </div>
               <Link
@@ -164,7 +159,7 @@ export default function SearchDatabasesPage({
                 className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-neon/40 bg-neon/10 px-4 py-2.5 text-sm font-semibold text-neon transition-all hover:bg-neon hover:text-primary-foreground hover:glow-navy"
               >
                 <Sparkles className="h-4 w-4" />
-                Заказать поиск
+                {t("sdb.orderSearch")}
               </Link>
             </div>
           </motion.div>
@@ -178,6 +173,7 @@ export default function SearchDatabasesPage({
 
 /** Single search database card. */
 function SearchDbCard({ db, accent }: { db: SearchDb; accent: string }) {
+  const { t } = useLanguage();
   return (
     <a
       href={db.url}
@@ -223,7 +219,7 @@ function SearchDbCard({ db, accent }: { db: SearchDb; accent: string }) {
                 }}
               >
                 <Star className="h-2.5 w-2.5 fill-current" />
-                рекомендуем
+                {t("sdb.recommendBadge")}
               </span>
             )}
           </h3>

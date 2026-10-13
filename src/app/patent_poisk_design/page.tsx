@@ -1,62 +1,86 @@
 import SearchDatabasesPage from "@/components/site/search-databases-page";
 import type { Metadata } from "next";
+import { getLang } from "@/lib/i18n/server";
+import { t, type TranslationKey } from "@/lib/i18n/translations";
 
-export const metadata: Metadata = {
-  title: "Поиск промышленных образцов — 3 базы | IQin.ru",
-  description:
-    "Бесплатные сервисы для поиска промышленных образцов (дизайна изделий): WIPO Hague Express, TMview Design, ФИПС — реестр промобразцов РФ.",
-  keywords: [
-    "поиск промышленных образцов",
-    "поиск дизайна",
-    "патент на дизайн",
-    "WIPO Hague Express",
-    "TMview Design",
-    "ФИПС",
-    "промобразец",
-    "Locarno",
-  ],
-  openGraph: {
-    title: "Поиск промышленных образцов — 3 бесплатные базы",
-    description:
-      "Российские и международные базы для проверки оригинальности дизайна изделия перед регистрацией промобразца.",
-    url: "https://iqin.ru/patent_poisk_design",
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const lang = await getLang();
+  return {
+    title:
+      lang === "en"
+        ? "Industrial Design Search — 3 Databases | IQin.ru"
+        : lang === "zh"
+          ? "外观设计检索 —— 3 个数据库 | IQin.ru"
+          : "Поиск промышленных образцов — 3 базы | IQin.ru",
+    description: t("ppd.desc", lang),
+    keywords: [
+      "поиск промышленных образцов",
+      "поиск дизайна",
+      "патент на дизайн",
+      "WIPO Hague Express",
+      "TMview Design",
+      "ФИПС",
+      "промобразец",
+      "Locarno",
+    ],
+    openGraph: {
+      title:
+        lang === "en"
+          ? "Industrial Design Search — 3 Free Databases"
+          : lang === "zh"
+            ? "外观设计检索 —— 3 个免费数据库"
+            : "Поиск промышленных образцов — 3 бесплатные базы",
+      description: t("ppd.desc", lang),
+      url: "https://iqin.ru/patent_poisk_design",
+    },
+  };
+}
+
+type Db = {
+  name: string;
+  url: string;
+  category: string;
+  descKey: TranslationKey;
+  recommended?: boolean;
 };
 
-const DATABASES = [
+const DATABASES: Db[] = [
   {
     name: "WIPO Hague Express",
     url: "https://www3.wipo.int/designdb/en/index.jsp",
     category: "(INT)",
-    description: "Международная база ВОИС по промышленным образцам. Самый полный источник по мировым дизайнам.",
+    descKey: "ppd.dbHague",
     recommended: true,
   },
   {
     name: "TMview Design",
     url: "https://www.tmdn.org/tmdsview-web/welcome#/dsview",
     category: "(INT)",
-    description: "Европейская база промышленных образцов EUIPO. Покрывает все страны ЕС.",
+    descKey: "ppd.dbTmview",
   },
   {
     name: "ФИПС — Поиск по промобразцам",
     url: "https://www1.fips.ru/iiss/search.xhtml",
     category: "(РФ)",
-    description: "Официальный реестр Роспатента по промышленным образцам РФ.",
+    descKey: "ppd.dbFips",
     recommended: true,
   },
 ];
 
-export default function PatentPoiskDesignPage() {
+export default async function PatentPoiskDesignPage() {
+  const lang = await getLang();
+  const databases = DATABASES.map(({ descKey, ...rest }) => ({
+    ...rest,
+    description: t(descKey, lang),
+  }));
+
   return (
     <SearchDatabasesPage
       slug="patent_poisk_design"
-      title="Поиск по промышленным образцам"
-      description="Бесплатные сервисы для проверки оригинальности дизайна изделия перед регистрацией промышленного образца. 3 базы — международная WIPO Hague, европейская TMview Design и официальная база ФИПС."
-      intro={[
-        "Промышленный образец — это патент на оригинальный внешний вид изделия: форму телефона, дизайн упаковки, вид мебели. Перед регистрацией нужно убедиться, что аналогичный дизайн уже не запатентован кем-то другим.",
-        "Ниже — 3 проверенные базы. Начните с российской (ФИПС), затем проверьте международную WIPO Hague и европейскую TMview Design. Если похожий дизайн найден — можно изменить отличительные элементы или отказаться от регистрации.",
-      ]}
-      databases={DATABASES}
+      title={t("ppd.title", lang)}
+      description={t("ppd.desc", lang)}
+      intro={[t("ppd.intro1", lang), t("ppd.intro2", lang)]}
+      databases={databases}
       accent="#F472B6"
     />
   );

@@ -4,8 +4,11 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
+import { SkipLink } from "@/components/site/skip-link";
 import { ArrowRight, ArrowLeft, FileText, ImageIcon, LinkIcon } from "lucide-react";
 import Link from "next/link";
+import { getLang } from "@/lib/i18n/server";
+import { t, tLinksCount } from "@/lib/i18n/translations";
 
 type ContentBlock =
   | { type: "heading"; level: number; text: string }
@@ -83,7 +86,8 @@ export async function generateMetadata({
   const { slug: slugSegments } = await params;
   const page = await loadPage(slugSegments ?? []);
   if (!page) {
-    return { title: "Страница не найдена" };
+    const lang = await getLang();
+    return { title: t("arch.notFound", lang) };
   }
   return {
     title: page.title,
@@ -104,6 +108,7 @@ export default async function Page({
   params: Promise<{ slug?: string[] }>;
 }) {
   const { slug: slugSegments } = await params;
+  const lang = await getLang();
   const page = await loadPage(slugSegments ?? []);
   if (!page) {
     notFound();
@@ -134,12 +139,7 @@ export default async function Page({
 
   return (
     <div className="relative flex min-h-screen flex-col bg-background">
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-neon focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
-      >
-        Перейти к содержимому
-      </a>
+      <SkipLink />
       <Header />
 
       <main id="main" className="flex-1">
@@ -147,7 +147,7 @@ export default async function Page({
         <div className="border-b border-navy-line/60 bg-navy-header/40">
           <div className="mx-auto max-w-5xl px-4 py-3 sm:px-6 lg:px-8">
             <nav
-              aria-label="Хлебные крошки"
+              aria-label={t("arch.breadcrumbsAria", lang)}
               className="flex items-center gap-1.5 font-tech text-[10px] uppercase tracking-[0.18em] text-navy-muted"
             >
               <Link href="/" className="hover:text-neon transition-colors">
@@ -188,18 +188,18 @@ export default async function Page({
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-tech text-[11px] uppercase tracking-wider text-navy-muted">
               <span className="inline-flex items-center gap-1.5">
                 <FileText className="h-3.5 w-3.5" />
-                {page.bodyLength.toLocaleString("ru-RU")} симв.
+                {page.bodyLength.toLocaleString("ru-RU")} {t("arch.symbols", lang)}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <ImageIcon className="h-3.5 w-3.5" />
-                {page.images.length} изображ.
+                {page.images.length} {t("arch.images", lang)}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <LinkIcon className="h-3.5 w-3.5" />
-                {page.links.length} ссылок
+                {tLinksCount(page.links.length, lang)}
               </span>
               <span className="text-navy-muted/60">
-                Источник:{" "}
+                {t("arch.source", lang)}{" "}
                 <a
                   href={page.url}
                   target="_blank"
@@ -350,10 +350,10 @@ export default async function Page({
               ) : (
                 <div className="rounded-lg border border-navy-line/60 bg-card/30 p-8 text-center">
                   <p className="font-tech text-sm uppercase tracking-wider text-navy-muted">
-                    {"// Контент страницы пуст"}
+                    {t("arch.emptyComment", lang)}
                   </p>
                   <p className="mt-2 text-sm text-navy-muted">
-                    Содержимое не было извлечено из исходной страницы.
+                    {t("arch.emptyDesc", lang)}
                   </p>
                 </div>
               )}
@@ -362,7 +362,7 @@ export default async function Page({
               {contentImages.length > 0 && (
                 <div className="mt-10">
                   <h2 className="font-tech text-[11px] uppercase tracking-[0.2em] text-neon">
-                    {"// Изображения на странице"}
+                    {t("arch.galleryHeading", lang)}
                   </h2>
                   <div className="mt-4 grid gap-4 sm:grid-cols-2">
                     {contentImages.slice(0, 12).map((img, i) => (
@@ -387,7 +387,11 @@ export default async function Page({
                   </div>
                   {contentImages.length > 12 && (
                     <p className="mt-3 text-xs text-navy-muted">
-                      …и ещё {contentImages.length - 12} изображений
+                      {lang === 'en'
+                        ? `…and ${contentImages.length - 12} more images`
+                        : lang === 'zh'
+                          ? `…还有 ${contentImages.length - 12} 张图片`
+                          : `…и ещё ${contentImages.length - 12} изображений`}
                     </p>
                   )}
                 </div>
@@ -399,7 +403,7 @@ export default async function Page({
                 {toc.length > 0 && (
                   <div>
                     <h3 className="font-tech text-[10px] uppercase tracking-[0.2em] text-neon">
-                      {"// Содержание"}
+                      {t("arch.tocHeading", lang)}
                     </h3>
                     <ul className="mt-3 space-y-1.5">
                       {toc.slice(0, 20).map((h, i) => (
@@ -423,7 +427,7 @@ export default async function Page({
                 {internalLinks.length > 0 && (
                   <div>
                     <h3 className="font-tech text-[10px] uppercase tracking-[0.2em] text-neon">
-                      {"// Ссылки по теме"}
+                      {t("arch.linksHeading", lang)}
                     </h3>
                     <ul className="mt-3 space-y-1.5">
                       {internalLinks.slice(0, 12).map((l, i) => {
@@ -453,7 +457,7 @@ export default async function Page({
               className="inline-flex items-center gap-2 rounded-md border border-navy-line px-4 py-2 text-sm font-medium text-navy transition-colors hover:bg-neon/10 hover:text-neon"
             >
               <ArrowLeft className="h-4 w-4" />
-              На главную
+              {t("arch.toHome", lang)}
             </Link>
             <Link
               href="/logo-lab"

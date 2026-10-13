@@ -1,30 +1,33 @@
 import type { Metadata } from "next";
+import { getLang } from "@/lib/i18n/server";
+import { t } from "@/lib/i18n/translations";
 
-export const metadata: Metadata = {
-  title: "Сервисы и поисковые базы — IQin",
-  description:
-    "Бесплатные сервисы для проверки товарных знаков, патентов на изобретения, промышленных образцов, доменных имён и программ для ЭВМ. 25+ поисковых баз в одном месте.",
-  keywords: [
-    "поиск товарных знаков",
-    "поиск патентов",
-    "поиск промышленных образцов",
-    "проверка доменов",
-    "реестр российского ПО",
-    "МКТУ",
-    "МПК",
-    "МКПО",
-    "Роспатент",
-    "ФИПС",
-    "поисковые базы",
-  ],
-  openGraph: {
-    title: "Сервисы и поисковые базы — IQin",
-    description:
-      "Бесплатные инструменты для проверки товарных знаков, патентов, промышленных образцов, доменов и программ для ЭВМ.",
-    url: "https://iqin.ru/masters",
-    type: "website",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const lang = await getLang();
+  return {
+    title: t("mst.metaTitle", lang),
+    description: t("mst.metaDesc", lang),
+    keywords: [
+      "поиск товарных знаков",
+      "поиск патентов",
+      "поиск промышленных образцов",
+      "проверка доменов",
+      "реестр российского ПО",
+      "МКТУ",
+      "МПК",
+      "МКПО",
+      "Роспатент",
+      "ФИПС",
+      "поисковые базы",
+    ],
+    openGraph: {
+      title: t("mst.metaTitle", lang),
+      description: t("mst.metaDesc", lang),
+      url: "https://iqin.ru/masters",
+      type: "website",
+    },
+  };
+}
 
 export default function MastersLayout({
   children,

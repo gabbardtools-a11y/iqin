@@ -2,20 +2,23 @@
 
 import Link from "next/link";
 import { Phone, Mail, MessageCircle, MapPin, Clock, Building2, Award, CalendarDays } from "lucide-react";
-import { mainNav, contacts, allSiteUrls, company, patentAttorneys } from "@/lib/site-config";
+import { mainNav, contacts, allSiteUrls, company, patentAttorneys, navKeyMap } from "@/lib/site-config";
+import { useLanguage } from "@/lib/i18n/useLanguage";
+import type { TranslationKey } from "@/lib/i18n/translations";
 
-const popularUrls = [
-  { label: "Патенты", href: "/patenti" },
-  { label: "Товарные знаки", href: "/brendi" },
-  { label: "Авторские права", href: "/avtorskie_prava_kopirait" },
-  { label: "Цены", href: "/price" },
-  { label: "О компании", href: "/company" },
-  { label: "Контакты", href: "/kontakt" },
-  { label: "Магазин брендов", href: "/magazine" },
-  { label: "Новости", href: "/novosti" },
+const popularUrls: { labelKey: TranslationKey; href: string }[] = [
+  { labelKey: "footer.fPatents", href: "/patenti" },
+  { labelKey: "footer.fTrademarks", href: "/brendi" },
+  { labelKey: "nav.copyright", href: "/avtorskie_prava_kopirait" },
+  { labelKey: "nav.pricing", href: "/price" },
+  { labelKey: "nav.company", href: "/company" },
+  { labelKey: "footer.fContacts", href: "/kontakt" },
+  { labelKey: "footer.fBrandStore", href: "/magazine" },
+  { labelKey: "footer.fNews", href: "/novosti" },
 ];
 
 export function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="relative mt-auto border-t border-border/60 bg-card/30 backdrop-blur-sm">
       {/* Top accent line */}
@@ -33,7 +36,7 @@ export function Footer() {
         <div className="grid gap-10 py-14 lg:grid-cols-[1.6fr_1fr_1fr_1.2fr]">
           {/* Brand + Legal entity block */}
           <div className="flex flex-col gap-4">
-            <Link href="/" className="flex items-center gap-2.5" aria-label="IQin — на главную">
+            <Link href="/" className="flex items-center gap-2.5" aria-label={t("header.logoAria")}>
               <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-md border-2 border-neon/70 bg-neon/20">
                 {/* Subtle grid background */}
                 <span
@@ -88,8 +91,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="max-w-xs text-sm text-muted-foreground">
-              Ультрасовременная платформа интеллектуальной собственности. Патентные услуги и
-              веб-разработка на базе искусственного интеллекта.
+              {t("footer.tagline")}
             </p>
 
             {/* Legal entity block */}
@@ -97,14 +99,14 @@ export function Footer() {
               <div className="flex items-center gap-2 text-neon">
                 <Building2 className="h-4 w-4" />
                 <span className="font-tech text-[10px] uppercase tracking-[0.18em]">
-                  Юридическое лицо
+                  {t("footer.legalEntity")}
                 </span>
               </div>
               <div className="mt-2 font-display text-sm font-semibold text-foreground">
                 {company.fullName}
               </div>
               <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                {company.description}
+                {t("company.description")}
               </p>
             </div>
 
@@ -115,9 +117,9 @@ export function Footer() {
           </div>
 
           {/* Nav columns */}
-          <FooterColumn title="Услуги" items={mainNav.slice(0, 5).map((i) => ({ label: i.label, href: i.href }))} />
-          <FooterColumn title="Информация" items={mainNav.slice(5).map((i) => ({ label: i.label, href: i.href }))} />
-          <FooterColumn title="Популярное" items={popularUrls} />
+          <FooterColumn title={t("footer.colServices")} items={mainNav.slice(0, 5).map((i) => ({ labelKey: navKeyMap[i.href], href: i.href }))} />
+          <FooterColumn title={t("footer.colInfo")} items={mainNav.slice(5).map((i) => ({ labelKey: navKeyMap[i.href], href: i.href }))} />
+          <FooterColumn title={t("footer.colPopular")} items={popularUrls} />
         </div>
 
         {/* Patent attorneys block */}
@@ -136,11 +138,12 @@ export function Footer() {
                     {attorney.name}
                   </span>
                   <span className="font-tech text-[10px] uppercase tracking-wider text-neon">
-                    рег. {attorney.registrationNumber}
+                    {t("footer.regLabel")} {attorney.registrationNumber}
                   </span>
                 </div>
                 <div className="text-xs text-muted-foreground">
-                  {attorney.role} · {attorney.specialization}
+                  {attorney.roleKey ? t(attorney.roleKey) : attorney.role} · {" "}
+                  {attorney.specKey ? t(attorney.specKey) : attorney.specialization}
                 </div>
                 <a
                   href={attorney.phoneHref}
@@ -156,16 +159,16 @@ export function Footer() {
 
         {/* Contacts strip */}
         <div className="grid gap-4 border-y border-border/60 py-6 sm:grid-cols-2 lg:grid-cols-4">
-          <ContactItem icon={Phone} label="Телефон" value={contacts.phone} href={contacts.phoneHref} />
+          <ContactItem icon={Phone} label={t("footer.phoneLabel")} value={contacts.phone} href={contacts.phoneHref} />
           <ContactItem
             icon={MessageCircle}
             label="WhatsApp"
-            value="Написать в чат"
+            value={t("footer.whatsappChat")}
             href={contacts.whatsapp}
             external
           />
           <ContactItem icon={Mail} label="Email" value={contacts.email} href={`mailto:${contacts.email}`} />
-          <ContactItem icon={Clock} label="Часы работы" value={contacts.hours} subValue={contacts.hoursWeekend} />
+          <ContactItem icon={Clock} label={t("footer.hoursLabel")} value={t("contacts.hours")} subValue={t("contacts.hoursWeekend")} />
         </div>
 
         {/* Address strip */}
@@ -176,11 +179,11 @@ export function Footer() {
             </span>
             <div className="flex flex-col">
               <span className="font-tech text-[10px] uppercase tracking-wider text-muted-foreground">
-                Адрес офиса
+                {t("footer.addressLabel")}
               </span>
-              <span className="text-sm font-medium text-foreground">{contacts.address}</span>
+              <span className="text-sm font-medium text-foreground">{t("contacts.address")}</span>
               <span className="mt-0.5 font-tech text-[10px] uppercase tracking-wider text-muted-foreground">
-                м. «Бабушкинская»
+                {t("footer.metro")}
               </span>
             </div>
           </div>
@@ -190,10 +193,10 @@ export function Footer() {
             </span>
             <div className="flex flex-col">
               <span className="font-tech text-[10px] uppercase tracking-wider text-muted-foreground">
-                График работы
+                {t("footer.scheduleLabel")}
               </span>
-              <span className="text-sm font-medium text-foreground">{contacts.hours}</span>
-              <span className="mt-0.5 text-xs text-muted-foreground">{contacts.hoursWeekend}</span>
+              <span className="text-sm font-medium text-foreground">{t("contacts.hours")}</span>
+              <span className="mt-0.5 text-xs text-muted-foreground">{t("contacts.hoursWeekend")}</span>
             </div>
           </div>
         </div>
@@ -201,7 +204,7 @@ export function Footer() {
         {/* Sitemap URLs (preserving all old addresses for SEO) */}
         <div className="py-6">
           <div className="mb-2 font-tech text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-            {"// Карта сайта — все URL сохранены"}
+            {t("footer.sitemapNote")}
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-1.5">
             {allSiteUrls.map((url) => (
@@ -219,12 +222,11 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col items-start justify-between gap-3 py-6 sm:flex-row sm:items-center">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {company.fullName}. Все права защищены. Патентные
-            технологии нового поколения.
+            © {new Date().getFullYear()} {company.fullName}. {t("footer.copyright")}
           </p>
           <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
             <Link href="/kontakt" className="hover:text-neon">
-              Связаться
+              {t("footer.contactUs")}
             </Link>
             <Link href="/logo-lab" className="hover:text-neon">
               Logo Motion Lab
@@ -237,7 +239,14 @@ export function Footer() {
   );
 }
 
-function FooterColumn({ title, items }: { title: string; items: { label: string; href: string }[] }) {
+function FooterColumn({
+  title,
+  items,
+}: {
+  title: string;
+  items: { labelKey?: TranslationKey; label?: string; href: string }[];
+}) {
+  const { t } = useLanguage();
   return (
     <div className="flex flex-col gap-3">
       <h3 className="font-tech text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -250,7 +259,7 @@ function FooterColumn({ title, items }: { title: string; items: { label: string;
               href={item.href}
               className="text-sm text-muted-foreground transition-colors hover:text-neon"
             >
-              {item.label}
+              {item.labelKey ? t(item.labelKey) : item.label}
             </Link>
           </li>
         ))}

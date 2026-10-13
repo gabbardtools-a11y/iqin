@@ -5,8 +5,10 @@ import { motion } from "framer-motion";
 import { ArrowRight, Phone, Mail, MessageCircle } from "lucide-react";
 import { contacts } from "@/lib/site-config";
 import { GridBackground } from "./grid-background";
+import { useLanguage } from "@/lib/i18n/useLanguage";
 
 export function Cta() {
+  const { t } = useLanguage();
   return (
     <section className="relative py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -39,7 +41,7 @@ export function Cta() {
                 className="inline-flex items-center gap-2 rounded-full border border-neon/30 bg-neon/5 px-3 py-1.5 font-tech text-[11px] uppercase tracking-[0.2em] text-neon"
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-neon animate-pulse-neon" />
-                Бесплатная консультация
+                {t("cta.badge")}
               </motion.div>
               <motion.h2
                 initial={{ opacity: 0, y: 18 }}
@@ -48,7 +50,7 @@ export function Cta() {
                 transition={{ duration: 0.6, delay: 0.16 }}
                 className="mt-5 font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-[3.5rem] lg:leading-[1.05]"
               >
-                Запустите свой проект <span className="text-gradient-neon">с ИИ сегодня</span>
+                {t("cta.titleA")} <span className="text-gradient-neon">{t("cta.titleB")}</span>
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
@@ -57,8 +59,7 @@ export function Cta() {
                 transition={{ duration: 0.6, delay: 0.24 }}
                 className="mt-4 text-base text-muted-foreground sm:text-lg"
               >
-                Эксперт IQin свяжется с вами в течение 30 минут. Подберём стратегию защиты
-                интеллектуальной собственности или разработки сайта — бесплатно и без обязательств.
+                {t("cta.desc")}
               </motion.p>
 
               <motion.div
@@ -70,15 +71,15 @@ export function Cta() {
               >
                 <span className="inline-flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-neon" />
-                  Без предоплаты
+                  {t("cta.noPrepay")}
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-amber" />
-                  NDA по умолчанию
+                  {t("cta.nda")}
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-magenta" />
-                  Ответ за 30 минут
+                  {t("cta.reply30")}
                 </span>
               </motion.div>
             </div>
@@ -92,9 +93,9 @@ export function Cta() {
               className="w-full shrink-0 lg:w-auto lg:min-w-[340px]"
             >
               <div className="glass-card clip-corner rounded-2xl p-6">
-                <h3 className="font-display text-xl font-semibold">Связаться напрямую</h3>
+                <h3 className="font-display text-xl font-semibold">{t("cta.directTitle")}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Выберите удобный канал связи:
+                  {t("cta.chooseChannel")}
                 </p>
 
                 <div className="mt-5 flex flex-col gap-2">
@@ -107,7 +108,7 @@ export function Cta() {
                     </span>
                     <div className="flex flex-col">
                       <span className="font-tech text-[10px] uppercase tracking-wider text-muted-foreground">
-                        Телефон
+                        {t("cta.phoneLabel")}
                       </span>
                       <span className="font-mono text-sm font-semibold">{contacts.phone}</span>
                     </div>
@@ -126,7 +127,7 @@ export function Cta() {
                       <span className="font-tech text-[10px] uppercase tracking-wider text-muted-foreground">
                         WhatsApp
                       </span>
-                      <span className="text-sm font-semibold">Написать в мессенджер</span>
+                      <span className="text-sm font-semibold">{t("cta.whatsappValue")}</span>
                     </div>
                   </a>
 
@@ -150,7 +151,7 @@ export function Cta() {
                   href="/kontakt"
                   className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-neon px-5 py-3 text-sm font-semibold text-primary-foreground transition-all hover:glow-neon-strong"
                 >
-                  Открыть форму заявки
+                  {t("cta.openForm")}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </div>

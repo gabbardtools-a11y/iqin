@@ -14,96 +14,91 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { SectionHeading } from "./section-heading";
+import { useLanguage } from "@/lib/i18n/useLanguage";
+import { type TranslationKey } from "@/lib/i18n/translations";
 
 type Service = {
   href: string;
   icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  description: string;
-  tag: string;
-  subItems?: { label: string; href: string }[];
+  titleKey: TranslationKey;
+  descKey: TranslationKey;
+  tagKey: TranslationKey;
+  subItems?: { labelKey: TranslationKey; href: string }[];
 };
 
 const services: Service[] = [
   {
     href: "/patenti",
     icon: FileText,
-    title: "Патенты",
-    description:
-      "Регистрация изобретений, полезных моделей и промышленных образцов в Роспатенте и за рубежом. Полное сопровождение от поиска до выдачи патента.",
-    tag: "Патентование",
+    titleKey: "svc.s1Title",
+    descKey: "svc.s1Desc",
+    tagKey: "svc.s1Tag",
     subItems: [
-      { label: "Изобретения", href: "/patent_na_izobretenie" },
-      { label: "Полезные модели", href: "/patent_na_poleznuyu_model" },
-      { label: "Дизайн", href: "/patent_na_disain" },
-      { label: "Международные", href: "/mezdunarudnie-patenti" },
+      { labelKey: "svc.s1sub1", href: "/patent_na_izobretenie" },
+      { labelKey: "svc.s1sub2", href: "/patent_na_poleznuyu_model" },
+      { labelKey: "svc.s1sub3", href: "/patent_na_disain" },
+      { labelKey: "svc.s1sub4", href: "/mezdunarudnie-patenti" },
     ],
   },
   {
     href: "/brendi",
     icon: Tag,
-    title: "Бренды и товарные знаки",
-    description:
-      "Регистрация товарных знаков в России, по Мадридской системе и в Китае. Проверка уникальности, нейминг и защита от конкурентов.",
-    tag: "Товарные знаки",
+    titleKey: "svc.s2Title",
+    descKey: "svc.s2Desc",
+    tagKey: "svc.s2Tag",
     subItems: [
-      { label: "ТЗ в России", href: "/tovarniy_znak_rossii" },
-      { label: "Международные", href: "/mezdunarodnie_znaki" },
-      { label: "ТЗ в Китае", href: "/china_trade_mark" },
-      { label: "Нейминг", href: "/naming" },
+      { labelKey: "svc.s2sub1", href: "/tovarniy_znak_rossii" },
+      { labelKey: "svc.s2sub2", href: "/mezdunarodnie_znaki" },
+      { labelKey: "svc.s2sub3", href: "/china_trade_mark" },
+      { labelKey: "svc.s2sub4", href: "/naming" },
     ],
   },
   {
     href: "/avtorskie_prava_kopirait",
     icon: Copyright,
-    title: "Авторские права",
-    description:
-      "Защита произведений науки, литературы и искусства. Депонирование, договоры отчуждения и лицензионные соглашения, судебная защита.",
-    tag: "Copyright",
+    titleKey: "svc.s3Title",
+    descKey: "svc.s3Desc",
+    tagKey: "svc.s3Tag",
   },
   {
     href: "/patentnie_poverennie",
     icon: Scale,
-    title: "Патентные поверенные",
-    description:
-      "Аккредитованные Роспатентом поверенные с опытом 15+ лет. Ведение делопроизводства, ответы на запросы экспертизы, оспаривание отказов.",
-    tag: "Сопровождение",
+    titleKey: "svc.s4Title",
+    descKey: "svc.s4Desc",
+    tagKey: "svc.s4Tag",
   },
   {
     href: "/rospatent",
     icon: Award,
-    title: "Работа с Роспатентом",
-    description:
-      "Прямое взаимодействие с ФИПС и Роспатентом. Электронная подача заявок, отслеживание статуса, ускоренные процедуры регистрации.",
-    tag: "Гос. услуги",
+    titleKey: "svc.s5Title",
+    descKey: "svc.s5Desc",
+    tagKey: "svc.s5Tag",
   },
   {
     href: "/naming",
     icon: PenTool,
-    title: "Нейминг и брендинг",
-    description:
-      "Разработка названий компаний, продуктов и доменов с проверкой патентной чистоты. Креатив и правовая защита в одном пакете.",
-    tag: "Креатив",
+    titleKey: "svc.s6Title",
+    descKey: "svc.s6Desc",
+    tagKey: "svc.s6Tag",
   },
   {
     href: "/mezdunarudnie-patenti",
     icon: Globe2,
-    title: "Международное патентование",
-    description:
-      "Защита интеллектуальной собственности по системам PCT, Евразийской и Европейской патентной конвенции. Подача в 150+ стран мира.",
-    tag: "Global IP",
+    titleKey: "svc.s7Title",
+    descKey: "svc.s7Desc",
+    tagKey: "svc.s7Tag",
   },
   {
     href: "/masters",
     icon: Users,
-    title: "Мастера IQin",
-    description:
-      "Команда экспертов: патентные поверенные, юристы по ИС, дизайнеры, разработчики и ИИ-инженеры — работаем над вашим проектом вместе.",
-    tag: "Команда",
+    titleKey: "svc.s8Title",
+    descKey: "svc.s8Desc",
+    tagKey: "svc.s8Tag",
   },
 ];
 
 export function Services() {
+  const { t } = useLanguage();
   return (
     <section id="services" className="relative scroll-mt-20 border-t border-border/60 py-20 lg:py-28">
       {/* Background accents */}
@@ -113,14 +108,13 @@ export function Services() {
       />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Полный спектр услуг"
+          eyebrow={t("svc.eyebrow")}
           title={
             <>
-              Защита интеллектуальной <span className="text-gradient-neon">собственности</span> под
-              ключ
+              {t("svc.titleA")} <span className="text-gradient-neon">{t("svc.titleB")}</span>
             </>
           }
-          description="Классические патентные услуги IQin, проверенные 15 годами практики. Сохранены все URL старого сайта — закладки и ссылки продолжат работать."
+          description={t("svc.desc")}
         />
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -130,12 +124,12 @@ export function Services() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm text-muted-foreground">
-          <span>Не нашли нужную услугу?</span>
+          <span>{t("svc.notFound")}</span>
           <Link
             href="/kontakt"
             className="inline-flex items-center gap-1 font-semibold text-neon hover:text-glow-neon"
           >
-            Задайте вопрос эксперту
+            {t("svc.askExpert")}
             <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
         </div>
@@ -145,6 +139,7 @@ export function Services() {
 }
 
 function ServiceCard({ service, index }: { service: Service; index: number }) {
+  const { t } = useLanguage();
   const Icon = service.icon;
   return (
     <motion.div
@@ -172,21 +167,21 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
             <Icon className="h-5 w-5" />
           </span>
           <span className="font-tech text-[9px] uppercase tracking-wider text-muted-foreground">
-            {service.tag}
+            {t(service.tagKey)}
           </span>
         </div>
 
         <h3 className="relative mt-4 font-display text-lg font-semibold tracking-tight">
-          {service.title}
+          {t(service.titleKey)}
         </h3>
-        <p className="relative mt-2 text-sm text-muted-foreground">{service.description}</p>
+        <p className="relative mt-2 text-sm text-muted-foreground">{t(service.descKey)}</p>
 
         {service.subItems && (
           <ul className="relative mt-4 flex flex-wrap gap-1.5 border-t border-border/60 pt-3">
             {service.subItems.map((sub) => (
               <li key={sub.href}>
                 <span className="inline-flex items-center rounded-md border border-border/60 bg-background/40 px-2 py-0.5 text-[11px] text-muted-foreground transition-colors group-hover:border-neon/30 group-hover:text-neon">
-                  {sub.label}
+                  {t(sub.labelKey)}
                 </span>
               </li>
             ))}
@@ -194,7 +189,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         )}
 
         <div className="relative mt-auto flex items-center gap-1 pt-4 text-sm font-medium text-neon opacity-0 transition-opacity group-hover:opacity-100">
-          Подробнее
+          {t("svc.more")}
           <ArrowUpRight className="h-3.5 w-3.5" />
         </div>
       </Link>

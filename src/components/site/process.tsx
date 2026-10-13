@@ -3,55 +3,60 @@
 import { motion } from "framer-motion";
 import { MessageSquare, Search, FileCheck, ShieldCheck } from "lucide-react";
 import { SectionHeading } from "./section-heading";
+import { useLanguage } from "@/lib/i18n/useLanguage";
+import { type TranslationKey } from "@/lib/i18n/translations";
 
-const steps = [
+const steps: {
+  n: string;
+  icon: React.ComponentType<{ className?: string }>;
+  titleKey: TranslationKey;
+  descKey: TranslationKey;
+  durationKey: TranslationKey;
+}[] = [
   {
     n: "01",
     icon: MessageSquare,
-    title: "Брифинг и постановка задачи",
-    description:
-      "Вы заполняете короткий бриф или общаетесь с ИИ-ассистентом. Система автоматически классифицирует задачу и подбирает эксперта.",
-    duration: "15 минут",
+    titleKey: "proc.s1Title",
+    descKey: "proc.s1Desc",
+    durationKey: "proc.s1Duration",
   },
   {
     n: "02",
     icon: Search,
-    title: "ИИ-анализ и стратегия",
-    description:
-      "ИИ проводит патентный поиск, оценивает оригинальность, формирует стратегию защиты. Проверенный поверенный подтверждает план.",
-    duration: "24 часа",
+    titleKey: "proc.s2Title",
+    descKey: "proc.s2Desc",
+    durationKey: "proc.s2Duration",
   },
   {
     n: "03",
     icon: FileCheck,
-    title: "Подготовка и подача заявки",
-    description:
-      "Генерируем формулу, описание, реферат. Подаём заявку в Роспатент в электронном виде. Вы получаете трекинг статуса в реальном времени.",
-    duration: "2–5 дней",
+    titleKey: "proc.s3Title",
+    descKey: "proc.s3Desc",
+    durationKey: "proc.s3Duration",
   },
   {
     n: "04",
     icon: ShieldCheck,
-    title: "Сопровождение до выдачи",
-    description:
-      "Ведём делопроизводство, отвечаем на запросы экспертизы, оспариваем отказы. Финальный отчёт и передача патента владельцу.",
-    duration: "до 12 месяцев",
+    titleKey: "proc.s4Title",
+    descKey: "proc.s4Desc",
+    durationKey: "proc.s4Duration",
   },
 ];
 
 export function Process() {
+  const { t } = useLanguage();
   return (
     <section className="relative border-t border-border/60 py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Как мы работаем"
+          eyebrow={t("proc.eyebrow")}
           title={
             <>
-              Процесс от заявки до{" "}
-              <span className="text-gradient-neon">выдачи патента</span>
+              {t("proc.titleA")}{" "}
+              <span className="text-gradient-neon">{t("proc.titleB")}</span>
             </>
           }
-          description="Прозрачный pipeline с фиксацией сроков на каждом этапе. ИИ ускоряет рутину, поверенные принимают ключевые решения."
+          description={t("proc.desc")}
         />
 
         <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -81,12 +86,12 @@ export function Process() {
                 </span>
               </div>
 
-              <h3 className="mt-4 font-display text-lg font-semibold">{step.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
+              <h3 className="mt-4 font-display text-lg font-semibold">{t(step.titleKey)}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{t(step.descKey)}</p>
 
               <div className="mt-4 inline-flex items-center gap-1.5 rounded-md border border-border/60 bg-background/40 px-2.5 py-1 font-tech text-[10px] uppercase tracking-wider text-muted-foreground">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber" />
-                {step.duration}
+                {t(step.durationKey)}
               </div>
             </motion.div>
           ))}
