@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, Mail, MessageCircle, MapPin, Clock, Building2, Award, CalendarDays } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Building2, Award, CalendarDays } from "lucide-react";
 import { mainNav, contacts, allSiteUrls, company, patentAttorneys, navKeyMap } from "@/lib/site-config";
 import { useLanguage } from "@/lib/i18n/useLanguage";
 import type { TranslationKey } from "@/lib/i18n/translations";
@@ -159,14 +159,6 @@ export function Footer() {
 
         {/* Contacts strip */}
         <div className="grid gap-4 border-y border-border/60 py-6 sm:grid-cols-2 lg:grid-cols-4">
-          <ContactItem icon={Phone} label={t("footer.phoneLabel")} value={contacts.phone} href={contacts.phoneHref} />
-          <ContactItem
-            icon={MessageCircle}
-            label="WhatsApp"
-            value={t("footer.whatsappChat")}
-            href={contacts.whatsapp}
-            external
-          />
           <ContactItem icon={Mail} label="Email" value={contacts.email} href={`mailto:${contacts.email}`} />
           <ContactItem icon={Clock} label={t("footer.hoursLabel")} value={t("contacts.hours")} subValue={t("contacts.hoursWeekend")} />
         </div>

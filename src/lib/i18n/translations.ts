@@ -61,7 +61,7 @@ export const translations = {
   'nav.company': { ru: 'О компании', en: 'About us', zh: '关于我们' },
 
   // ===== Hero =====
-  'hero.h1a': { ru: 'Патентные технологии', en: 'Patent technologies', zh: '专利技术' },
+  'hero.h1a': { ru: 'Интеллектуальная собственность', en: 'Intellectual property', zh: '知识产权' },
   'hero.h1b': { ru: 'нового поколения', en: 'of the new generation', zh: '新一代' },
   'hero.h1c': { ru: 'на базе', en: 'powered by', zh: '基于' },
   'hero.ai': { ru: 'ИИ', en: 'AI', zh: 'AI' },
@@ -343,7 +343,7 @@ export const translations = {
     en: 'An ultra-modern intellectual property platform. Patent services and web development powered by artificial intelligence.',
     zh: '超现代知识产权平台。以人工智能驱动的专利服务与 Web 开发。',
   },
-  'footer.legalEntity': { ru: 'Юридическое лицо', en: 'Legal entity', zh: '法律主体' },
+  'footer.legalEntity': { ru: 'Патентное бюро', en: 'Patent bureau', zh: '专利局' },
   'footer.colServices': { ru: 'Услуги', en: 'Services', zh: '服务' },
   'footer.colInfo': { ru: 'Информация', en: 'Information', zh: '信息' },
   'footer.colPopular': { ru: 'Популярное', en: 'Popular', zh: '热门' },
@@ -366,9 +366,9 @@ export const translations = {
   'footer.contactUs': { ru: 'Связаться', en: 'Contact us', zh: '联系我们' },
   'footer.regLabel': { ru: 'рег.', en: 'reg.', zh: '注册号' },
   'footer.copyright': {
-    ru: 'Все права защищены. Патентные технологии нового поколения.',
-    en: 'All rights reserved. Patent technologies of the new generation.',
-    zh: '版权所有。新一代专利技术。',
+    ru: 'Все права защищены.',
+    en: 'All rights reserved.',
+    zh: '版权所有。',
   },
   'contacts.hours': { ru: 'Пн—Пт: 10:00—20:00', en: 'Mon–Fri: 10:00—20:00', zh: '周一至周五：10:00—20:00' },
   'contacts.hoursWeekend': {
@@ -793,16 +793,16 @@ export const translations = {
 
   // ===== Root metadata =====
   'meta.title': {
-    ru: 'IQin — Патентные технологии нового поколения | ИИ в патентовании и разработке сайтов',
-    en: 'IQin — Next-Generation Patent Technologies | AI in Patenting and Web Development',
-    zh: 'IQin —— 新一代专利技术 | AI 专利与网站开发',
+    ru: 'IQin — интеллектуальная собственность нового поколения | ИИ в патентовании и разработке сайтов',
+    en: 'IQin — Next-Generation Intellectual Property | AI in Patenting and Web Development',
+    zh: 'IQin —— 新一代知识产权 | AI 专利与网站开发',
   },
   'meta.description': {
     ru: 'IQin.ru — ультрасовременная платформа интеллектуальной собственности. Создание патентов с ИИ, разработка сайтов с ИИ, регистрация товарных знаков, патентование изобретений, защита авторских прав.',
     en: 'IQin.ru — an ultra-modern intellectual property platform. AI-powered patent creation, AI website development, trademark registration, invention patenting, copyright protection.',
     zh: 'IQin.ru —— 超现代知识产权平台。AI 专利撰写、AI 网站开发、商标注册、发明专利申请、版权保护。',
   },
-  'meta.ogTitle': { ru: 'IQin — Патентные технологии нового поколения', en: 'IQin — Next-Generation Patent Technologies', zh: 'IQin —— 新一代专利技术' },
+  'meta.ogTitle': { ru: 'IQin — интеллектуальная собственность нового поколения', en: 'IQin — Next-Generation Intellectual Property', zh: 'IQin —— 新一代知识产权' },
   'meta.ogDesc': {
     ru: 'Создание патентов с ИИ и разработка сайтов с ИИ. Полный спектр услуг по защите интеллектуальной собственности.',
     en: 'AI-powered patent creation and AI website development. A full range of intellectual property protection services.',

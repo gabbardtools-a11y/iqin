@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, Mail, MessageCircle } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { contacts } from "@/lib/site-config";
 import { GridBackground } from "./grid-background";
 import { useLanguage } from "@/lib/i18n/useLanguage";
@@ -99,37 +99,7 @@ export function Cta() {
                 </p>
 
                 <div className="mt-5 flex flex-col gap-2">
-                  <a
-                    href={contacts.phoneHref}
-                    className="group flex items-center gap-3 rounded-lg border border-border/60 bg-background/40 px-4 py-3 transition-all hover:border-neon/40 hover:bg-neon/5"
-                  >
-                    <span className="flex h-9 w-9 items-center justify-center rounded-md bg-neon/10 text-neon">
-                      <Phone className="h-4 w-4" />
-                    </span>
-                    <div className="flex flex-col">
-                      <span className="font-tech text-[10px] uppercase tracking-wider text-muted-foreground">
-                        {t("cta.phoneLabel")}
-                      </span>
-                      <span className="font-mono text-sm font-semibold">{contacts.phone}</span>
-                    </div>
-                  </a>
 
-                  <a
-                    href={contacts.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-3 rounded-lg border border-border/60 bg-background/40 px-4 py-3 transition-all hover:border-neon/40 hover:bg-neon/5"
-                  >
-                    <span className="flex h-9 w-9 items-center justify-center rounded-md bg-amber/10 text-amber">
-                      <MessageCircle className="h-4 w-4" />
-                    </span>
-                    <div className="flex flex-col">
-                      <span className="font-tech text-[10px] uppercase tracking-wider text-muted-foreground">
-                        WhatsApp
-                      </span>
-                      <span className="text-sm font-semibold">{t("cta.whatsappValue")}</span>
-                    </div>
-                  </a>
 
                   <a
                     href={`mailto:${contacts.email}`}

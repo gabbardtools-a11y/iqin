@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Phone, Sparkles } from "lucide-react";
+import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
 import { mainNav, contacts, navKeyMap as NAV_KEYS } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -232,13 +232,6 @@ export function Header() {
               </nav>
               <div className="mt-6 flex flex-col gap-3">
                 <LangSwitch className="w-fit" />
-                <a
-                  href={contacts.phoneHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-md border border-navy-line px-4 py-3 text-sm font-medium text-navy transition-colors hover:bg-neon/10 hover:text-neon"
-                >
-                  <Phone className="h-4 w-4" />
-                  {contacts.phone}
-                </a>
                 <Link
                   href="/kontakt"
                   onClick={() => setMobileOpen(false)}

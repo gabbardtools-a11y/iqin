@@ -127,9 +127,6 @@ export const allSiteUrls: string[] = [
  * Email и телефон обновлены по запросу пользователя.
  */
 export const contacts = {
-  phone: "+7 (995) 789-09-00",
-  phoneHref: "tel:+79957890900",
-  whatsapp: "https://api.whatsapp.com/send/?phone=79957890900",
   email: "info@ptn.su",
   address: "Москва, м. «Бабушкинская», Анадырский проезд, д. 31/1, оф. 31",
   addressShort: "Москва, Анадырский проезд, 31/1, оф. 31",
@@ -142,9 +139,9 @@ export const contacts = {
  * (с iqin.ru/kontakt)
  */
 export const company = {
-  name: "Патентные Технологии",
+  name: "IQin",
   legalForm: "Общество с ограниченной ответственностью",
-  fullName: 'ООО «Патентные Технологии»',
+  fullName: "IQin",
   description:
     "Патентное бюро полного цикла. Аккредитованные патентные поверенные с опытом 15+ лет ведут дела в Роспатенте и международных ведомствах. Защищаем изобретения, товарные знаки, промышленные образцы и авторские права.",
 };
