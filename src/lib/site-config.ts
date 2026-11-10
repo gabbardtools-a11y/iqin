@@ -47,6 +47,7 @@ export const mainNav: NavItem[] = [
     label: "Патенты",
     href: "/patenti",
     children: [
+      { label: "Гид: что такое патент", href: "/blog/chto-takoe-patent" },
       { label: "Патент на изобретение", href: "/patent_na_izobretenie" },
       { label: "Патент на полезную модель", href: "/patent_na_poleznuyu_model" },
       { label: "Патент на дизайн", href: "/patent_na_disain" },

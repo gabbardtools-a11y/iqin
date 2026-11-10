@@ -80,6 +80,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
+  // R237 (Iqin, пакет 20261110): собственные маршруты вне JSON-архива — гид по патентам
+  const STATIC_EXTRA: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE}/blog/chto-takoe-patent`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+  ];
+  for (const e of STATIC_EXTRA) {
+    if (!seen.has(e.url)) {
+      seen.add(e.url);
+      entries.push(e);
+    }
+  }
+
   // главная — первой, остальное по алфавиту
   entries.sort((a, b) => {
     if (a.url === `${SITE}/`) return -1;
